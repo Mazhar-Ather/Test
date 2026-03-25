@@ -326,65 +326,623 @@
     <script>
         // Complete set of 50 MCQs
         const questions = [
-            // Section 1: Data Storage Conversions (Q1-10)
-            { text: "A computer has 4 GB of RAM. How many bits does this represent?", options: ["4 × 2³⁰ bits", "4 × 2³³ bits", "4 × 2²⁰ bits", "4 × 2¹⁰ bits"], correct: 1, explanation: "4 GB = 4 × 2³⁰ bytes = 4 × 2³⁰ × 8 bits = 4 × 2³³ bits" },
-            { text: "If a memory unit has 2³⁵ bytes, what is its capacity in GB?", options: ["32 GB", "64 GB", "128 GB", "256 GB"], correct: 0, explanation: "2³⁵ bytes = 2³⁵ / 2³⁰ GB = 2⁵ GB = 32 GB" },
-            { text: "A hard disk has a capacity of 2 TB. How many 4 MB files can it store?", options: ["2 × 2¹⁰ files", "2 × 2²⁰ files", "2 × 2³⁰ files", "2 × 2⁴⁰ files"], correct: 1, explanation: "2 TB = 2 × 2⁴⁰ bytes, 4 MB = 4 × 2²⁰ bytes = 2² × 2²⁰ = 2²² bytes. Number = (2 × 2⁴⁰)/2²² = 2 × 2¹⁸ = 2 × 2²⁰ files" },
-            { text: "A processor has a 48-bit address bus. What is the maximum addressable memory in bytes?", options: ["2⁴⁸ bytes", "48² bytes", "2⁴⁰ bytes", "48 × 2¹⁰ bytes"], correct: 0, explanation: "48-bit address bus can address 2⁴⁸ different memory locations, each holding 1 byte" },
-            { text: "A computer system has 64 MB of RAM. If each instruction is 4 bytes, how many instructions can be stored in RAM at once?", options: ["16 × 2²⁰ instructions", "16 × 2¹⁰ instructions", "64 × 2²⁰ instructions", "64 × 2¹⁰ instructions"], correct: 0, explanation: "64 MB = 64 × 2²⁰ bytes = 2⁶ × 2²⁰ = 2²⁶ bytes. Instructions = 2²⁶ / 4 = 2²⁶ / 2² = 2²⁴ = 16 × 2²⁰" },
-            { text: "A 32-bit microprocessor has a 32-bit address bus. What is the maximum memory capacity in GB?", options: ["2 GB", "4 GB", "8 GB", "16 GB"], correct: 1, explanation: "32-bit address bus = 2³² bytes = 4 GB" },
-            { text: "How many bits are required to address 16 GB of memory if each address points to one byte?", options: ["32 bits", "34 bits", "36 bits", "40 bits"], correct: 1, explanation: "16 GB = 16 × 2³⁰ bytes = 2⁴ × 2³⁰ = 2³⁴ bytes, so 34 bits required" },
-            { text: "A cache memory has 512 KB. How many 64-byte blocks can it hold?", options: ["4096 blocks", "8192 blocks", "16384 blocks", "32768 blocks"], correct: 1, explanation: "512 KB = 512 × 1024 = 524,288 bytes. Blocks = 524,288 / 64 = 8192 blocks" },
-            { text: "A DVD has a capacity of 4.7 GB. Approximately how many 750 KB images can it store?", options: ["6,400 images", "6,800 images", "7,200 images", "7,600 images"], correct: 0, explanation: "4.7 GB = 4.7 × 10⁹ bytes ≈ 4.7 × 1024 × 1024 × 1024 ≈ 5,046,000,000 bytes. 750 KB = 750 × 1024 = 768,000 bytes. Number ≈ 5,046,000,000 / 768,000 ≈ 6,570 ≈ 6,400" },
-            { text: "A digital camera takes photos of 5 MB each. How many photos can be stored on a 64 GB memory card?", options: ["12,800 photos", "13,107 photos", "13,800 photos", "14,000 photos"], correct: 1, explanation: "64 GB = 64 × 1024 MB = 65,536 MB. Photos = 65,536 / 5 = 13,107.2 ≈ 13,107 photos" },
-            
-            // Section 2: Computer Architecture (Q11-25)
-            { text: "A CPU has a clock speed of 3.2 GHz. How many clock cycles occur in one millisecond?", options: ["3.2 × 10⁶ cycles", "3.2 × 10⁹ cycles", "3.2 × 10³ cycles", "3.2 × 10¹² cycles"], correct: 0, explanation: "3.2 GHz = 3.2 × 10⁹ cycles/sec. 1 ms = 10⁻³ sec. Cycles = 3.2 × 10⁹ × 10⁻³ = 3.2 × 10⁶ cycles" },
-            { text: "A processor uses 12 bits for the opcode and 20 bits for the operand address. What is the maximum number of instructions possible?", options: ["1024 instructions", "2048 instructions", "4096 instructions", "8192 instructions"], correct: 2, explanation: "12 bits for opcode = 2¹² = 4096 possible instructions" },
-            { text: "In a computer with 32-bit word size, what is the maximum signed integer that can be stored in one word?", options: ["2³¹ - 1", "2³² - 1", "2³¹", "2³²"], correct: 0, explanation: "32-bit signed integer range: -2³¹ to 2³¹ - 1" },
-            { text: "A system has 4 GB of RAM and uses virtual memory with 4 KB pages. How many page table entries are required?", options: ["2²⁰ entries", "2³⁰ entries", "2⁴⁰ entries", "2⁵⁰ entries"], correct: 0, explanation: "4 GB = 2³² bytes. Page size = 4 KB = 2¹² bytes. Page table entries = 2³² / 2¹² = 2²⁰ entries" },
-            { text: "A CPU uses pipelining with 5 stages. Each stage takes 0.5 ns. What is the theoretical maximum instructions per second?", options: ["2 × 10⁹ instructions/sec", "4 × 10⁹ instructions/sec", "5 × 10⁹ instructions/sec", "1 × 10⁹ instructions/sec"], correct: 0, explanation: "Pipeline throughput = 1 / stage time = 1 / (0.5 × 10⁻⁹) = 2 × 10⁹ instructions/sec" },
-            { text: "Which of the following is true about SRAM and DRAM?", options: ["SRAM is slower than DRAM", "DRAM requires periodic refreshing, SRAM does not", "DRAM is used for cache memory", "SRAM has lower density than DRAM but is slower"], correct: 1, explanation: "DRAM requires refreshing; SRAM is faster and used for cache" },
-            { text: "A microprocessor has a 64-bit data bus and a 36-bit address bus. What is the maximum directly addressable memory?", options: ["32 GB", "64 GB", "128 GB", "256 GB"], correct: 1, explanation: "36-bit address bus = 2³⁶ bytes = 64 GB" },
-            { text: "In DMA (Direct Memory Access), which component controls the data transfer between I/O devices and memory?", options: ["CPU", "DMA Controller", "Cache Controller", "Memory Management Unit"], correct: 1, explanation: "DMA Controller handles data transfer without CPU involvement" },
-            { text: "Which register holds the address of the next instruction to be executed?", options: ["MAR", "MBR", "PC", "IR"], correct: 2, explanation: "Program Counter (PC) holds the address of the next instruction" },
-            { text: "A RISC processor typically has which characteristic?", options: ["Complex instructions", "Variable instruction length", "Large number of registers", "Microprogrammed control unit"], correct: 2, explanation: "RISC processors have a large number of registers for fast operations" },
-            { text: "The control unit that uses hardwired control is characterized by:", options: ["Slower execution speed", "Easier to modify", "Faster execution speed", "Requires more ROM space"], correct: 2, explanation: "Hardwired control units are faster but harder to modify" },
-            { text: "In a system with 16 GB of RAM and 4 KB page size, how many bits are required for the offset within a page?", options: ["8 bits", "10 bits", "12 bits", "14 bits"], correct: 2, explanation: "4 KB page = 2¹² bytes, so 12 bits for offset" },
-            { text: "What is the purpose of the stack pointer register?", options: ["Points to the next instruction", "Points to the top of the stack", "Points to the base of the stack", "Points to the return address"], correct: 1, explanation: "Stack pointer points to the top of the stack" },
-            { text: "A computer has 8 GB of RAM and uses 8-way set associative cache with 64-byte blocks. If the cache size is 512 KB, how many sets are there?", options: ["512 sets", "1024 sets", "2048 sets", "4096 sets"], correct: 1, explanation: "Cache blocks = 512 KB / 64 B = 8192 blocks. Sets = 8192 / 8 = 1024 sets" },
-            { text: "Which of the following is true about cache memory?", options: ["It is slower than RAM", "It is volatile", "It is larger than RAM", "It stores frequently used data"], correct: 3, explanation: "Cache stores frequently accessed data for faster retrieval" },
-            
-            // Section 3: C Language - Data Types and Operators (Q26-35)
-            { text: "What is the output of: int a = 5, b = 2; float c = a / b; printf('%f', c);", options: ["2.500000", "2.000000", "2.5", "2"], correct: 1, explanation: "Integer division: 5/2 = 2, stored as float: 2.000000" },
-            { text: "What is the output of: int a = 10, b = 20; int c = a++ + ++b; printf('%d %d %d', a, b, c);", options: ["11 21 31", "10 20 30", "11 20 31", "10 21 30"], correct: 0, explanation: "a++ = 10 (then a=11), ++b = 21, c = 10+21=31" },
-            { text: "Which expression evaluates to true (non-zero) in C?", options: ["5 > 3 && 4 < 2", "5 > 3 || 4 < 2", "!(5 > 3)", "(5 == 3) && (4 == 4)"], correct: 1, explanation: "5 > 3 is true, OR with false gives true" },
-            { text: "What is the output of: int x = 5; printf('%d %d %d', x++, ++x, x);", options: ["5 7 7", "5 6 6", "6 7 7", "Undefined behavior"], correct: 3, explanation: "Modifying x multiple times between sequence points is undefined" },
-            { text: "What is the value of sizeof(char) in C?", options: ["1 byte", "2 bytes", "4 bytes", "Depends on compiler"], correct: 0, explanation: "sizeof(char) is always 1 byte in C" },
-            { text: "What is the output of: int a = 5, b = 10, c = 15; int d = a < b ? b < c ? c : b : a; printf('%d', d);", options: ["5", "10", "15", "Compiler error"], correct: 2, explanation: "a < b is true, then b < c is true, so returns c = 15" },
-            { text: "Which statement about continue in C is true?", options: ["It terminates the loop", "It skips current iteration and continues", "It is used only in switch", "It can be used outside loops"], correct: 1, explanation: "continue skips remaining code and moves to next iteration" },
-            { text: "What is the output of: int i = 0; while (i++ < 5) printf('%d ', i);", options: ["0 1 2 3 4", "1 2 3 4 5", "0 1 2 3 4 5", "1 2 3 4"], correct: 1, explanation: "i++ uses current value then increments. Loop runs when i=0-4, prints 1-5" },
-            { text: "What is the output of: for (i = 0; i < 5; i++) { if (i == 3) continue; printf('%d ', i); }", options: ["0 1 2 3 4", "0 1 2 4", "0 1 2 4 5", "0 1 2 3"], correct: 1, explanation: "continue skips i=3, so prints 0,1,2,4" },
-            { text: "What is the output of: int a = 5, b = 0; b = (a++, a++, ++a); printf('%d %d', a, b);", options: ["8 8", "7 7", "8 7", "7 8"], correct: 0, explanation: "Comma operator evaluates all, returns last. a becomes 8, b = 8" },
-            
-            // Section 4: C Language - Loops and Conditionals (Q36-45)
-            { text: "What is the output of: int i = 0; for (; i < 5; i++); printf('%d', i);", options: ["4", "5", "0", "Compiler error"], correct: 1, explanation: "Loop increments i to 5, then condition fails, prints 5" },
-            { text: "What is the output of: for (i = 1; i <= 5; i++) { if (i == 3) break; printf('%d ', i); }", options: ["1 2 3 4 5", "1 2 3", "1 2", "1 2 4 5"], correct: 2, explanation: "break exits loop when i=3, prints only 1 and 2" },
-            { text: "What is the output of nested loop: for(i=1;i<=3;i++){ for(j=1;j<=i;j++){ printf('%d',j); } printf('\\n'); }", options: ["1\\n12\\n123", "1\\n22\\n333", "1\\n23\\n456", "1\\n12\\n123"], correct: 0, explanation: "Prints triangle pattern: 1, then 12, then 123" },
-            { text: "What is the output of: int x = 5; switch(x) { case 5: printf('A'); case 4: printf('B'); case 3: printf('C'); default: printf('D'); }", options: ["A", "ABCD", "AB", "A B C D"], correct: 1, explanation: "No break statements, so falls through all cases" },
-            { text: "What is the output of infinite loop syntax?", options: ["while(1) { }", "for(;;) { }", "do { } while(1);", "All of the above"], correct: 3, explanation: "All three create infinite loops" },
-            { text: "What is the output of: int i = 0, sum = 0; do { sum += i; i++; } while (i <= 5); printf('%d', sum);", options: ["10", "15", "0", "5"], correct: 1, explanation: "sum = 0+1+2+3+4+5 = 15" },
-            { text: "What is the output of: int i = 5; while (--i > 0) { printf('%d ', i); }", options: ["4 3 2 1", "5 4 3 2 1", "4 3 2 1 0", "5 4 3 2"], correct: 0, explanation: "--i decrements first, so prints 4,3,2,1" },
-            { text: "What is the output of: int a=0,b=1,c=2; if(a++ && b++ || c++) printf('%d %d %d',a,b,c); else printf('%d %d %d',a,b,c);", options: ["1 1 2", "1 1 3", "1 2 2", "1 2 3"], correct: 1, explanation: "a++ is 0 (false), b++ skipped, then c++ executes (c=3)" },
-            { text: "What is the output of: for(i=1;i<=10;i++){ if(i%2==0) continue; if(i>7) break; printf('%d ',i); }", options: ["1 3 5 7", "1 3 5 7 9", "2 4 6 8 10", "1 3 5 7 9 11"], correct: 0, explanation: "Prints odd numbers up to 7, then breaks" },
-            { text: "Which of the following correctly declares an array of 10 integers?", options: ["int arr[10];", "int arr(10);", "int arr = 10;", "arr int[10];"], correct: 0, explanation: "int arr[10]; is the correct array declaration syntax" },
-            
-            // Section 5: Database (Q46-50)
-            { text: "In a relational database, a table is in 2NF if:", options: ["It has no repeating groups", "It has no partial dependencies", "It has no transitive dependencies", "It has no composite keys"], correct: 1, explanation: "2NF requires 1NF and no partial dependencies on composite keys" },
-            { text: "Consider R(A,B,C,D) with AB→C, C→D. What is the candidate key?", options: ["A", "B", "AB", "ABC"], correct: 2, explanation: "AB determines C, and C determines D, so AB determines all attributes" },
-            { text: "In the above relation, what normal form is it in?", options: ["1NF only", "2NF", "3NF", "BCNF"], correct: 1, explanation: "C→D is transitive dependency, so it's in 2NF only" },
-            { text: "Which is correct about foreign keys?", options: ["A foreign key can be null", "A foreign key must be unique", "A foreign key must reference a primary key in same table", "A foreign key cannot be part of composite key"], correct: 0, explanation: "Foreign keys can be null (optional relationship)" },
-            { text: "In ER diagram, a many-to-many relationship is resolved by:", options: ["Creating a new entity with foreign keys", "Adding a foreign key to one table", "Merging the two tables", "Removing the relationship"], correct: 0, explanation: "Create associative entity with foreign keys from both tables" }
+           // ==================== SECTION 1: BASICS OF IT (Q1-10) ====================
+    {
+        text: "Which of the following is the smallest unit of data storage?",
+        options: ["Byte", "Word", "Bit", "Kilobyte"],
+        correct: 2,
+        explanation: "Bit is the smallest unit of data storage, representing either 0 or 1."
+    },
+    {
+        text: "How many bytes are there in 1 Megabyte (MB)?",
+        options: ["2¹⁰", "2²⁰", "2³⁰", "10⁶"],
+        correct: 1,
+        explanation: "1 MB = 2²⁰ bytes = 1,048,576 bytes"
+    },
+    {
+        text: "Which of the following is an example of system software?",
+        options: ["MS Word", "MS PowerPoint", "Windows Operating System", "Photoshop"],
+        correct: 2,
+        explanation: "Windows Operating System is system software; others are application software."
+    },
+    {
+        text: "A program that is designed and developed for a particular customer is called:",
+        options: ["Packaged software", "Custom-built software", "System software", "Utility software"],
+        correct: 1,
+        explanation: "Custom-built software is developed specifically for a particular customer's needs."
+    },
+    {
+        text: "Which type of printer uses a print head with small pins that strike an inked ribbon?",
+        options: ["Laser printer", "Ink-jet printer", "Dot-matrix printer", "Thermal printer"],
+        correct: 2,
+        explanation: "Dot-matrix printers use pins to strike an inked ribbon against paper."
+    },
+    {
+        text: "The QWERTY arrangement is associated with which input device?",
+        options: ["Mouse", "Scanner", "Keyboard", "Microphone"],
+        correct: 2,
+        explanation: "QWERTY is the standard keyboard layout."
+    },
+    {
+        text: "Which of the following is a non-impact printer?",
+        options: ["Daisy-wheel printer", "Dot-matrix printer", "Line printer", "Laser printer"],
+        correct: 3,
+        explanation: "Laser printers are non-impact printers; they don't strike the paper."
+    },
+    {
+        text: "The screen clarity of a monitor is determined by:",
+        options: ["Size", "Color", "Resolution", "Refresh rate"],
+        correct: 2,
+        explanation: "Resolution determines the sharpness and clarity of the image."
+    },
+    {
+        text: "A group of 8 bits is called:",
+        options: ["Word", "Byte", "Character", "Nibble"],
+        correct: 1,
+        explanation: "A byte consists of 8 bits and can store one character."
+    },
+    {
+        text: "Which device is used to read pencil marks on answer sheets?",
+        options: ["OCR", "MICR", "OMR", "Bar-code reader"],
+        correct: 2,
+        explanation: "OMR (Optical Mark Recognition) reads pencil marks on answer sheets."
+    },
+    
+    // ==================== SECTION 2: NETWORKS (Q11-20) ====================
+    {
+        text: "LAN stands for:",
+        options: ["Large Area Network", "Local Area Network", "Long Area Network", "Logical Area Network"],
+        correct: 1,
+        explanation: "LAN = Local Area Network, covers a small geographical area."
+    },
+    {
+        text: "Which network covers a geographical area the size of a city?",
+        options: ["LAN", "WAN", "MAN", "PAN"],
+        correct: 2,
+        explanation: "MAN (Metropolitan Area Network) covers a city-sized area."
+    },
+    {
+        text: "The Internet was originally developed as:",
+        options: ["NSFNET", "ARPANET", "WWW", "Ethernet"],
+        correct: 1,
+        explanation: "ARPANET was the precursor to the Internet, developed in 1969."
+    },
+    {
+        text: "Which protocol is used by every computer on the Internet?",
+        options: ["Ethernet", "Token Ring", "TCP/IP", "ARCnet"],
+        correct: 2,
+        explanation: "TCP/IP is the fundamental protocol suite of the Internet."
+    },
+    {
+        text: "In which network topology does a single cable function as a shared communication medium?",
+        options: ["Star", "Ring", "Bus", "Mesh"],
+        correct: 2,
+        explanation: "Bus topology uses a single backbone cable shared by all devices."
+    },
+    {
+        text: "Which layer of the OSI model is responsible for data compression and encryption?",
+        options: ["Application", "Presentation", "Session", "Transport"],
+        correct: 1,
+        explanation: "Presentation layer handles data compression, encryption, and translation."
+    },
+    {
+        text: "In which mode of data communication can data flow in both directions simultaneously?",
+        options: ["Simplex", "Half-duplex", "Full-duplex", "Asynchronous"],
+        correct: 2,
+        explanation: "Full-duplex allows simultaneous two-way communication."
+    },
+    {
+        text: "Which coding scheme is a 16-bit code capable of representing 65,536 symbols?",
+        options: ["ASCII", "EBCDIC", "BCD", "Unicode"],
+        correct: 3,
+        explanation: "Unicode uses 16 bits and can represent 65,536 different symbols."
+    },
+    {
+        text: "Which communication medium uses pulses of light to transmit data?",
+        options: ["Twisted pair", "Coaxial cable", "Fiber-optic cable", "Microwave"],
+        correct: 2,
+        explanation: "Fiber-optic cables transmit data as light pulses through glass fibers."
+    },
+    {
+        text: "A television broadcast is an example of which transmission mode?",
+        options: ["Simplex", "Half-duplex", "Full-duplex", "Multiplex"],
+        correct: 0,
+        explanation: "TV broadcast is simplex - one-way communication only."
+    },
+    
+    // ==================== SECTION 3: COMPUTER ARCHITECTURE (Q21-30) ====================
+    {
+        text: "Which component of the CPU reads and decodes instructions?",
+        options: ["ALU", "Control Unit", "Memory Unit", "Register"],
+        correct: 1,
+        explanation: "Control Unit fetches, decodes, and executes instructions."
+    },
+    {
+        text: "Which type of memory is volatile?",
+        options: ["ROM", "RAM", "Hard disk", "Flash drive"],
+        correct: 1,
+        explanation: "RAM loses data when power is turned off (volatile)."
+    },
+    {
+        text: "The register that holds the address of the next instruction to be fetched is called:",
+        options: ["Instruction Register (IR)", "Program Counter (PC)", "Memory Address Register (MAR)", "Memory Buffer Register (MBR)"],
+        correct: 1,
+        explanation: "Program Counter (PC) stores the address of the next instruction."
+    },
+    {
+        text: "Which bus carries the actual data between components?",
+        options: ["Address bus", "Control bus", "Data bus", "System bus"],
+        correct: 2,
+        explanation: "Data bus transfers actual data between components."
+    },
+    {
+        text: "EPROM can be erased using:",
+        options: ["Electrical current", "Ultraviolet rays", "Magnetic fields", "Heat"],
+        correct: 1,
+        explanation: "EPROM is erased using ultraviolet light."
+    },
+    {
+        text: "DMA stands for:",
+        options: ["Direct Memory Access", "Direct Memory Allocation", "Direct Module Access", "Data Memory Access"],
+        correct: 0,
+        explanation: "DMA allows direct data transfer between memory and I/O devices without CPU involvement."
+    },
+    {
+        text: "A virus that is set to go off at a certain date and time is called:",
+        options: ["Trojan horse", "Worm", "Logic bomb", "Boot sector virus"],
+        correct: 2,
+        explanation: "Logic bomb is triggered at a specific date/time."
+    },
+    {
+        text: "Which of the following is NOT a way to safeguard against viruses?",
+        options: ["Using antivirus software", "Opening unknown email attachments", "Keeping backup of data", "Scanning email messages"],
+        correct: 1,
+        explanation: "Opening unknown email attachments is risky and can spread viruses."
+    },
+    {
+        text: "Software piracy is governed by:",
+        options: ["Data Protection Act", "Computer Misuse Act", "Copyright Act", "Privacy Protection Act"],
+        correct: 2,
+        explanation: "Copyright Act protects intellectual property including software."
+    },
+    {
+        text: "Which of the following is a biometric means of identification?",
+        options: ["Password", "Smart card", "Fingerprint", "User ID"],
+        correct: 2,
+        explanation: "Fingerprint is a biometric identifier based on physical characteristics."
+    },
+    
+    // ==================== SECTION 4: DATABASE CONCEPTS (Q31-45) ====================
+    {
+        text: "A collection of logically related data sets is called:",
+        options: ["File", "Record", "Database", "Field"],
+        correct: 2,
+        explanation: "A database is a collection of logically related data sets."
+    },
+    {
+        text: "DBMS stands for:",
+        options: ["Database Management System", "Data Backup Management System", "Database Maintenance System", "Data Binary Management System"],
+        correct: 0,
+        explanation: "DBMS = Database Management System."
+    },
+    {
+        text: "Which database model is based on tables?",
+        options: ["Hierarchical", "Network", "Relational", "All of the above"],
+        correct: 2,
+        explanation: "Relational model organizes data into tables (relations)."
+    },
+    {
+        text: "Which key uniquely identifies a record in a table?",
+        options: ["Foreign key", "Primary key", "Secondary key", "Sort key"],
+        correct: 1,
+        explanation: "Primary key uniquely identifies each record in a table."
+    },
+    {
+        text: "A foreign key in a table must match which key in another table?",
+        options: ["Foreign key", "Secondary key", "Primary key", "Sort key"],
+        correct: 2,
+        explanation: "Foreign key references the primary key in another table."
+    },
+    {
+        text: "The relationship between a department and its employees is:",
+        options: ["One-to-one", "One-to-many", "Many-to-many", "Recursive"],
+        correct: 1,
+        explanation: "One department has many employees (one-to-many relationship)."
+    },
+    {
+        text: "Which normal form removes repeating groups?",
+        options: ["1NF", "2NF", "3NF", "BCNF"],
+        correct: 0,
+        explanation: "First Normal Form (1NF) removes repeating groups."
+    },
+    {
+        text: "Which normal form removes transitive dependencies?",
+        options: ["1NF", "2NF", "3NF", "BCNF"],
+        correct: 2,
+        explanation: "Third Normal Form (3NF) removes transitive dependencies."
+    },
+    {
+        text: "SQL stands for:",
+        options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"],
+        correct: 0,
+        explanation: "SQL = Structured Query Language used for database management."
+    },
+    {
+        text: "MS Access saves a database with the extension:",
+        options: [".doc", ".xls", ".mdb", ".txt"],
+        correct: 2,
+        explanation: "MS Access databases use .mdb or .accdb extension."
+    },
+    {
+        text: "Which data type automatically assigns a unique integer to each record in Access?",
+        options: ["Text", "Number", "AutoNumber", "Counter"],
+        correct: 2,
+        explanation: "AutoNumber automatically assigns a unique number to each record."
+    },
+    {
+        text: "Which object in Access is used to extract specific information from database?",
+        options: ["Table", "Query", "Form", "Report"],
+        correct: 1,
+        explanation: "Queries extract specific information based on criteria."
+    },
+    {
+        text: "Which object is used to present data in a formatted printable form?",
+        options: ["Table", "Query", "Form", "Report"],
+        correct: 3,
+        explanation: "Reports present data in a formatted, printable layout."
+    },
+    {
+        text: "The number of fields in a relation is called:",
+        options: ["Cardinality", "Degree", "Domain", "Range"],
+        correct: 1,
+        explanation: "Degree refers to the number of columns/fields in a relation."
+    },
+    {
+        text: "The number of records in a relation is called:",
+        options: ["Cardinality", "Degree", "Domain", "Range"],
+        correct: 0,
+        explanation: "Cardinality refers to the number of rows/records in a relation."
+    },
+    
+    // ==================== SECTION 5: C PROGRAMMING - BASICS (Q46-60) ====================
+    {
+        text: "Who developed the C programming language?",
+        options: ["Ken Thompson", "Dennis Ritchie", "Bjarne Stroustrup", "James Gosling"],
+        correct: 1,
+        explanation: "Dennis Ritchie developed C at Bell Labs in 1972."
+    },
+    {
+        text: "How many bytes does an int data type occupy in Turbo C?",
+        options: ["1 byte", "2 bytes", "4 bytes", "8 bytes"],
+        correct: 1,
+        explanation: "In Turbo C, int occupies 2 bytes (16 bits)."
+    },
+    {
+        text: "What is the range of int data type (signed) in Turbo C?",
+        options: ["0 to 255", "-128 to 127", "-32768 to 32767", "-2147483648 to 2147483647"],
+        correct: 2,
+        explanation: "2-byte signed int ranges from -32768 to 32767."
+    },
+    {
+        text: "Which data type is used to store a single character?",
+        options: ["int", "float", "char", "double"],
+        correct: 2,
+        explanation: "char data type stores a single character."
+    },
+    {
+        text: "Which format specifier is used for int data type?",
+        options: ["%f", "%c", "%d", "%lf"],
+        correct: 2,
+        explanation: "%d is the format specifier for integers."
+    },
+    {
+        text: "Which format specifier is used for float data type?",
+        options: ["%f", "%c", "%d", "%lf"],
+        correct: 0,
+        explanation: "%f is the format specifier for float."
+    },
+    {
+        text: "What is the ASCII value of character 'A'?",
+        options: ["97", "65", "90", "122"],
+        correct: 1,
+        explanation: "ASCII value of 'A' is 65."
+    },
+    {
+        text: "Which of the following is a valid variable name in C?",
+        options: ["2nd_value", "total marks", "_count", "int"],
+        correct: 2,
+        explanation: "_count is valid; cannot start with digit, have spaces, or use keywords."
+    },
+    {
+        text: "Which operator is used to find the remainder of division?",
+        options: ["/", "%", "//", "&"],
+        correct: 1,
+        explanation: "% is the modulus operator that returns remainder."
+    },
+    {
+        text: "What is the value of 7 / 2 in C?",
+        options: ["3.5", "3", "4", "3.0"],
+        correct: 1,
+        explanation: "Integer division truncates fractional part, so 7/2 = 3."
+    },
+    {
+        text: "What is the value of 7 % 2 in C?",
+        options: ["3.5", "3", "1", "0"],
+        correct: 2,
+        explanation: "7 % 2 = 1 (remainder when 7 divided by 2)."
+    },
+    {
+        text: "Which operator is used to compare two values for equality?",
+        options: ["=", "==", "!=", "&"],
+        correct: 1,
+        explanation: "== is the equality comparison operator."
+    },
+    {
+        text: "Which logical operator represents AND?",
+        options: ["||", "&&", "!", "&"],
+        correct: 1,
+        explanation: "&& is the logical AND operator."
+    },
+    {
+        text: "What is the output of (5 > 3) && (4 < 2)?",
+        options: ["0", "1", "true", "false"],
+        correct: 0,
+        explanation: "5>3 is true (1), 4<2 is false (0), 1 && 0 = 0."
+    },
+    {
+        text: "What does the increment operator ++i do?",
+        options: ["Increases i by 1 after using its value", "Increases i by 1 before using its value", "Decreases i by 1", "Doubles the value of i"],
+        correct: 1,
+        explanation: "Prefix increment (++i) increments first, then uses the value."
+    },
+    
+    // ==================== SECTION 6: C PROGRAMMING - CONTROL STRUCTURES (Q61-75) ====================
+    {
+        text: "Which statement is used for decision making in C?",
+        options: ["for", "while", "if", "do-while"],
+        correct: 2,
+        explanation: "if statement is used for decision making."
+    },
+    {
+        text: "What is the output of: int a = 5; if (a > 3) printf('Yes'); else printf('No');",
+        options: ["Yes", "No", "YesNo", "No output"],
+        correct: 0,
+        explanation: "5 > 3 is true, so 'Yes' is printed."
+    },
+    {
+        text: "Which statement is used for multiple selection based on a single expression?",
+        options: ["if-else", "switch", "for", "while"],
+        correct: 1,
+        explanation: "switch statement allows multiple selection based on a single expression."
+    },
+    {
+        text: "The expression in a switch statement must be of which type?",
+        options: ["float", "double", "int or char", "string"],
+        correct: 2,
+        explanation: "Switch expression must be integer or character type."
+    },
+    {
+        text: "What is the purpose of break in a switch statement?",
+        options: ["To exit the program", "To exit the switch block", "To continue execution", "To repeat the switch"],
+        correct: 1,
+        explanation: "break exits the switch block, preventing fall-through."
+    },
+    {
+        text: "What is the output of: int x = 5; if (x > 10) printf('A'); else if (x > 5) printf('B'); else if (x > 0) printf('C'); else printf('D');",
+        options: ["A", "B", "C", "D"],
+        correct: 2,
+        explanation: "5 > 10 false, 5 > 5 false, 5 > 0 true → prints 'C'."
+    },
+    {
+        text: "What does the conditional operator ? : do?",
+        options: ["It is a unary operator", "It is a binary operator", "It is a ternary operator", "It is not an operator"],
+        correct: 2,
+        explanation: "? : is the ternary operator requiring three operands."
+    },
+    {
+        text: "Which loop checks the condition at the beginning?",
+        options: ["do-while", "while", "for", "Both B and C"],
+        correct: 3,
+        explanation: "Both while and for loops check condition before execution."
+    },
+    {
+        text: "Which loop guarantees at least one execution?",
+        options: ["for", "while", "do-while", "None"],
+        correct: 2,
+        explanation: "do-while executes body at least once before checking condition."
+    },
+    {
+        text: "What is the output of: int i = 1; while (i <= 3) { printf('%d', i); i++; }",
+        options: ["123", "12", "1234", "1"],
+        correct: 0,
+        explanation: "Loop prints 1, 2, 3."
+    },
+    {
+        text: "What is the output of: int i; for (i = 1; i <= 3; i++) printf('%d', i);",
+        options: ["123", "12", "1234", "1"],
+        correct: 0,
+        explanation: "For loop prints 1, 2, 3."
+    },
+    {
+        text: "What does break do in a loop?",
+        options: ["Skips the current iteration", "Exits the loop immediately", "Restarts the loop", "Does nothing"],
+        correct: 1,
+        explanation: "break immediately terminates the loop."
+    },
+    {
+        text: "What does continue do in a loop?",
+        options: ["Exits the loop", "Skips the rest of current iteration", "Restarts the loop", "Terminates the program"],
+        correct: 1,
+        explanation: "continue skips remaining code and moves to next iteration."
+    },
+    {
+        text: "What is the output of: for (i = 1; i <= 5; i++) { if (i == 3) break; printf('%d', i); }",
+        options: ["12", "123", "12345", "1245"],
+        correct: 0,
+        explanation: "break at i=3, so prints only 1 and 2."
+    },
+    {
+        text: "What is the output of: for (i = 1; i <= 5; i++) { if (i == 3) continue; printf('%d', i); }",
+        options: ["1245", "12345", "12", "123"],
+        correct: 0,
+        explanation: "continue skips i=3, prints 1,2,4,5."
+    },
+    
+    // ==================== SECTION 7: C PROGRAMMING - FUNCTIONS & FILE (Q76-85) ====================
+    {
+        text: "Which header file is required for printf() and scanf() functions?",
+        options: ["conio.h", "math.h", "stdio.h", "string.h"],
+        correct: 2,
+        explanation: "stdio.h contains standard input/output functions."
+    },
+    {
+        text: "Which header file is required for getch() and getche() functions?",
+        options: ["conio.h", "math.h", "stdio.h", "string.h"],
+        correct: 0,
+        explanation: "conio.h contains console input/output functions."
+    },
+    {
+        text: "What is the escape sequence for new line?",
+        options: ["\\t", "\\n", "\\r", "\\b"],
+        correct: 1,
+        explanation: "\\n is the newline escape sequence."
+    },
+    {
+        text: "Which function does NOT echo the character typed on screen?",
+        options: ["printf()", "scanf()", "getch()", "getche()"],
+        correct: 2,
+        explanation: "getch() reads character without echoing to screen."
+    },
+    {
+        text: "The main function in C is:",
+        options: ["Optional", "The entry point of program execution", "Called only once", "Both B and C"],
+        correct: 3,
+        explanation: "main is the entry point and executes only once."
+    },
+    {
+        text: "A function prototype in C:",
+        options: ["Defines the function", "Declares the function", "Calls the function", "Ends the function"],
+        correct: 1,
+        explanation: "Function prototype declares the function before definition."
+    },
+    {
+        text: "Which of the following is true about call by value?",
+        options: ["The original variable is modified", "A copy of the value is passed", "The address of the variable is passed", "It is faster than call by reference"],
+        correct: 1,
+        explanation: "Call by value passes a copy, original remains unchanged."
+    },
+    {
+        text: "Which function is used to open a file in C?",
+        options: ["open()", "fopen()", "fileopen()", "fclose()"],
+        correct: 1,
+        explanation: "fopen() is used to open files in C."
+    },
+    {
+        text: "Which mode opens a file for reading only?",
+        options: ["\"w\"", "\"a\"", "\"r\"", "\"r+\""],
+        correct: 2,
+        explanation: "\"r\" mode opens file for reading only."
+    },
+    {
+        text: "Which function is used to close a file in C?",
+        options: ["fclose()", "close()", "fileclose()", "fstop()"],
+        correct: 0,
+        explanation: "fclose() closes an opened file."
+    },
+    
+    // ==================== SECTION 8: APPLICATIONS & INTERNET (Q86-95) ====================
+    {
+        text: "CBT stands for:",
+        options: ["Computer Based Trade", "Computer Based Training", "Computer Based Technology", "Computer Based Testing"],
+        correct: 1,
+        explanation: "CBT = Computer Based Training."
+    },
+    {
+        text: "Which device is used to read cheques in banks?",
+        options: ["OMR", "OCR", "MICR", "Bar-code reader"],
+        correct: 2,
+        explanation: "MICR reads magnetic ink characters on cheques."
+    },
+    {
+        text: "CAD stands for:",
+        options: ["Computer Aided Design", "Computer Aided Drawing", "Computer Aided Drafting", "Computer Aided Development"],
+        correct: 0,
+        explanation: "CAD = Computer Aided Design."
+    },
+    {
+        text: "A flight simulator is an example of:",
+        options: ["Virtual reality", "Computer simulation", "Computer graphics", "Animation"],
+        correct: 1,
+        explanation: "Flight simulator is a computer simulation."
+    },
+    {
+        text: "The unique 32-bit address of a computer on the Internet is called:",
+        options: ["DNS address", "IP address", "URL", "MAC address"],
+        correct: 1,
+        explanation: "IP address uniquely identifies devices on the Internet."
+    },
+    {
+        text: "The protocol used for sending email attachments is:",
+        options: ["HTTP", "FTP", "MIME", "SMTP"],
+        correct: 2,
+        explanation: "MIME (Multipurpose Internet Mail Extension) handles attachments."
+    },
+    {
+        text: "URL stands for:",
+        options: ["Uniform Resource Locator", "Universal Resource Locator", "Uniform Resource Link", "Universal Resource Link"],
+        correct: 0,
+        explanation: "URL = Uniform Resource Locator."
+    },
+    {
+        text: "Which of the following is a search engine?",
+        options: ["Internet Explorer", "Google", "Windows", "MS Access"],
+        correct: 1,
+        explanation: "Google is a search engine; others are browsers or applications."
+    },
+    {
+        text: "WYSIWYG stands for:",
+        options: ["What You See Is What You Get", "What You See Is What You Give", "What You Select Is What You Get", "When You See It, You Get It"],
+        correct: 0,
+        explanation: "WYSIWYG = What You See Is What You Get."
+    },
+    {
+        text: "In a spreadsheet, a cell reference that changes when copied is called:",
+        options: ["Absolute reference", "Mixed reference", "Relative reference", "Named reference"],
+        correct: 2,
+        explanation: "Relative reference changes when copied to another cell."
+    },
+    
+    // ==================== SECTION 9: WINDOWS & WORD PROCESSING (Q96-100) ====================
+    {
+        text: "Which of the following is a command line operating system?",
+        options: ["Windows 10", "Linux", "DOS", "macOS"],
+        correct: 2,
+        explanation: "DOS (Disk Operating System) is a command line OS."
+    },
+    {
+        text: "The capability of an operating system to load multiple programs into memory at one time is called:",
+        options: ["Multiprocessing", "Multitasking", "Multi-user", "Plug and Play"],
+        correct: 1,
+        explanation: "Multitasking allows multiple programs to run concurrently."
+    },
+    {
+        text: "In Windows, deleted items are temporarily stored in:",
+        options: ["My Documents", "Control Panel", "Recycle Bin", "Windows Explorer"],
+        correct: 2,
+        explanation: "Recycle Bin temporarily stores deleted files."
+    },
+    {
+        text: "Which type of fonts have curls or extra decorative lines at the ends of strokes?",
+        options: ["Sans-serif", "Serif", "Monospace", "Script"],
+        correct: 1,
+        explanation: "Serif fonts have decorative lines at stroke ends."
+    },
+    {
+        text: "The feature that allows you to reverse changes made to a document is called:",
+        options: ["Redo", "Undo", "Cut", "Paste"],
+        correct: 1,
+        explanation: "Undo reverses previous changes."
+    }
         ];
 
         let currentIndex = 0;
