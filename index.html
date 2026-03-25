@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECAT Computer Science Practice Test - Hard Level</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4a90e2, #2c3e50);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            width: 100%;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #4a90e2, #764ba2);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .question-container {
+            padding: 40px;
+        }
+        
+        .question-number {
+            color: #4a90e2;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .question-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #4a90e2;
+            transform: translateX(5px);
+        }
+        
+        .option.selected {
+            background: #4a90e2;
+            border-color: #4a90e2;
+            color: white;
+        }
+        
+        .option.selected .option-letter {
+            background: white;
+            color: #4a90e2;
+        }
+        
+        .option-letter {
+            width: 40px;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .option-text {
+            font-size: 16px;
+            flex: 1;
+        }
+        
+        .feedback {
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 1px solid #dc3545;
+            color: #721c24;
+            display: block;
+        }
+        
+        .feedback.correct::before {
+            content: "✓ Correct! ";
+            font-weight: bold;
+        }
+        
+        .feedback.incorrect::before {
+            content: "✗ Incorrect! ";
+            font-weight: bold;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #4a90e2, #2c3e50);
+            color: white;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(74,144,226,0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            background: #5a6268;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .score-number {
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .score-total {
+            font-size: 24px;
+        }
+        
+        .result-details {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .review-btn {
+            background: #4a90e2;
+            color: white;
+            padding: 12px 30px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        
+        .review-list {
+            margin-top: 20px;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .review-item {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            background: white;
+            border-left: 4px solid;
+        }
+        
+        .review-item.correct {
+            border-left-color: #28a745;
+        }
+        
+        .review-item.incorrect {
+            border-left-color: #dc3545;
+        }
+        
+        .review-question {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .review-answer {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .question-container {
+                padding: 20px;
+            }
+            .question-text {
+                font-size: 18px;
+            }
+            .option {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 ECAT Computer Science</h1>
+            <p>Hard Level Practice Test | 50 Questions | Computer Architecture | C Language | Database | Data Storage</p>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div id="questionArea" class="question-container">
+            <!-- Question will be inserted here -->
+        </div>
+        
+        <div id="resultArea" class="question-container hide">
+            <!-- Results will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Complete set of 50 MCQs
+        const questions = [
+            // Section 1: Data Storage Conversions (Q1-10)
+            { text: "A computer has 4 GB of RAM. How many bits does this represent?", options: ["4 × 2³⁰ bits", "4 × 2³³ bits", "4 × 2²⁰ bits", "4 × 2¹⁰ bits"], correct: 1, explanation: "4 GB = 4 × 2³⁰ bytes = 4 × 2³⁰ × 8 bits = 4 × 2³³ bits" },
+            { text: "If a memory unit has 2³⁵ bytes, what is its capacity in GB?", options: ["32 GB", "64 GB", "128 GB", "256 GB"], correct: 0, explanation: "2³⁵ bytes = 2³⁵ / 2³⁰ GB = 2⁵ GB = 32 GB" },
+            { text: "A hard disk has a capacity of 2 TB. How many 4 MB files can it store?", options: ["2 × 2¹⁰ files", "2 × 2²⁰ files", "2 × 2³⁰ files", "2 × 2⁴⁰ files"], correct: 1, explanation: "2 TB = 2 × 2⁴⁰ bytes, 4 MB = 4 × 2²⁰ bytes = 2² × 2²⁰ = 2²² bytes. Number = (2 × 2⁴⁰)/2²² = 2 × 2¹⁸ = 2 × 2²⁰ files" },
+            { text: "A processor has a 48-bit address bus. What is the maximum addressable memory in bytes?", options: ["2⁴⁸ bytes", "48² bytes", "2⁴⁰ bytes", "48 × 2¹⁰ bytes"], correct: 0, explanation: "48-bit address bus can address 2⁴⁸ different memory locations, each holding 1 byte" },
+            { text: "A computer system has 64 MB of RAM. If each instruction is 4 bytes, how many instructions can be stored in RAM at once?", options: ["16 × 2²⁰ instructions", "16 × 2¹⁰ instructions", "64 × 2²⁰ instructions", "64 × 2¹⁰ instructions"], correct: 0, explanation: "64 MB = 64 × 2²⁰ bytes = 2⁶ × 2²⁰ = 2²⁶ bytes. Instructions = 2²⁶ / 4 = 2²⁶ / 2² = 2²⁴ = 16 × 2²⁰" },
+            { text: "A 32-bit microprocessor has a 32-bit address bus. What is the maximum memory capacity in GB?", options: ["2 GB", "4 GB", "8 GB", "16 GB"], correct: 1, explanation: "32-bit address bus = 2³² bytes = 4 GB" },
+            { text: "How many bits are required to address 16 GB of memory if each address points to one byte?", options: ["32 bits", "34 bits", "36 bits", "40 bits"], correct: 1, explanation: "16 GB = 16 × 2³⁰ bytes = 2⁴ × 2³⁰ = 2³⁴ bytes, so 34 bits required" },
+            { text: "A cache memory has 512 KB. How many 64-byte blocks can it hold?", options: ["4096 blocks", "8192 blocks", "16384 blocks", "32768 blocks"], correct: 1, explanation: "512 KB = 512 × 1024 = 524,288 bytes. Blocks = 524,288 / 64 = 8192 blocks" },
+            { text: "A DVD has a capacity of 4.7 GB. Approximately how many 750 KB images can it store?", options: ["6,400 images", "6,800 images", "7,200 images", "7,600 images"], correct: 0, explanation: "4.7 GB = 4.7 × 10⁹ bytes ≈ 4.7 × 1024 × 1024 × 1024 ≈ 5,046,000,000 bytes. 750 KB = 750 × 1024 = 768,000 bytes. Number ≈ 5,046,000,000 / 768,000 ≈ 6,570 ≈ 6,400" },
+            { text: "A digital camera takes photos of 5 MB each. How many photos can be stored on a 64 GB memory card?", options: ["12,800 photos", "13,107 photos", "13,800 photos", "14,000 photos"], correct: 1, explanation: "64 GB = 64 × 1024 MB = 65,536 MB. Photos = 65,536 / 5 = 13,107.2 ≈ 13,107 photos" },
+            
+            // Section 2: Computer Architecture (Q11-25)
+            { text: "A CPU has a clock speed of 3.2 GHz. How many clock cycles occur in one millisecond?", options: ["3.2 × 10⁶ cycles", "3.2 × 10⁹ cycles", "3.2 × 10³ cycles", "3.2 × 10¹² cycles"], correct: 0, explanation: "3.2 GHz = 3.2 × 10⁹ cycles/sec. 1 ms = 10⁻³ sec. Cycles = 3.2 × 10⁹ × 10⁻³ = 3.2 × 10⁶ cycles" },
+            { text: "A processor uses 12 bits for the opcode and 20 bits for the operand address. What is the maximum number of instructions possible?", options: ["1024 instructions", "2048 instructions", "4096 instructions", "8192 instructions"], correct: 2, explanation: "12 bits for opcode = 2¹² = 4096 possible instructions" },
+            { text: "In a computer with 32-bit word size, what is the maximum signed integer that can be stored in one word?", options: ["2³¹ - 1", "2³² - 1", "2³¹", "2³²"], correct: 0, explanation: "32-bit signed integer range: -2³¹ to 2³¹ - 1" },
+            { text: "A system has 4 GB of RAM and uses virtual memory with 4 KB pages. How many page table entries are required?", options: ["2²⁰ entries", "2³⁰ entries", "2⁴⁰ entries", "2⁵⁰ entries"], correct: 0, explanation: "4 GB = 2³² bytes. Page size = 4 KB = 2¹² bytes. Page table entries = 2³² / 2¹² = 2²⁰ entries" },
+            { text: "A CPU uses pipelining with 5 stages. Each stage takes 0.5 ns. What is the theoretical maximum instructions per second?", options: ["2 × 10⁹ instructions/sec", "4 × 10⁹ instructions/sec", "5 × 10⁹ instructions/sec", "1 × 10⁹ instructions/sec"], correct: 0, explanation: "Pipeline throughput = 1 / stage time = 1 / (0.5 × 10⁻⁹) = 2 × 10⁹ instructions/sec" },
+            { text: "Which of the following is true about SRAM and DRAM?", options: ["SRAM is slower than DRAM", "DRAM requires periodic refreshing, SRAM does not", "DRAM is used for cache memory", "SRAM has lower density than DRAM but is slower"], correct: 1, explanation: "DRAM requires refreshing; SRAM is faster and used for cache" },
+            { text: "A microprocessor has a 64-bit data bus and a 36-bit address bus. What is the maximum directly addressable memory?", options: ["32 GB", "64 GB", "128 GB", "256 GB"], correct: 1, explanation: "36-bit address bus = 2³⁶ bytes = 64 GB" },
+            { text: "In DMA (Direct Memory Access), which component controls the data transfer between I/O devices and memory?", options: ["CPU", "DMA Controller", "Cache Controller", "Memory Management Unit"], correct: 1, explanation: "DMA Controller handles data transfer without CPU involvement" },
+            { text: "Which register holds the address of the next instruction to be executed?", options: ["MAR", "MBR", "PC", "IR"], correct: 2, explanation: "Program Counter (PC) holds the address of the next instruction" },
+            { text: "A RISC processor typically has which characteristic?", options: ["Complex instructions", "Variable instruction length", "Large number of registers", "Microprogrammed control unit"], correct: 2, explanation: "RISC processors have a large number of registers for fast operations" },
+            { text: "The control unit that uses hardwired control is characterized by:", options: ["Slower execution speed", "Easier to modify", "Faster execution speed", "Requires more ROM space"], correct: 2, explanation: "Hardwired control units are faster but harder to modify" },
+            { text: "In a system with 16 GB of RAM and 4 KB page size, how many bits are required for the offset within a page?", options: ["8 bits", "10 bits", "12 bits", "14 bits"], correct: 2, explanation: "4 KB page = 2¹² bytes, so 12 bits for offset" },
+            { text: "What is the purpose of the stack pointer register?", options: ["Points to the next instruction", "Points to the top of the stack", "Points to the base of the stack", "Points to the return address"], correct: 1, explanation: "Stack pointer points to the top of the stack" },
+            { text: "A computer has 8 GB of RAM and uses 8-way set associative cache with 64-byte blocks. If the cache size is 512 KB, how many sets are there?", options: ["512 sets", "1024 sets", "2048 sets", "4096 sets"], correct: 1, explanation: "Cache blocks = 512 KB / 64 B = 8192 blocks. Sets = 8192 / 8 = 1024 sets" },
+            { text: "Which of the following is true about cache memory?", options: ["It is slower than RAM", "It is volatile", "It is larger than RAM", "It stores frequently used data"], correct: 3, explanation: "Cache stores frequently accessed data for faster retrieval" },
+            
+            // Section 3: C Language - Data Types and Operators (Q26-35)
+            { text: "What is the output of: int a = 5, b = 2; float c = a / b; printf('%f', c);", options: ["2.500000", "2.000000", "2.5", "2"], correct: 1, explanation: "Integer division: 5/2 = 2, stored as float: 2.000000" },
+            { text: "What is the output of: int a = 10, b = 20; int c = a++ + ++b; printf('%d %d %d', a, b, c);", options: ["11 21 31", "10 20 30", "11 20 31", "10 21 30"], correct: 0, explanation: "a++ = 10 (then a=11), ++b = 21, c = 10+21=31" },
+            { text: "Which expression evaluates to true (non-zero) in C?", options: ["5 > 3 && 4 < 2", "5 > 3 || 4 < 2", "!(5 > 3)", "(5 == 3) && (4 == 4)"], correct: 1, explanation: "5 > 3 is true, OR with false gives true" },
+            { text: "What is the output of: int x = 5; printf('%d %d %d', x++, ++x, x);", options: ["5 7 7", "5 6 6", "6 7 7", "Undefined behavior"], correct: 3, explanation: "Modifying x multiple times between sequence points is undefined" },
+            { text: "What is the value of sizeof(char) in C?", options: ["1 byte", "2 bytes", "4 bytes", "Depends on compiler"], correct: 0, explanation: "sizeof(char) is always 1 byte in C" },
+            { text: "What is the output of: int a = 5, b = 10, c = 15; int d = a < b ? b < c ? c : b : a; printf('%d', d);", options: ["5", "10", "15", "Compiler error"], correct: 2, explanation: "a < b is true, then b < c is true, so returns c = 15" },
+            { text: "Which statement about continue in C is true?", options: ["It terminates the loop", "It skips current iteration and continues", "It is used only in switch", "It can be used outside loops"], correct: 1, explanation: "continue skips remaining code and moves to next iteration" },
+            { text: "What is the output of: int i = 0; while (i++ < 5) printf('%d ', i);", options: ["0 1 2 3 4", "1 2 3 4 5", "0 1 2 3 4 5", "1 2 3 4"], correct: 1, explanation: "i++ uses current value then increments. Loop runs when i=0-4, prints 1-5" },
+            { text: "What is the output of: for (i = 0; i < 5; i++) { if (i == 3) continue; printf('%d ', i); }", options: ["0 1 2 3 4", "0 1 2 4", "0 1 2 4 5", "0 1 2 3"], correct: 1, explanation: "continue skips i=3, so prints 0,1,2,4" },
+            { text: "What is the output of: int a = 5, b = 0; b = (a++, a++, ++a); printf('%d %d', a, b);", options: ["8 8", "7 7", "8 7", "7 8"], correct: 0, explanation: "Comma operator evaluates all, returns last. a becomes 8, b = 8" },
+            
+            // Section 4: C Language - Loops and Conditionals (Q36-45)
+            { text: "What is the output of: int i = 0; for (; i < 5; i++); printf('%d', i);", options: ["4", "5", "0", "Compiler error"], correct: 1, explanation: "Loop increments i to 5, then condition fails, prints 5" },
+            { text: "What is the output of: for (i = 1; i <= 5; i++) { if (i == 3) break; printf('%d ', i); }", options: ["1 2 3 4 5", "1 2 3", "1 2", "1 2 4 5"], correct: 2, explanation: "break exits loop when i=3, prints only 1 and 2" },
+            { text: "What is the output of nested loop: for(i=1;i<=3;i++){ for(j=1;j<=i;j++){ printf('%d',j); } printf('\\n'); }", options: ["1\\n12\\n123", "1\\n22\\n333", "1\\n23\\n456", "1\\n12\\n123"], correct: 0, explanation: "Prints triangle pattern: 1, then 12, then 123" },
+            { text: "What is the output of: int x = 5; switch(x) { case 5: printf('A'); case 4: printf('B'); case 3: printf('C'); default: printf('D'); }", options: ["A", "ABCD", "AB", "A B C D"], correct: 1, explanation: "No break statements, so falls through all cases" },
+            { text: "What is the output of infinite loop syntax?", options: ["while(1) { }", "for(;;) { }", "do { } while(1);", "All of the above"], correct: 3, explanation: "All three create infinite loops" },
+            { text: "What is the output of: int i = 0, sum = 0; do { sum += i; i++; } while (i <= 5); printf('%d', sum);", options: ["10", "15", "0", "5"], correct: 1, explanation: "sum = 0+1+2+3+4+5 = 15" },
+            { text: "What is the output of: int i = 5; while (--i > 0) { printf('%d ', i); }", options: ["4 3 2 1", "5 4 3 2 1", "4 3 2 1 0", "5 4 3 2"], correct: 0, explanation: "--i decrements first, so prints 4,3,2,1" },
+            { text: "What is the output of: int a=0,b=1,c=2; if(a++ && b++ || c++) printf('%d %d %d',a,b,c); else printf('%d %d %d',a,b,c);", options: ["1 1 2", "1 1 3", "1 2 2", "1 2 3"], correct: 1, explanation: "a++ is 0 (false), b++ skipped, then c++ executes (c=3)" },
+            { text: "What is the output of: for(i=1;i<=10;i++){ if(i%2==0) continue; if(i>7) break; printf('%d ',i); }", options: ["1 3 5 7", "1 3 5 7 9", "2 4 6 8 10", "1 3 5 7 9 11"], correct: 0, explanation: "Prints odd numbers up to 7, then breaks" },
+            { text: "Which of the following correctly declares an array of 10 integers?", options: ["int arr[10];", "int arr(10);", "int arr = 10;", "arr int[10];"], correct: 0, explanation: "int arr[10]; is the correct array declaration syntax" },
+            
+            // Section 5: Database (Q46-50)
+            { text: "In a relational database, a table is in 2NF if:", options: ["It has no repeating groups", "It has no partial dependencies", "It has no transitive dependencies", "It has no composite keys"], correct: 1, explanation: "2NF requires 1NF and no partial dependencies on composite keys" },
+            { text: "Consider R(A,B,C,D) with AB→C, C→D. What is the candidate key?", options: ["A", "B", "AB", "ABC"], correct: 2, explanation: "AB determines C, and C determines D, so AB determines all attributes" },
+            { text: "In the above relation, what normal form is it in?", options: ["1NF only", "2NF", "3NF", "BCNF"], correct: 1, explanation: "C→D is transitive dependency, so it's in 2NF only" },
+            { text: "Which is correct about foreign keys?", options: ["A foreign key can be null", "A foreign key must be unique", "A foreign key must reference a primary key in same table", "A foreign key cannot be part of composite key"], correct: 0, explanation: "Foreign keys can be null (optional relationship)" },
+            { text: "In ER diagram, a many-to-many relationship is resolved by:", options: ["Creating a new entity with foreign keys", "Adding a foreign key to one table", "Merging the two tables", "Removing the relationship"], correct: 0, explanation: "Create associative entity with foreign keys from both tables" }
+        ];
+
+        let currentIndex = 0;
+        let answers = new Array(questions.length).fill(null);
+        let submitted = new Array(questions.length).fill(false);
+        
+        function renderQuestion() {
+            const q = questions[currentIndex];
+            const area = document.getElementById('questionArea');
+            
+            let optionsHtml = '';
+            q.options.forEach((opt, idx) => {
+                const letter = String.fromCharCode(65 + idx);
+                const isSelected = answers[currentIndex] === idx;
+                optionsHtml += `
+                    <div class="option ${isSelected ? 'selected' : ''}" onclick="selectOption(${idx})">
+                        <div class="option-letter">${letter}</div>
+                        <div class="option-text">${opt}</div>
+                    </div>
+                `;
+            });
+            
+            const feedbackHtml = submitted[currentIndex] ? 
+                `<div class="feedback ${answers[currentIndex] === q.correct ? 'correct' : 'incorrect'}">
+                    ${answers[currentIndex] === q.correct ? q.explanation : 'Correct answer: ' + String.fromCharCode(65 + q.correct) + '. ' + q.explanation}
+                </div>` : '';
+            
+            area.innerHTML = `
+                <div class="question-number">Question ${currentIndex + 1} of ${questions.length}</div>
+                <div class="question-text">${q.text}</div>
+                <div class="options">
+                    ${optionsHtml}
+                </div>
+                ${feedbackHtml}
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="previousQuestion()" ${currentIndex === 0 ? 'disabled' : ''}>← Previous</button>
+                    <button class="btn-primary" onclick="nextQuestion()" ${currentIndex === questions.length - 1 ? 'disabled' : ''}>Next →</button>
+                    ${currentIndex === questions.length - 1 ? '<button class="btn-success" onclick="submitTest()">Submit Test</button>' : ''}
+                </div>
+            `;
+            
+            // Update progress bar
+            const progress = ((currentIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+        
+        function selectOption(optionIndex) {
+            answers[currentIndex] = optionIndex;
+            submitted[currentIndex] = true;
+            renderQuestion();
+        }
+        
+        function previousQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+        
+        function nextQuestion() {
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            }
+        }
+        
+        function submitTest() {
+            let score = 0;
+            const results = [];
+            for (let i = 0; i < questions.length; i++) {
+                const isCorrect = answers[i] === questions[i].correct;
+                if (isCorrect) score++;
+                results.push({
+                    number: i + 1,
+                    text: questions[i].text,
+                    userAnswer: answers[i] !== null ? String.fromCharCode(65 + answers[i]) : 'Not answered',
+                    correctAnswer: String.fromCharCode(65 + questions[i].correct),
+                    isCorrect: isCorrect,
+                    explanation: questions[i].explanation
+                });
+            }
+            
+            document.getElementById('questionArea').classList.add('hide');
+            const resultArea = document.getElementById('resultArea');
+            resultArea.classList.remove('hide');
+            
+            const percentage = (score / questions.length) * 100;
+            let grade = '';
+            if (percentage >= 90) grade = 'A+ (Excellent!)';
+            else if (percentage >= 80) grade = 'A (Very Good!)';
+            else if (percentage >= 70) grade = 'B (Good!)';
+            else if (percentage >= 60) grade = 'C (Satisfactory)';
+            else if (percentage >= 50) grade = 'D (Need Improvement)';
+            else grade = 'F (Needs Hard Work)';
+            
+            let reviewHtml = '';
+            results.forEach(r => {
+                reviewHtml += `
+                    <div class="review-item ${r.isCorrect ? 'correct' : 'incorrect'}">
+                        <div class="review-question">Q${r.number}: ${r.text}</div>
+                        <div class="review-answer">
+                            Your answer: ${r.userAnswer} | Correct answer: ${r.correctAnswer}<br>
+                            ${!r.isCorrect ? `<span style="color:#dc3545">Explanation: ${r.explanation}</span>` : `<span style="color:#28a745">✓ Correct</span>`}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultArea.innerHTML = `
+                <div class="result-container">
+                    <h2>🎯 Test Completed!</h2>
+                    <div class="score-circle">
+                        <div class="score-number">${score}</div>
+                        <div class="score-total">/${questions.length}</div>
+                        <div style="font-size:14px; margin-top:8px">${percentage.toFixed(1)}%</div>
+                    </div>
+                    <div class="result-details">
+                        <h3>Grade: ${grade}</h3>
+                        <p>Correct Answers: ${score}</p>
+                        <p>Incorrect Answers: ${questions.length - score}</p>
+                        <p>Unanswered: ${answers.filter(a => a === null).length}</p>
+                        <button class="btn-primary" onclick="restartTest()" style="margin-top:15px">🔄 Take Test Again</button>
+                        <button class="btn-secondary" onclick="toggleReview()" style="margin-top:15px; margin-left:10px">📋 Show/Hide Review</button>
+                    </div>
+                    <div id="reviewSection" style="display:none; margin-top:20px;">
+                        <h3>Detailed Review:</h3>
+                        <div class="review-list">
+                            ${reviewHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function toggleReview() {
+            const reviewSection = document.getElementById('reviewSection');
+            if (reviewSection) {
+                reviewSection.style.display = reviewSection.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+        
+        function restartTest() {
+            currentIndex = 0;
+            answers = new Array(questions.length).fill(null);
+            submitted = new Array(questions.length).fill(false);
+            document.getElementById('resultArea').classList.add('hide');
+            document.getElementById('questionArea').classList.remove('hide');
+            renderQuestion();
+        }
+        
+        // Initialize the test
+        renderQuestion();
+    </script>
+</body>
+</html>
