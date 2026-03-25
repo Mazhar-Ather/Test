@@ -96,7 +96,7 @@
             transition: all 0.3s ease;
         }
         
-        .option:hover {
+        .option:hover:not(.locked) {
             background: #e3f2fd;
             border-color: #4a90e2;
             transform: translateX(5px);
@@ -111,6 +111,21 @@
         .option.selected .option-letter {
             background: white;
             color: #4a90e2;
+        }
+        
+        .option.locked {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        
+        .option.locked.selected {
+            background: #4a90e2;
+            border-color: #4a90e2;
+        }
+        
+        .option.locked:not(.selected) {
+            background: #f0f0f0;
+            border-color: #ccc;
         }
         
         .option-letter {
@@ -291,6 +306,17 @@
             display: none;
         }
         
+        .locked-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+        
         @media (max-width: 600px) {
             .question-container {
                 padding: 20px;
@@ -308,7 +334,8 @@
     <div class="container">
         <div class="header">
             <h1>📚 ECAT Computer Science</h1>
-            <p>Hard Level Practice Test | 50 Questions | Computer Architecture | C Language | Database | Data Storage</p>
+            <p>Hard Level Practice Test | 100 Questions | Computer Architecture | C Language | Database | Data Storage</p>
+            <p style="font-size: 12px; margin-top: 8px;">⚠️ Once you select an answer, it will be locked and cannot be changed</p>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
@@ -326,7 +353,7 @@
     <script>
         // Complete set of 50 MCQs
         const questions = [
-           // ==================== SECTION 1: BASICS OF IT (Q1-10) ====================
+                   // ==================== SECTION 1: BASICS OF IT (Q1-10) ====================
     {
         text: "Which of the following is the smallest unit of data storage?",
         options: ["Byte", "Word", "Bit", "Kilobyte"],
@@ -943,7 +970,7 @@
         correct: 1,
         explanation: "Undo reverses previous changes."
     }
-        ];
+           ];
 
         let currentIndex = 0;
         let answers = new Array(questions.length).fill(null);
@@ -952,13 +979,17 @@
         function renderQuestion() {
             const q = questions[currentIndex];
             const area = document.getElementById('questionArea');
+            const isLocked = submitted[currentIndex];
             
             let optionsHtml = '';
             q.options.forEach((opt, idx) => {
                 const letter = String.fromCharCode(65 + idx);
                 const isSelected = answers[currentIndex] === idx;
+                const lockedClass = isLocked ? 'locked' : '';
+                const selectedClass = isSelected ? 'selected' : '';
+                
                 optionsHtml += `
-                    <div class="option ${isSelected ? 'selected' : ''}" onclick="selectOption(${idx})">
+                    <div class="option ${selectedClass} ${lockedClass}" onclick="${!isLocked ? `selectOption(${idx})` : ''}">
                         <div class="option-letter">${letter}</div>
                         <div class="option-text">${opt}</div>
                     </div>
@@ -970,8 +1001,10 @@
                     ${answers[currentIndex] === q.correct ? q.explanation : 'Correct answer: ' + String.fromCharCode(65 + q.correct) + '. ' + q.explanation}
                 </div>` : '';
             
+            const lockedIndicator = isLocked ? '<span class="locked-badge">🔒 Locked</span>' : '';
+            
             area.innerHTML = `
-                <div class="question-number">Question ${currentIndex + 1} of ${questions.length}</div>
+                <div class="question-number">Question ${currentIndex + 1} of ${questions.length} ${lockedIndicator}</div>
                 <div class="question-text">${q.text}</div>
                 <div class="options">
                     ${optionsHtml}
@@ -985,14 +1018,26 @@
             `;
             
             // Update progress bar
+            const answeredCount = submitted.filter(s => s === true).length;
             const progress = ((currentIndex + 1) / questions.length) * 100;
             document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            // Update header to show answered count
+            const header = document.querySelector('.header p:first-of-type');
+            if (header && !header.innerHTML.includes('Answered')) {
+                header.innerHTML = `Hard Level Practice Test | 50 Questions | Computer Architecture | C Language | Database | Data Storage<br><span style="font-size:12px">📊 Answered: ${answeredCount}/${questions.length}</span>`;
+            } else if (header) {
+                header.innerHTML = `Hard Level Practice Test | 50 Questions | Computer Architecture | C Language | Database | Data Storage<br><span style="font-size:12px">📊 Answered: ${answeredCount}/${questions.length}</span>`;
+            }
         }
         
         function selectOption(optionIndex) {
-            answers[currentIndex] = optionIndex;
-            submitted[currentIndex] = true;
-            renderQuestion();
+            // Only allow selection if not already locked
+            if (!submitted[currentIndex]) {
+                answers[currentIndex] = optionIndex;
+                submitted[currentIndex] = true;
+                renderQuestion();
+            }
         }
         
         function previousQuestion() {
