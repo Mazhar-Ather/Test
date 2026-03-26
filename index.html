@@ -333,8 +333,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚 ECAT Computer Science</h1>
-            <p>Hard Level Practice Test | 100 Questions | Computer Architecture | C Language | Database | Data Storage</p>
+            <h1>📚 ECAT Chemistry</h1>
+            <p>Hard Level Practice Test | 100 Questions | Part 1</p>
             <p style="font-size: 12px; margin-top: 8px;">⚠️ Once you select an answer, it will be locked and cannot be changed</p>
         </div>
         <div class="progress-bar">
@@ -353,622 +353,845 @@
     <script>
         // Complete set of 50 MCQs
         const questions = [
-                   // ==================== SECTION 1: BASICS OF IT (Q1-10) ====================
-    {
-        text: "Which of the following is the smallest unit of data storage?",
-        options: ["Byte", "Word", "Bit", "Kilobyte"],
-        correct: 2,
-        explanation: "Bit is the smallest unit of data storage, representing either 0 or 1."
+   {
+        text: "Isotopes differ in:",
+        options: [
+            "properties which depend upon mass",
+            "arrangement of electrons in orbitals",
+            "chemical properties",
+            "the extent to which they may be affected in electromagnetic field"
+        ],
+        correct: 0,
+        explanation: "Isotopes have same atomic number but different mass numbers, so properties that depend on mass (like physical properties) differ, while chemical properties remain same."
     },
     {
-        text: "How many bytes are there in 1 Megabyte (MB)?",
-        options: ["2¹⁰", "2²⁰", "2³⁰", "10⁶"],
+        text: "Many elements have fractional atomic masses. This is because:",
+        options: [
+            "the mass of the atom is itself fractional",
+            "atomic masses are average masses of isobars",
+            "atomic masses are average masses of isotopes",
+            "atomic masses are average masses of isotopes weighted by abundance"
+        ],
+        correct: 2,
+        explanation: "Fractional atomic masses occur because elements exist as mixtures of isotopes, and the atomic mass is the weighted average of isotopic masses."
+    },
+    {
+        text: "The mass of one mole of electrons is:",
+        options: ["1.008 mg", "0.55 mg", "0.184 mg", "1.673 mg"],
         correct: 1,
-        explanation: "1 MB = 2²⁰ bytes = 1,048,576 bytes"
+        explanation: "Mass of 1 electron = 9.11 × 10⁻²⁸ g. For 1 mole (6.02 × 10²³ electrons): mass = 9.11 × 10⁻²⁸ × 6.02 × 10²³ = 0.548 × 10⁻³ g = 0.55 mg."
     },
     {
-        text: "Which of the following is an example of system software?",
-        options: ["MS Word", "MS PowerPoint", "Windows Operating System", "Photoshop"],
-        correct: 2,
-        explanation: "Windows Operating System is system software; others are application software."
-    },
-    {
-        text: "A program that is designed and developed for a particular customer is called:",
-        options: ["Packaged software", "Custom-built software", "System software", "Utility software"],
-        correct: 1,
-        explanation: "Custom-built software is developed specifically for a particular customer's needs."
-    },
-    {
-        text: "Which type of printer uses a print head with small pins that strike an inked ribbon?",
-        options: ["Laser printer", "Ink-jet printer", "Dot-matrix printer", "Thermal printer"],
-        correct: 2,
-        explanation: "Dot-matrix printers use pins to strike an inked ribbon against paper."
-    },
-    {
-        text: "The QWERTY arrangement is associated with which input device?",
-        options: ["Mouse", "Scanner", "Keyboard", "Microphone"],
-        correct: 2,
-        explanation: "QWERTY is the standard keyboard layout."
-    },
-    {
-        text: "Which of the following is a non-impact printer?",
-        options: ["Daisy-wheel printer", "Dot-matrix printer", "Line printer", "Laser printer"],
+        text: "27 g of Al will react completely with how much mass of O₂ to produce Al₂O₃?",
+        options: ["8 g of oxygen", "16 g of oxygen", "32 g of oxygen", "24 g of oxygen"],
         correct: 3,
-        explanation: "Laser printers are non-impact printers; they don't strike the paper."
+        explanation: "4Al + 3O₂ → 2Al₂O₃. 4 × 27 = 108 g Al reacts with 3 × 32 = 96 g O₂. So 27 g Al reacts with (96/108) × 27 = 24 g O₂."
     },
     {
-        text: "The screen clarity of a monitor is determined by:",
-        options: ["Size", "Color", "Resolution", "Refresh rate"],
+        text: "The number of moles of CO₂ which contain 8.0 g of oxygen:",
+        options: ["0.25", "0.50", "1.0", "1.50"],
+        correct: 0,
+        explanation: "1 mole CO₂ contains 32 g O₂. For 8 g O₂: moles = 8/32 = 0.25 moles CO₂."
+    },
+    {
+        text: "The largest number of molecules are present in:",
+        options: ["3.6 g of H₂O", "4.8 g of C₂H₅OH", "2.8 g of CO", "5.4 g of N₂O₅"],
+        correct: 0,
+        explanation: "Number of molecules ∝ moles. Moles: H₂O = 3.6/18 = 0.2; C₂H₅OH = 4.8/46 = 0.104; CO = 2.8/28 = 0.1; N₂O₅ = 5.4/108 = 0.05. Highest is H₂O."
+    },
+    {
+        text: "One mole of SO₂ contains:",
+        options: [
+            "6.02 × 10²³ atoms of oxygen",
+            "18.1 × 10²³ molecules of SO₂",
+            "6.02 × 10²³ atoms of sulphur",
+            "4 gram atoms of SO₂"
+        ],
         correct: 2,
-        explanation: "Resolution determines the sharpness and clarity of the image."
+        explanation: "1 mole SO₂ contains 1 mole S atoms = 6.02 × 10²³ atoms of sulphur, and 2 moles O atoms."
     },
     {
-        text: "A group of 8 bits is called:",
-        options: ["Word", "Byte", "Character", "Nibble"],
-        correct: 1,
-        explanation: "A byte consists of 8 bits and can store one character."
-    },
-    {
-        text: "Which device is used to read pencil marks on answer sheets?",
-        options: ["OCR", "MICR", "OMR", "Bar-code reader"],
+        text: "The volume occupied by 1.4 g of N₂ at STP is:",
+        options: ["2.24 dm³", "22.4 dm³", "1.12 dm³", "112 cm³"],
         correct: 2,
-        explanation: "OMR (Optical Mark Recognition) reads pencil marks on answer sheets."
-    },
-    
-    // ==================== SECTION 2: NETWORKS (Q11-20) ====================
-    {
-        text: "LAN stands for:",
-        options: ["Large Area Network", "Local Area Network", "Long Area Network", "Logical Area Network"],
-        correct: 1,
-        explanation: "LAN = Local Area Network, covers a small geographical area."
+        explanation: "Moles N₂ = 1.4/28 = 0.05. Volume = 0.05 × 22.4 = 1.12 dm³."
     },
     {
-        text: "Which network covers a geographical area the size of a city?",
-        options: ["LAN", "WAN", "MAN", "PAN"],
-        correct: 2,
-        explanation: "MAN (Metropolitan Area Network) covers a city-sized area."
-    },
-    {
-        text: "The Internet was originally developed as:",
-        options: ["NSFNET", "ARPANET", "WWW", "Ethernet"],
-        correct: 1,
-        explanation: "ARPANET was the precursor to the Internet, developed in 1969."
-    },
-    {
-        text: "Which protocol is used by every computer on the Internet?",
-        options: ["Ethernet", "Token Ring", "TCP/IP", "ARCnet"],
-        correct: 2,
-        explanation: "TCP/IP is the fundamental protocol suite of the Internet."
-    },
-    {
-        text: "In which network topology does a single cable function as a shared communication medium?",
-        options: ["Star", "Ring", "Bus", "Mesh"],
-        correct: 2,
-        explanation: "Bus topology uses a single backbone cable shared by all devices."
-    },
-    {
-        text: "Which layer of the OSI model is responsible for data compression and encryption?",
-        options: ["Application", "Presentation", "Session", "Transport"],
-        correct: 1,
-        explanation: "Presentation layer handles data compression, encryption, and translation."
-    },
-    {
-        text: "In which mode of data communication can data flow in both directions simultaneously?",
-        options: ["Simplex", "Half-duplex", "Full-duplex", "Asynchronous"],
-        correct: 2,
-        explanation: "Full-duplex allows simultaneous two-way communication."
-    },
-    {
-        text: "Which coding scheme is a 16-bit code capable of representing 65,536 symbols?",
-        options: ["ASCII", "EBCDIC", "BCD", "Unicode"],
+        text: "A limiting reactant is the one which:",
+        options: [
+            "is taken in lesser quantity in grams as compared to other reactants",
+            "is taken in lesser quantity in volume as compared to the other reactants",
+            "gives the maximum amount of the product which is required",
+            "gives the minimum amount of the product under consideration"
+        ],
         correct: 3,
-        explanation: "Unicode uses 16 bits and can represent 65,536 different symbols."
+        explanation: "Limiting reactant is completely consumed and determines the amount of product formed—it produces the minimum product."
     },
     {
-        text: "Which communication medium uses pulses of light to transmit data?",
-        options: ["Twisted pair", "Coaxial cable", "Fiber-optic cable", "Microwave"],
+        text: "The unit of relative atomic mass is:",
+        options: ["gram", "atomic mass unit (amu)", "kilogram", "mole"],
+        correct: 1,
+        explanation: "Relative atomic mass is expressed in atomic mass units (amu), where 1 amu = 1/12th mass of C-12 atom."
+    },
+    {
+        text: "The phenomenon of isotopy was first discovered by:",
+        options: ["Dalton", "Moseley", "Soddy", "Rutherford"],
         correct: 2,
-        explanation: "Fiber-optic cables transmit data as light pulses through glass fibers."
+        explanation: "Frederick Soddy discovered isotopes in 1912 and was awarded Nobel Prize in 1921 for his work."
     },
     {
-        text: "A television broadcast is an example of which transmission mode?",
-        options: ["Simplex", "Half-duplex", "Full-duplex", "Multiplex"],
+        text: "Empirical formula can be determined by combustion analysis for those compounds which have:",
+        options: ["carbon and hydrogen only", "carbon, hydrogen and oxygen", "carbon only", "any elements"],
+        correct: 1,
+        explanation: "Combustion analysis is used for compounds containing carbon, hydrogen, and oxygen to determine CO₂ and H₂O produced."
+    },
+    {
+        text: "A limiting reagent is that which controls the quantities of:",
+        options: ["reactants", "products", "catalyst", "solvent"],
+        correct: 1,
+        explanation: "Limiting reagent determines how much product can be formed in a chemical reaction."
+    },
+    {
+        text: "1 mole of glucose has atoms of carbon, oxygen, and hydrogen respectively:",
+        options: [
+            "6, 6, 12",
+            "6, 12, 6",
+            "12, 6, 6",
+            "6, 6, 6"
+        ],
         correct: 0,
-        explanation: "TV broadcast is simplex - one-way communication only."
+        explanation: "Glucose is C₆H₁₂O₆, so 1 mole contains 6 moles C atoms, 12 moles H atoms, 6 moles O atoms."
     },
-    
-    // ==================== SECTION 3: COMPUTER ARCHITECTURE (Q21-30) ====================
     {
-        text: "Which component of the CPU reads and decodes instructions?",
-        options: ["ALU", "Control Unit", "Memory Unit", "Register"],
+        text: "4 g of CH₄ at 0°C and 1 atm pressure has molecules of CH₄:",
+        options: [
+            "6.02 × 10²³",
+            "1.5 × 10²³",
+            "3.01 × 10²³",
+            "4 × 6.02 × 10²³"
+        ],
         correct: 1,
-        explanation: "Control Unit fetches, decodes, and executes instructions."
+        explanation: "Moles CH₄ = 4/16 = 0.25. Molecules = 0.25 × 6.02 × 10²³ = 1.505 × 10²³ ≈ 1.5 × 10²³."
     },
+
+    // ==================== CHAPTER 2: EXPERIMENTAL TECHNIQUES (Q16-25) ====================
     {
-        text: "Which type of memory is volatile?",
-        options: ["ROM", "RAM", "Hard disk", "Flash drive"],
-        correct: 1,
-        explanation: "RAM loses data when power is turned off (volatile)."
-    },
-    {
-        text: "The register that holds the address of the next instruction to be fetched is called:",
-        options: ["Instruction Register (IR)", "Program Counter (PC)", "Memory Address Register (MAR)", "Memory Buffer Register (MBR)"],
-        correct: 1,
-        explanation: "Program Counter (PC) stores the address of the next instruction."
-    },
-    {
-        text: "Which bus carries the actual data between components?",
-        options: ["Address bus", "Control bus", "Data bus", "System bus"],
-        correct: 2,
-        explanation: "Data bus transfers actual data between components."
-    },
-    {
-        text: "EPROM can be erased using:",
-        options: ["Electrical current", "Ultraviolet rays", "Magnetic fields", "Heat"],
-        correct: 1,
-        explanation: "EPROM is erased using ultraviolet light."
-    },
-    {
-        text: "DMA stands for:",
-        options: ["Direct Memory Access", "Direct Memory Allocation", "Direct Module Access", "Data Memory Access"],
-        correct: 0,
-        explanation: "DMA allows direct data transfer between memory and I/O devices without CPU involvement."
-    },
-    {
-        text: "A virus that is set to go off at a certain date and time is called:",
-        options: ["Trojan horse", "Worm", "Logic bomb", "Boot sector virus"],
-        correct: 2,
-        explanation: "Logic bomb is triggered at a specific date/time."
-    },
-    {
-        text: "Which of the following is NOT a way to safeguard against viruses?",
-        options: ["Using antivirus software", "Opening unknown email attachments", "Keeping backup of data", "Scanning email messages"],
-        correct: 1,
-        explanation: "Opening unknown email attachments is risky and can spread viruses."
-    },
-    {
-        text: "Software piracy is governed by:",
-        options: ["Data Protection Act", "Computer Misuse Act", "Copyright Act", "Privacy Protection Act"],
-        correct: 2,
-        explanation: "Copyright Act protects intellectual property including software."
-    },
-    {
-        text: "Which of the following is a biometric means of identification?",
-        options: ["Password", "Smart card", "Fingerprint", "User ID"],
-        correct: 2,
-        explanation: "Fingerprint is a biometric identifier based on physical characteristics."
-    },
-    
-    // ==================== SECTION 4: DATABASE CONCEPTS (Q31-45) ====================
-    {
-        text: "A collection of logically related data sets is called:",
-        options: ["File", "Record", "Database", "Field"],
-        correct: 2,
-        explanation: "A database is a collection of logically related data sets."
-    },
-    {
-        text: "DBMS stands for:",
-        options: ["Database Management System", "Data Backup Management System", "Database Maintenance System", "Data Binary Management System"],
-        correct: 0,
-        explanation: "DBMS = Database Management System."
-    },
-    {
-        text: "Which database model is based on tables?",
-        options: ["Hierarchical", "Network", "Relational", "All of the above"],
-        correct: 2,
-        explanation: "Relational model organizes data into tables (relations)."
-    },
-    {
-        text: "Which key uniquely identifies a record in a table?",
-        options: ["Foreign key", "Primary key", "Secondary key", "Sort key"],
-        correct: 1,
-        explanation: "Primary key uniquely identifies each record in a table."
-    },
-    {
-        text: "A foreign key in a table must match which key in another table?",
-        options: ["Foreign key", "Secondary key", "Primary key", "Sort key"],
-        correct: 2,
-        explanation: "Foreign key references the primary key in another table."
-    },
-    {
-        text: "The relationship between a department and its employees is:",
-        options: ["One-to-one", "One-to-many", "Many-to-many", "Recursive"],
-        correct: 1,
-        explanation: "One department has many employees (one-to-many relationship)."
-    },
-    {
-        text: "Which normal form removes repeating groups?",
-        options: ["1NF", "2NF", "3NF", "BCNF"],
-        correct: 0,
-        explanation: "First Normal Form (1NF) removes repeating groups."
-    },
-    {
-        text: "Which normal form removes transitive dependencies?",
-        options: ["1NF", "2NF", "3NF", "BCNF"],
-        correct: 2,
-        explanation: "Third Normal Form (3NF) removes transitive dependencies."
-    },
-    {
-        text: "SQL stands for:",
-        options: ["Structured Query Language", "Simple Query Language", "Standard Query Language", "System Query Language"],
-        correct: 0,
-        explanation: "SQL = Structured Query Language used for database management."
-    },
-    {
-        text: "MS Access saves a database with the extension:",
-        options: [".doc", ".xls", ".mdb", ".txt"],
-        correct: 2,
-        explanation: "MS Access databases use .mdb or .accdb extension."
-    },
-    {
-        text: "Which data type automatically assigns a unique integer to each record in Access?",
-        options: ["Text", "Number", "AutoNumber", "Counter"],
-        correct: 2,
-        explanation: "AutoNumber automatically assigns a unique number to each record."
-    },
-    {
-        text: "Which object in Access is used to extract specific information from database?",
-        options: ["Table", "Query", "Form", "Report"],
-        correct: 1,
-        explanation: "Queries extract specific information based on criteria."
-    },
-    {
-        text: "Which object is used to present data in a formatted printable form?",
-        options: ["Table", "Query", "Form", "Report"],
+        text: "A filtration process could be very time consuming if it were not aided by a gentle suction which is developed:",
+        options: [
+            "if the paper covers the funnel upto its circumference",
+            "if the paper has got small sized pores in it",
+            "if the stem of the funnel is large so that it dips into the filtrate",
+            "if the paper fits tightly"
+        ],
         correct: 3,
-        explanation: "Reports present data in a formatted, printable layout."
+        explanation: "Suction develops only when the filter paper fits tightly all around the upper circumference of the funnel, allowing liquid to flow continuously through the stem."
     },
     {
-        text: "The number of fields in a relation is called:",
-        options: ["Cardinality", "Degree", "Domain", "Range"],
+        text: "During the process of crystallization, the hot saturated solution:",
+        options: [
+            "is cooled very slowly to get large sized crystals",
+            "is cooled at a moderate rate to get medium sized crystals",
+            "is evaporated to get the crystals of the product",
+            "is mixed with an immiscible liquid to get the pure crystals"
+        ],
         correct: 1,
-        explanation: "Degree refers to the number of columns/fields in a relation."
+        explanation: "Moderate cooling yields medium-sized crystals. Very slow cooling gives large crystals that may trap impurities."
     },
     {
-        text: "The number of records in a relation is called:",
-        options: ["Cardinality", "Degree", "Domain", "Range"],
-        correct: 0,
-        explanation: "Cardinality refers to the number of rows/records in a relation."
-    },
-    
-    // ==================== SECTION 5: C PROGRAMMING - BASICS (Q46-60) ====================
-    {
-        text: "Who developed the C programming language?",
-        options: ["Ken Thompson", "Dennis Ritchie", "Bjarne Stroustrup", "James Gosling"],
-        correct: 1,
-        explanation: "Dennis Ritchie developed C at Bell Labs in 1972."
-    },
-    {
-        text: "How many bytes does an int data type occupy in Turbo C?",
-        options: ["1 byte", "2 bytes", "4 bytes", "8 bytes"],
-        correct: 1,
-        explanation: "In Turbo C, int occupies 2 bytes (16 bits)."
-    },
-    {
-        text: "What is the range of int data type (signed) in Turbo C?",
-        options: ["0 to 255", "-128 to 127", "-32768 to 32767", "-2147483648 to 2147483647"],
+        text: "Solvent extraction is an equilibrium process and it is controlled by:",
+        options: [
+            "law of mass action",
+            "the amount of solvent used",
+            "distribution law",
+            "the amount of solute"
+        ],
         correct: 2,
-        explanation: "2-byte signed int ranges from -32768 to 32767."
+        explanation: "Solvent extraction follows the distribution law or partition law, where solute distributes between two immiscible solvents in a constant ratio."
     },
     {
-        text: "Which data type is used to store a single character?",
-        options: ["int", "float", "char", "double"],
-        correct: 2,
-        explanation: "char data type stores a single character."
-    },
-    {
-        text: "Which format specifier is used for int data type?",
-        options: ["%f", "%c", "%d", "%lf"],
-        correct: 2,
-        explanation: "%d is the format specifier for integers."
-    },
-    {
-        text: "Which format specifier is used for float data type?",
-        options: ["%f", "%c", "%d", "%lf"],
-        correct: 0,
-        explanation: "%f is the format specifier for float."
-    },
-    {
-        text: "What is the ASCII value of character 'A'?",
-        options: ["97", "65", "90", "122"],
-        correct: 1,
-        explanation: "ASCII value of 'A' is 65."
-    },
-    {
-        text: "Which of the following is a valid variable name in C?",
-        options: ["2nd_value", "total marks", "_count", "int"],
-        correct: 2,
-        explanation: "_count is valid; cannot start with digit, have spaces, or use keywords."
-    },
-    {
-        text: "Which operator is used to find the remainder of division?",
-        options: ["/", "%", "//", "&"],
-        correct: 1,
-        explanation: "% is the modulus operator that returns remainder."
-    },
-    {
-        text: "What is the value of 7 / 2 in C?",
-        options: ["3.5", "3", "4", "3.0"],
-        correct: 1,
-        explanation: "Integer division truncates fractional part, so 7/2 = 3."
-    },
-    {
-        text: "What is the value of 7 % 2 in C?",
-        options: ["3.5", "3", "1", "0"],
-        correct: 2,
-        explanation: "7 % 2 = 1 (remainder when 7 divided by 2)."
-    },
-    {
-        text: "Which operator is used to compare two values for equality?",
-        options: ["=", "==", "!=", "&"],
-        correct: 1,
-        explanation: "== is the equality comparison operator."
-    },
-    {
-        text: "Which logical operator represents AND?",
-        options: ["||", "&&", "!", "&"],
-        correct: 1,
-        explanation: "&& is the logical AND operator."
-    },
-    {
-        text: "What is the output of (5 > 3) && (4 < 2)?",
-        options: ["0", "1", "true", "false"],
-        correct: 0,
-        explanation: "5>3 is true (1), 4<2 is false (0), 1 && 0 = 0."
-    },
-    {
-        text: "What does the increment operator ++i do?",
-        options: ["Increases i by 1 after using its value", "Increases i by 1 before using its value", "Decreases i by 1", "Doubles the value of i"],
-        correct: 1,
-        explanation: "Prefix increment (++i) increments first, then uses the value."
-    },
-    
-    // ==================== SECTION 6: C PROGRAMMING - CONTROL STRUCTURES (Q61-75) ====================
-    {
-        text: "Which statement is used for decision making in C?",
-        options: ["for", "while", "if", "do-while"],
-        correct: 2,
-        explanation: "if statement is used for decision making."
-    },
-    {
-        text: "What is the output of: int a = 5; if (a > 3) printf('Yes'); else printf('No');",
-        options: ["Yes", "No", "YesNo", "No output"],
-        correct: 0,
-        explanation: "5 > 3 is true, so 'Yes' is printed."
-    },
-    {
-        text: "Which statement is used for multiple selection based on a single expression?",
-        options: ["if-else", "switch", "for", "while"],
-        correct: 1,
-        explanation: "switch statement allows multiple selection based on a single expression."
-    },
-    {
-        text: "The expression in a switch statement must be of which type?",
-        options: ["float", "double", "int or char", "string"],
-        correct: 2,
-        explanation: "Switch expression must be integer or character type."
-    },
-    {
-        text: "What is the purpose of break in a switch statement?",
-        options: ["To exit the program", "To exit the switch block", "To continue execution", "To repeat the switch"],
-        correct: 1,
-        explanation: "break exits the switch block, preventing fall-through."
-    },
-    {
-        text: "What is the output of: int x = 5; if (x > 10) printf('A'); else if (x > 5) printf('B'); else if (x > 0) printf('C'); else printf('D');",
-        options: ["A", "B", "C", "D"],
-        correct: 2,
-        explanation: "5 > 10 false, 5 > 5 false, 5 > 0 true → prints 'C'."
-    },
-    {
-        text: "What does the conditional operator ? : do?",
-        options: ["It is a unary operator", "It is a binary operator", "It is a ternary operator", "It is not an operator"],
-        correct: 2,
-        explanation: "? : is the ternary operator requiring three operands."
-    },
-    {
-        text: "Which loop checks the condition at the beginning?",
-        options: ["do-while", "while", "for", "Both B and C"],
+        text: "Solvent extraction method is a particularly useful technique for separation when the product to be separated is:",
+        options: [
+            "non-volatile or thermally unstable",
+            "volatile or thermally stable",
+            "non-volatile or thermally stable",
+            "volatile or thermally unstable"
+        ],
         correct: 3,
-        explanation: "Both while and for loops check condition before execution."
+        explanation: "Solvent extraction is ideal for volatile or thermally unstable compounds that might decompose during distillation."
     },
     {
-        text: "Which loop guarantees at least one execution?",
-        options: ["for", "while", "do-while", "None"],
-        correct: 2,
-        explanation: "do-while executes body at least once before checking condition."
-    },
-    {
-        text: "What is the output of: int i = 1; while (i <= 3) { printf('%d', i); i++; }",
-        options: ["123", "12", "1234", "1"],
-        correct: 0,
-        explanation: "Loop prints 1, 2, 3."
-    },
-    {
-        text: "What is the output of: int i; for (i = 1; i <= 3; i++) printf('%d', i);",
-        options: ["123", "12", "1234", "1"],
-        correct: 0,
-        explanation: "For loop prints 1, 2, 3."
-    },
-    {
-        text: "What does break do in a loop?",
-        options: ["Skips the current iteration", "Exits the loop immediately", "Restarts the loop", "Does nothing"],
+        text: "The comparative rates at which the solutes move in paper chromatography depend on:",
+        options: [
+            "the size of paper",
+            "R_f values of solutes",
+            "temperature of the experiment",
+            "size of the chromatographic tank used"
+        ],
         correct: 1,
-        explanation: "break immediately terminates the loop."
+        explanation: "The rate of movement is determined by the R_f value, which depends on the distribution coefficient of each solute."
     },
     {
-        text: "What does continue do in a loop?",
-        options: ["Exits the loop", "Skips the rest of current iteration", "Restarts the loop", "Terminates the program"],
+        text: "Gooch crucible is made of:",
+        options: ["glass", "porcelain", "platinum", "silver"],
         correct: 1,
-        explanation: "continue skips remaining code and moves to next iteration."
+        explanation: "Gooch crucible is made of porcelain with a perforated bottom covered with paper pulp or filter paper."
     },
     {
-        text: "What is the output of: for (i = 1; i <= 5; i++) { if (i == 3) break; printf('%d', i); }",
-        options: ["12", "123", "12345", "1245"],
-        correct: 0,
-        explanation: "break at i=3, so prints only 1 and 2."
-    },
-    {
-        text: "What is the output of: for (i = 1; i <= 5; i++) { if (i == 3) continue; printf('%d', i); }",
-        options: ["1245", "12345", "12", "123"],
-        correct: 0,
-        explanation: "continue skips i=3, prints 1,2,4,5."
-    },
-    
-    // ==================== SECTION 7: C PROGRAMMING - FUNCTIONS & FILE (Q76-85) ====================
-    {
-        text: "Which header file is required for printf() and scanf() functions?",
-        options: ["conio.h", "math.h", "stdio.h", "string.h"],
-        correct: 2,
-        explanation: "stdio.h contains standard input/output functions."
-    },
-    {
-        text: "Which header file is required for getch() and getche() functions?",
-        options: ["conio.h", "math.h", "stdio.h", "string.h"],
-        correct: 0,
-        explanation: "conio.h contains console input/output functions."
-    },
-    {
-        text: "What is the escape sequence for new line?",
-        options: ["\\t", "\\n", "\\r", "\\b"],
+        text: "In sublimation, the solid is heated and:",
+        options: [
+            "melts then vaporizes",
+            "directly converts to vapor",
+            "decomposes",
+            "forms a solution"
+        ],
         correct: 1,
-        explanation: "\\n is the newline escape sequence."
+        explanation: "Sublimation is the direct conversion of solid to vapor without passing through the liquid phase."
     },
     {
-        text: "Which function does NOT echo the character typed on screen?",
-        options: ["printf()", "scanf()", "getch()", "getche()"],
-        correct: 2,
-        explanation: "getch() reads character without echoing to screen."
-    },
-    {
-        text: "The main function in C is:",
-        options: ["Optional", "The entry point of program execution", "Called only once", "Both B and C"],
+        text: "Which of the following is NOT a drying agent used in desiccators?",
+        options: ["CaCl₂", "Silica gel", "P₂O₅", "NaCl"],
         correct: 3,
-        explanation: "main is the entry point and executes only once."
+        explanation: "NaCl is hygroscopic but not used as a drying agent in desiccators. Common drying agents are CaCl₂, silica gel, and P₂O₅."
     },
     {
-        text: "A function prototype in C:",
-        options: ["Defines the function", "Declares the function", "Calls the function", "Ends the function"],
+        text: "In paper chromatography, the stationary phase is:",
+        options: ["organic solvent", "water adsorbed on paper", "the paper itself", "air"],
         correct: 1,
-        explanation: "Function prototype declares the function before definition."
+        explanation: "The stationary phase in paper chromatography is water adsorbed on the cellulose fibers of the paper."
     },
     {
-        text: "Which of the following is true about call by value?",
-        options: ["The original variable is modified", "A copy of the value is passed", "The address of the variable is passed", "It is faster than call by reference"],
-        correct: 1,
-        explanation: "Call by value passes a copy, original remains unchanged."
-    },
-    {
-        text: "Which function is used to open a file in C?",
-        options: ["open()", "fopen()", "fileopen()", "fclose()"],
-        correct: 1,
-        explanation: "fopen() is used to open files in C."
-    },
-    {
-        text: "Which mode opens a file for reading only?",
-        options: ["\"w\"", "\"a\"", "\"r\"", "\"r+\""],
-        correct: 2,
-        explanation: "\"r\" mode opens file for reading only."
-    },
-    {
-        text: "Which function is used to close a file in C?",
-        options: ["fclose()", "close()", "fileclose()", "fstop()"],
+        text: "Fluted filter paper is used to:",
+        options: [
+            "increase filtration rate",
+            "decrease filtration rate",
+            "improve purity of filtrate",
+            "prevent crystallization"
+        ],
         correct: 0,
-        explanation: "fclose() closes an opened file."
+        explanation: "Fluted filter paper increases the surface area and allows faster filtration due to the fan-like arrangement with alternate elevations and depressions."
     },
-    
-    // ==================== SECTION 8: APPLICATIONS & INTERNET (Q86-95) ====================
+
+    // ==================== CHAPTER 3: GASES (Q26-45) ====================
     {
-        text: "CBT stands for:",
-        options: ["Computer Based Trade", "Computer Based Training", "Computer Based Technology", "Computer Based Testing"],
-        correct: 1,
-        explanation: "CBT = Computer Based Training."
-    },
-    {
-        text: "Which device is used to read cheques in banks?",
-        options: ["OMR", "OCR", "MICR", "Bar-code reader"],
+        text: "Pressure remaining constant, at which temperature the volume of a gas will become twice of what it is at 0°C?",
+        options: ["546°C", "200°C", "546 K", "273 K"],
         correct: 2,
-        explanation: "MICR reads magnetic ink characters on cheques."
+        explanation: "Using Charles's law: V₁/T₁ = V₂/T₂. If V₂ = 2V₁ and T₁ = 273 K, then T₂ = 546 K (not 546°C)."
     },
     {
-        text: "CAD stands for:",
-        options: ["Computer Aided Design", "Computer Aided Drawing", "Computer Aided Drafting", "Computer Aided Development"],
+        text: "Number of molecules in one dm³ of water is close to:",
+        options: [
+            "(6.02/22.4) × 10²³",
+            "(12.04/22.4) × 10²³",
+            "(18/22.4) × 10²³",
+            "55.6 × 6.02 × 10²³"
+        ],
+        correct: 3,
+        explanation: "1 dm³ water = 1000 g. Moles = 1000/18 = 55.56. Molecules = 55.56 × 6.02 × 10²³."
+    },
+    {
+        text: "If absolute temperature of a gas is doubled and the pressure is reduced to one half, the volume of the gas will:",
+        options: [
+            "remain unchanged",
+            "increase four times",
+            "reduce to 1/4",
+            "be doubled"
+        ],
+        correct: 1,
+        explanation: "Using PV = nRT: V ∝ T/P. T doubles → V doubles; P halves → V doubles. Net effect: V increases 4 times."
+    },
+    {
+        text: "The molar volume of CO₂ is maximum at:",
+        options: [
+            "STP",
+            "127°C and 1 atm",
+            "0°C and 2 atm",
+            "273°C and 2 atm"
+        ],
+        correct: 1,
+        explanation: "Molar volume is maximum at highest temperature and lowest pressure. 127°C (400 K) and 1 atm gives largest volume."
+    },
+    {
+        text: "Equal masses of methane and oxygen are mixed in an empty container at 25°C. The fraction of total pressure exerted by oxygen is:",
+        options: ["1/3", "8/9", "1/9", "16/17"],
         correct: 0,
-        explanation: "CAD = Computer Aided Design."
+        explanation: "Molar mass CH₄ = 16, O₂ = 32. For equal mass m: moles CH₄ = m/16, O₂ = m/32. Mole fraction O₂ = (m/32)/(m/16 + m/32) = (1/32)/(3/32) = 1/3."
     },
     {
-        text: "A flight simulator is an example of:",
-        options: ["Virtual reality", "Computer simulation", "Computer graphics", "Animation"],
-        correct: 1,
-        explanation: "Flight simulator is a computer simulation."
+        text: "Gases deviate from ideal behaviour at high pressure. Which of the following is correct for non-ideality?",
+        options: [
+            "At high pressure, the gas molecules move in one direction only",
+            "At high pressure, the collisions between gas molecules are increased manifold",
+            "At high pressure, the volume of the gas becomes insignificant",
+            "At high pressure, the intermolecular attractions become significant"
+        ],
+        correct: 3,
+        explanation: "At high pressure, molecules are close enough that intermolecular attractions become significant, causing deviation from ideal behavior."
     },
     {
-        text: "The unique 32-bit address of a computer on the Internet is called:",
-        options: ["DNS address", "IP address", "URL", "MAC address"],
-        correct: 1,
-        explanation: "IP address uniquely identifies devices on the Internet."
-    },
-    {
-        text: "The protocol used for sending email attachments is:",
-        options: ["HTTP", "FTP", "MIME", "SMTP"],
-        correct: 2,
-        explanation: "MIME (Multipurpose Internet Mail Extension) handles attachments."
-    },
-    {
-        text: "URL stands for:",
-        options: ["Uniform Resource Locator", "Universal Resource Locator", "Uniform Resource Link", "Universal Resource Link"],
+        text: "The deviation of a gas from ideal behaviour is maximum at:",
+        options: ["-10°C and 5.0 atm", "-10°C and 2.0 atm", "100°C and 2.0 atm", "0°C and 2.0 atm"],
         correct: 0,
-        explanation: "URL = Uniform Resource Locator."
+        explanation: "Deviation is maximum at low temperature and high pressure. -10°C (263 K) and 5.0 atm gives most non-ideal conditions."
     },
     {
-        text: "Which of the following is a search engine?",
-        options: ["Internet Explorer", "Google", "Windows", "MS Access"],
+        text: "A real gas obeying van der Waals equation will resemble ideal gas if:",
+        options: [
+            "both 'a' and 'b' are large",
+            "both 'a' and 'b' are small",
+            "'a' is small and 'b' is large",
+            "'a' is large and 'b' is small"
+        ],
         correct: 1,
-        explanation: "Google is a search engine; others are browsers or applications."
+        explanation: "For ideal behavior, corrections for intermolecular forces (a) and molecular volume (b) should be negligible, so both a and b must be small."
     },
     {
-        text: "WYSIWYG stands for:",
-        options: ["What You See Is What You Get", "What You See Is What You Give", "What You Select Is What You Get", "When You See It, You Get It"],
+        text: "The value of gas constant R in J K⁻¹ mol⁻¹ is:",
+        options: ["0.0821", "8.314", "62.4", "1.987"],
+        correct: 1,
+        explanation: "R = 8.314 J K⁻¹ mol⁻¹ in SI units. 0.0821 is in dm³·atm·K⁻¹·mol⁻¹, 62.4 is in dm³·torr·K⁻¹·mol⁻¹."
+    },
+    {
+        text: "Which of the following gases has the highest critical temperature?",
+        options: ["H₂", "N₂", "O₂", "CO₂"],
+        correct: 3,
+        explanation: "Critical temperatures: H₂ = 33.2 K, N₂ = 126 K, O₂ = 154 K, CO₂ = 304 K. CO₂ has highest due to strong intermolecular forces."
+    },
+    {
+        text: "The rate of diffusion of a gas is inversely proportional to:",
+        options: ["square root of density", "square of density", "density", "molar mass"],
         correct: 0,
-        explanation: "WYSIWYG = What You See Is What You Get."
+        explanation: "Graham's law: r ∝ 1/√d, so rate is inversely proportional to square root of density."
     },
     {
-        text: "In a spreadsheet, a cell reference that changes when copied is called:",
-        options: ["Absolute reference", "Mixed reference", "Relative reference", "Named reference"],
+        text: "At constant temperature, the product PV for an ideal gas:",
+        options: ["increases with pressure", "decreases with pressure", "remains constant", "varies randomly"],
         correct: 2,
-        explanation: "Relative reference changes when copied to another cell."
+        explanation: "Boyle's law states PV = constant at constant temperature for an ideal gas."
     },
-    
-    // ==================== SECTION 9: WINDOWS & WORD PROCESSING (Q96-100) ====================
     {
-        text: "Which of the following is a command line operating system?",
-        options: ["Windows 10", "Linux", "DOS", "macOS"],
+        text: "The root mean square velocity of gas molecules is given by:",
+        options: ["√(3RT/M)", "√(3RT/2M)", "√(2RT/M)", "√(RT/M)"],
+        correct: 0,
+        explanation: "C_rms = √(3RT/M) from kinetic molecular theory."
+    },
+    {
+        text: "Which of the following is NOT an assumption of kinetic molecular theory?",
+        options: [
+            "Gas molecules are in constant random motion",
+            "Collisions between molecules are perfectly elastic",
+            "There are strong attractive forces between gas molecules",
+            "Volume of gas molecules is negligible compared to container volume"
+        ],
         correct: 2,
-        explanation: "DOS (Disk Operating System) is a command line OS."
+        explanation: "Kinetic molecular theory assumes no intermolecular attractive forces between gas molecules."
     },
     {
-        text: "The capability of an operating system to load multiple programs into memory at one time is called:",
-        options: ["Multiprocessing", "Multitasking", "Multi-user", "Plug and Play"],
+        text: "The van der Waals constant 'a' is a measure of:",
+        options: [
+            "molecular volume",
+            "intermolecular attractive forces",
+            "molecular mass",
+            "gas pressure"
+        ],
         correct: 1,
-        explanation: "Multitasking allows multiple programs to run concurrently."
+        explanation: "Constant 'a' corrects for intermolecular attractive forces; larger 'a' indicates stronger attractions."
     },
     {
-        text: "In Windows, deleted items are temporarily stored in:",
-        options: ["My Documents", "Control Panel", "Recycle Bin", "Windows Explorer"],
+        text: "According to Graham's law, the rate of diffusion of a gas is:",
+        options: [
+            "directly proportional to its density",
+            "directly proportional to square root of its density",
+            "inversely proportional to its density",
+            "inversely proportional to square root of its density"
+        ],
+        correct: 3,
+        explanation: "Graham's law: r ∝ 1/√d, so rate is inversely proportional to square root of density."
+    },
+    {
+        text: "Plasma is often called the:",
+        options: [
+            "first state of matter",
+            "second state of matter",
+            "third state of matter",
+            "fourth state of matter"
+        ],
+        correct: 3,
+        explanation: "Plasma is the fourth state of matter, consisting of ions, electrons, and neutral particles."
+    },
+    {
+        text: "The Joule-Thomson effect is used in:",
+        options: [
+            "measurement of pressure",
+            "liquefaction of gases",
+            "diffusion of gases",
+            "effusion of gases"
+        ],
+        correct: 1,
+        explanation: "Joule-Thomson effect (cooling upon expansion) is used in Linde's method for liquefaction of gases."
+    },
+    {
+        text: "At constant volume, the pressure of a gas is directly proportional to:",
+        options: ["absolute temperature", "Celsius temperature", "Fahrenheit temperature", "none of these"],
+        correct: 0,
+        explanation: "Gay-Lussac's law: P ∝ T (absolute temperature) at constant volume."
+    },
+    {
+        text: "The critical temperature of a gas is:",
+        options: [
+            "the temperature at which it liquefies",
+            "the temperature above which it cannot be liquefied",
+            "the temperature at which it boils",
+            "the temperature at which it freezes"
+        ],
+        correct: 1,
+        explanation: "Critical temperature is the highest temperature at which a gas can be liquefied; above this, no pressure can liquefy it."
+    },
+
+    // ==================== CHAPTER 4: LIQUIDS AND SOLIDS (Q46-65) ====================
+    {
+        text: "London dispersion forces are the only forces present among the:",
+        options: [
+            "molecules of water in liquid state",
+            "atoms of helium in gaseous state at high temperature",
+            "molecules of solid iodine",
+            "molecules of hydrogen chloride gas"
+        ],
+        correct: 1,
+        explanation: "Helium atoms are non-polar and only experience London dispersion forces. Water has H-bonding, iodine and HCl have dipole-dipole interactions."
+    },
+    {
+        text: "NH₃ shows a maximum boiling point among the hydrides of Vth group elements due to:",
+        options: [
+            "very small size of nitrogen",
+            "lone pair of electrons present on nitrogen",
+            "enhanced electronegative character of nitrogen",
+            "pyramidal structure of NH₃"
+        ],
         correct: 2,
-        explanation: "Recycle Bin temporarily stores deleted files."
+        explanation: "Nitrogen's high electronegativity allows strong hydrogen bonding in NH₃, raising its boiling point above PH₃, AsH₃, etc."
     },
     {
-        text: "Which type of fonts have curls or extra decorative lines at the ends of strokes?",
-        options: ["Sans-serif", "Serif", "Monospace", "Script"],
+        text: "When water freezes at 0°C its density decreases due to:",
+        options: [
+            "cubic structure of ice",
+            "empty spaces present in the structure of ice",
+            "change of bond lengths",
+            "change of bond angles"
+        ],
         correct: 1,
-        explanation: "Serif fonts have decorative lines at stroke ends."
+        explanation: "Ice has a hexagonal structure with empty spaces (open cage structure), making it less dense than liquid water."
     },
     {
-        text: "The feature that allows you to reverse changes made to a document is called:",
-        options: ["Redo", "Undo", "Cut", "Paste"],
+        text: "Ionic solids are characterized by:",
+        options: [
+            "low melting points",
+            "good conductivity in solid state",
+            "high vapour pressures",
+            "solubility in polar solvents"
+        ],
+        correct: 3,
+        explanation: "Ionic solids dissolve in polar solvents due to ion-dipole interactions. They have high melting points, are non-conductors in solid state, and have low vapour pressure."
+    },
+    {
+        text: "The molecules of CO₂ in dry ice form the:",
+        options: [
+            "ionic crystals",
+            "covalent crystals",
+            "molecular crystals",
+            "any type of crystal"
+        ],
+        correct: 2,
+        explanation: "Dry ice (solid CO₂) consists of CO₂ molecules held together by London dispersion forces, forming molecular crystals."
+    },
+    {
+        text: "Diamond is a bad conductor because:",
+        options: [
+            "it has a tight structure",
+            "it has a high density",
+            "there are no free electron present in the crystal of diamond to conduct electricity",
+            "it is transparent to light"
+        ],
+        correct: 2,
+        explanation: "Diamond has all electrons involved in covalent bonding with no free electrons to conduct electricity."
+    },
+    {
+        text: "Which of the following is a pseudo solid?",
+        options: ["CaF₂", "Glass", "NaCl", "All"],
         correct: 1,
-        explanation: "Undo reverses previous changes."
+        explanation: "Glass is an amorphous solid (pseudo solid) that flows very slowly over time, unlike crystalline solids."
+    },
+    {
+        text: "In a crystal lattice, the number of nearest neighbours to each atom is called the:",
+        options: ["atomic number", "mass number", "coordination number", "oxidation number"],
+        correct: 2,
+        explanation: "Coordination number is the number of nearest neighbors surrounding an atom/ion in a crystal lattice."
+    },
+    {
+        text: "Crystalline solids which exhibit the same properties in all directions are called:",
+        options: ["anisotropic", "isotropic", "polymorphic", "amorphous"],
+        correct: 1,
+        explanation: "Isotropic solids have the same physical properties in all directions; anisotropic solids show variation with direction."
+    },
+    {
+        text: "The process in which a compound exists in more than one crystalline form is called:",
+        options: ["isomorphism", "polymorphism", "allotropy", "anisotropy"],
+        correct: 1,
+        explanation: "Polymorphism is the existence of a compound in multiple crystalline forms (different arrangements but same chemical composition)."
+    },
+    {
+        text: "Hydrogen bonding is strongest in:",
+        options: ["HF", "HCl", "HBr", "HI"],
+        correct: 0,
+        explanation: "HF has the strongest hydrogen bonding due to fluorine's highest electronegativity and small size."
+    },
+    {
+        text: "The boiling point of water is higher than H₂S because water has:",
+        options: [
+            "higher molecular mass",
+            "hydrogen bonding",
+            "dipole-dipole interactions",
+            "London forces"
+        ],
+        correct: 1,
+        explanation: "Water molecules form strong intermolecular hydrogen bonds, while H₂S has only dipole-dipole interactions."
+    },
+    {
+        text: "The transition temperature of an allotropic form is:",
+        options: [
+            "always less than its melting point",
+            "always greater than its melting point",
+            "equal to its melting point",
+            "independent of melting point"
+        ],
+        correct: 0,
+        explanation: "Transition temperature is always less than the melting point of the allotropic form."
+    },
+    {
+        text: "Which of the following has the highest melting point?",
+        options: ["NaCl", "KCl", "MgO", "CaO"],
+        correct: 2,
+        explanation: "MgO has highest lattice energy due to small size of Mg²⁺ and high charge, giving highest melting point."
+    },
+    {
+        text: "The coordination number of Na⁺ in NaCl is:",
+        options: ["4", "6", "8", "12"],
+        correct: 1,
+        explanation: "In NaCl crystal, each Na⁺ is surrounded by 6 Cl⁻ ions (octahedral geometry)."
+    },
+    {
+        text: "Graphite is a good conductor of electricity because:",
+        options: [
+            "it has free electrons",
+            "it has delocalized electrons between layers",
+            "it has ionic bonds",
+            "it has hydrogen bonding"
+        ],
+        correct: 1,
+        explanation: "Graphite has delocalized π electrons between its layers that can move freely, making it conductive along the layers."
+    },
+    {
+        text: "The structure of ice is similar to:",
+        options: ["NaCl", "diamond", "graphite", "silica"],
+        correct: 1,
+        explanation: "Ice has a tetrahedral structure similar to diamond, with each oxygen atom bonded to four hydrogens via hydrogen bonds."
+    },
+    {
+        text: "Which of the following is an example of a molecular solid?",
+        options: ["Diamond", "Silicon carbide", "Iodine", "Sodium chloride"],
+        correct: 2,
+        explanation: "Iodine (I₂) forms molecular crystals held together by London forces. Diamond and SiC are covalent solids; NaCl is ionic."
+    },
+    {
+        text: "The space occupied in close packing of metal atoms is approximately:",
+        options: ["52%", "68%", "74%", "86%"],
+        correct: 2,
+        explanation: "In close packing (cubic or hexagonal), atoms occupy about 74% of the available space."
+    },
+    {
+        text: "Anisotropy is the property of:",
+        options: ["amorphous solids", "crystalline solids", "liquids", "gases"],
+        correct: 1,
+        explanation: "Crystalline solids show anisotropy (different properties in different directions) due to orderly arrangement of particles."
+    },
+
+    // ==================== CHAPTER 5: ATOMIC STRUCTURE (Q66-85) ====================
+    {
+        text: "The nature of the positive rays depends on:",
+        options: [
+            "the nature of the electrode",
+            "the nature of the discharge tube",
+            "the nature of the residual gas",
+            "all of the above"
+        ],
+        correct: 2,
+        explanation: "Positive rays (canal rays) consist of positive ions from the residual gas, so their nature depends on the gas present."
+    },
+    {
+        text: "The velocity of photon is:",
+        options: [
+            "independent of its wavelength",
+            "depends on its wavelength",
+            "equal to square of its amplitude",
+            "depends on its source"
+        ],
+        correct: 0,
+        explanation: "All photons travel at speed of light (c = 3 × 10⁸ m/s) in vacuum, independent of wavelength."
+    },
+    {
+        text: "The wave number of the light emitted by a certain source is 2 × 10⁶ m⁻¹. The wavelength of this light will be:",
+        options: ["500 nm", "500 m", "200 nm", "5 × 10⁷ m"],
+        correct: 0,
+        explanation: "Wavelength λ = 1/ν̄ = 1/(2 × 10⁶) = 5 × 10⁻⁷ m = 500 nm."
+    },
+    {
+        text: "Rutherford's model of atom failed because:",
+        options: [
+            "the atom did not have a nucleus and electrons",
+            "it did not account for the attraction between protons and neutrons",
+            "it did not account for the stability of the atom",
+            "there is actually no space between the nucleus and the electrons"
+        ],
+        correct: 2,
+        explanation: "Rutherford's model could not explain why electrons do not spiral into the nucleus due to energy loss from acceleration."
+    },
+    {
+        text: "Bohr model of atom is contradicted by:",
+        options: [
+            "Planck's quantum theory",
+            "dual nature of matter",
+            "Heisenberg's uncertainty principle",
+            "all of the above"
+        ],
+        correct: 3,
+        explanation: "Bohr's model assumes fixed orbits with known position and momentum, contradicting wave-particle duality and uncertainty principle."
+    },
+    {
+        text: "Splitting of spectral lines when atoms are subjected to strong electric field is called:",
+        options: [
+            "Zeeman effect",
+            "Stark effect",
+            "Photoelectric effect",
+            "Compton effect"
+        ],
+        correct: 1,
+        explanation: "Stark effect is splitting of spectral lines in an electric field; Zeeman effect is splitting in a magnetic field."
+    },
+    {
+        text: "In the ground state of an atom, the electron is present:",
+        options: [
+            "in the nucleus",
+            "in the second shell",
+            "nearest to the nucleus",
+            "farthest from the nucleus"
+        ],
+        correct: 2,
+        explanation: "Ground state is the lowest energy state (n=1), where the electron is closest to the nucleus."
+    },
+    {
+        text: "Quantum number values for 2p orbitals are:",
+        options: [
+            "n = 2, ℓ = 1",
+            "n = 1, ℓ = 2",
+            "n = 1, ℓ = 0",
+            "n = 2, ℓ = 0"
+        ],
+        correct: 0,
+        explanation: "For 2p: principal quantum number n = 2, azimuthal quantum number ℓ = 1 (p orbital)."
+    },
+    {
+        text: "Orbitals having same energy are called:",
+        options: [
+            "hybrid orbitals",
+            "valence orbitals",
+            "degenerate orbitals",
+            "d-orbitals"
+        ],
+        correct: 2,
+        explanation: "Degenerate orbitals have the same energy, like the three 2p orbitals in the absence of a magnetic field."
+    },
+    {
+        text: "When 6d orbital is complete, the entering electron goes into:",
+        options: ["7f", "7s", "7p", "7d"],
+        correct: 2,
+        explanation: "After 6d, the next orbital according to (n+ℓ) rule is 7p (n=7, ℓ=1)."
+    },
+    {
+        text: "The charge on one mole of electrons is:",
+        options: ["96500 C", "1.6 × 10⁻¹⁹ C", "6.02 × 10²³ C", "1 C"],
+        correct: 0,
+        explanation: "1 mole electrons = 6.02 × 10²³ × 1.6 × 10⁻¹⁹ C = 96500 C = 1 Faraday."
+    },
+    {
+        text: "The de Broglie wavelength of an electron is inversely proportional to:",
+        options: ["√m", "m", "√v", "mv"],
+        correct: 3,
+        explanation: "λ = h/mv, so wavelength is inversely proportional to momentum (mv)."
+    },
+    {
+        text: "Heisenberg's uncertainty principle states that:",
+        options: [
+            "Δx × Δp = h",
+            "Δx × Δp ≥ h/4π",
+            "Δx × Δp ≤ h/4π",
+            "Δx × Δp = h/2π"
+        ],
+        correct: 1,
+        explanation: "Heisenberg's uncertainty principle: Δx·Δp ≥ h/4π, meaning position and momentum cannot be simultaneously measured with perfect accuracy."
+    },
+    {
+        text: "The number of electrons that can be accommodated in d-subshell is:",
+        options: ["2", "6", "10", "14"],
+        correct: 2,
+        explanation: "d-subshell (ℓ=2) has 5 orbitals, each can hold 2 electrons, so maximum 10 electrons."
+    },
+    {
+        text: "The azimuthal quantum number for f-subshell is:",
+        options: ["0", "1", "2", "3"],
+        correct: 3,
+        explanation: "s: ℓ=0, p: ℓ=1, d: ℓ=2, f: ℓ=3."
+    },
+    {
+        text: "The electronic configuration of Cr (Z=24) is:",
+        options: [
+            "[Ar] 3d⁴ 4s²",
+            "[Ar] 3d⁵ 4s¹",
+            "[Ar] 3d⁶ 4s⁰",
+            "[Ar] 3d³ 4s³"
+        ],
+        correct: 1,
+        explanation: "Cr has exceptional configuration [Ar] 3d⁵ 4s¹ due to half-filled stability of d-orbitals."
+    },
+    {
+        text: "The ionization energy of hydrogen atom is:",
+        options: ["13.6 eV", "13.6 J", "13.6 kJ", "13.6 cal"],
+        correct: 0,
+        explanation: "Ionization energy of hydrogen is 13.6 eV (2.18 × 10⁻¹⁸ J, 1313 kJ/mol)."
+    },
+    {
+        text: "Balmer series of hydrogen spectrum lies in:",
+        options: ["UV region", "Visible region", "IR region", "Microwave region"],
+        correct: 1,
+        explanation: "Balmer series lies in visible region (400-700 nm) when electrons fall from higher orbits to n=2."
+    },
+    {
+        text: "The orbital with ℓ = 0 is called:",
+        options: ["s-orbital", "p-orbital", "d-orbital", "f-orbital"],
+        correct: 0,
+        explanation: "Azimuthal quantum number ℓ = 0 corresponds to s-orbital (spherical shape)."
+    },
+    {
+        text: "The maximum number of electrons in a shell with n = 3 is:",
+        options: ["8", "18", "32", "2"],
+        correct: 1,
+        explanation: "Maximum electrons = 2n² = 2 × 9 = 18 for n=3."
+    },
+
+    // ==================== CHAPTER 6: CHEMICAL BONDING (Q86-100) ====================
+    {
+        text: "An ionic compound A⁺B⁻ is most likely to be formed when:",
+        options: [
+            "the ionization energy of A is high and electron affinity of B is low",
+            "the ionization energy of A is low and electron affinity of B is high",
+            "both the ionization energy of A and electron affinity of B are high",
+            "both the ionization energy of A and electron affinity of B are low"
+        ],
+        correct: 1,
+        explanation: "Ionic bond formation requires low IE (easy electron loss) and high EA (strong electron gain)."
+    },
+    {
+        text: "The number of bonds in nitrogen molecule is:",
+        options: ["one σ and one π", "one σ and two π", "three sigma only", "two σ and one π"],
+        correct: 1,
+        explanation: "N₂ has a triple bond: one σ bond and two π bonds."
+    },
+    {
+        text: "Which of the following statement is not correct regarding bonding molecular orbitals?",
+        options: [
+            "Bonding molecular orbitals possess less energy than atomic orbitals from which they are formed",
+            "Bonding molecular orbitals have low electron density between the two nuclei",
+            "Every electron in the bonding molecular orbitals contributes to the attraction between atoms",
+            "Bonding molecular orbitals are formed when the electron waves undergo constructive interference"
+        ],
+        correct: 1,
+        explanation: "Bonding molecular orbitals have HIGH electron density between the two nuclei, not low."
+    },
+    {
+        text: "Which of the following molecules has zero dipole moment?",
+        options: ["NH₃", "CHCl₃", "H₂O", "BF₃"],
+        correct: 3,
+        explanation: "BF₃ has symmetrical trigonal planar geometry, so bond dipoles cancel, giving zero net dipole moment."
+    },
+    {
+        text: "Which of the hydrogen halides has the highest percentage of ionic character?",
+        options: ["HCl", "HBr", "HF", "HI"],
+        correct: 2,
+        explanation: "HF has highest electronegativity difference (F = 4.0, H = 2.1, Δ = 1.9), giving highest ionic character."
+    },
+    {
+        text: "Which of the following species has unpaired electrons in antibonding molecular orbitals?",
+        options: ["O₂²⁺", "N₂²⁻", "B₂", "F₂"],
+        correct: 2,
+        explanation: "B₂ has two unpaired electrons in π* antibonding orbitals, making it paramagnetic."
+    },
+    {
+        text: "The shape of CH₄ molecule is:",
+        options: ["planar", "tetrahedral", "linear", "pyramidal"],
+        correct: 1,
+        explanation: "CH₄ has sp³ hybridization with tetrahedral geometry (bond angle 109.5°)."
+    },
+    {
+        text: "The bond angle in H₂O is:",
+        options: ["90°", "104.5°", "107.5°", "109.5°"],
+        correct: 1,
+        explanation: "Water has bent shape with 104.5° bond angle due to two lone pairs repelling bond pairs."
+    },
+    {
+        text: "Which of the following is not a type of hybridization?",
+        options: ["sp", "sp²", "sp³", "sp⁴"],
+        correct: 3,
+        explanation: "sp⁴ hybridization does not exist. Possible hybridizations are sp, sp², sp³, sp³d, sp³d²."
+    },
+    {
+        text: "The number of sigma and pi bonds in C₂H₂ (ethyne) are:",
+        options: ["2 σ, 1 π", "3 σ, 2 π", "3 σ, 1 π", "2 σ, 2 π"],
+        correct: 1,
+        explanation: "C₂H₂ has one σ bond between C-C, two σ bonds between C-H, and two π bonds (perpendicular) between C-C."
+    },
+    {
+        text: "The paramagnetic property of O₂ is explained by:",
+        options: ["VSEPR theory", "Valence Bond Theory", "Molecular Orbital Theory", "VBT"],
+        correct: 2,
+        explanation: "MOT explains O₂ paramagnetism due to two unpaired electrons in π* orbitals."
+    },
+    {
+        text: "The bond order of N₂ is:",
+        options: ["1", "2", "3", "4"],
+        correct: 2,
+        explanation: "Bond order = (10 bonding e⁻ - 4 antibonding e⁻)/2 = 3."
+    },
+    {
+        text: "The energy of activation of forward reaction for exothermic reaction is:",
+        options: [
+            "less than backward reaction",
+            "greater than backward reaction",
+            "equal to backward reaction",
+            "zero"
+        ],
+        correct: 0,
+        explanation: "For exothermic reactions, forward activation energy is less than backward activation energy."
+    },
+    {
+        text: "Which of the following has the highest electronegativity?",
+        options: ["Cl", "F", "O", "N"],
+        correct: 1,
+        explanation: "Fluorine (4.0) has the highest electronegativity on Pauling scale."
+    },
+    {
+        text: "The bond formed by sidewise overlapping is called:",
+        options: ["σ bond", "π bond", "δ bond", "hydrogen bond"],
+        correct: 1,
+        explanation: "π bond is formed by sidewise (lateral) overlap of p-orbitals."
     }
            ];
 
