@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECAT Mathematics - Hard Level Practice Test (Chapters 1, 4, 7)</title>
+    <title>ECAT Mathematics - Hard Level Practice Test (Chapters 2 & 3)</title>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
     <script>
         MathJax = {
@@ -382,7 +382,7 @@
     <div class="container">
         <div class="header">
             <h1>📐 ECAT Mathematics - Hard Level Practice Test</h1>
-            <p>Chapters 2,3 | Differentiation | Integration | </p>
+            <p>Chapters 2 & 3 | Differentiation | Integration</p>
             <p style="font-size: 12px; margin-top: 6px;">⚠️ Once you select an answer, it will be locked and cannot be changed</p>
         </div>
         
@@ -407,622 +407,149 @@
     </div>
 
     <script>
-        // ==================== COMPLETE 100 MCQs ====================
-        // Chapter 1: Functions and Limits (Q1-35)
-        // Chapter 4: Analytic Geometry (Q36-65)
-        // Chapter 7: Vectors (Q66-100)
+        // Helper function to shuffle options while preserving correct answer
+        function shuffleOptions(question) {
+            const options = [...question.options];
+            const correctText = options[question.correct];
+            
+            // Create array of indices
+            const indices = [0, 1, 2, 3];
+            for (let i = indices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [indices[i], indices[j]] = [indices[j], indices[i]];
+            }
+            
+            // Shuffle options
+            const shuffledOptions = indices.map(i => options[i]);
+            const newCorrectIndex = indices.findIndex(i => i === question.correct);
+            
+            return {
+                ...question,
+                options: shuffledOptions,
+                correct: newCorrectIndex
+            };
+        }
         
-        const questions = [
-    // ==================== CHAPTER 2: DIFFERENTIATION (Q1-50) ====================
-    
-    // Basic Differentiation (Q1-10)
-    {
-        text: "$\\frac{d}{dx}\\left(\\frac{1}{\\sqrt{x}}\\right)$ equals:",
-        options: ["$\\frac{1}{2x^{3/2}}$", "$-\\frac{1}{2x^{3/2}}$", "$\\frac{1}{2\\sqrt{x}}$", "$-\\frac{1}{2\\sqrt{x}}$"],
-        correct: 1,
-        explanation: "$\\frac{d}{dx}(x^{-1/2}) = -\\frac{1}{2}x^{-3/2} = -\\frac{1}{2x^{3/2}}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(\\sin^2 x)$ equals:",
-        options: ["$\\sin 2x$", "$2\\sin x$", "$\\cos^2 x$", "$2\\sin x \\cos x$"],
-        correct: 0,
-        explanation: "$\\frac{d}{dx}(\\sin^2 x) = 2\\sin x \\cos x = \\sin 2x$"
-    },
-    {
-        text: "$\\frac{d}{dx}\\left(\\frac{x}{x+1}\\right)$ equals:",
-        options: ["$\\frac{1}{(x+1)^2}$", "$-\\frac{1}{(x+1)^2}$", "$\\frac{x}{(x+1)^2}$", "$\\frac{1}{x+1}$"],
-        correct: 0,
-        explanation: "Using quotient rule: $\\frac{(x+1)(1) - x(1)}{(x+1)^2} = \\frac{1}{(x+1)^2}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(\\ln x^2)$ equals:",
-        options: ["$\\frac{2}{x}$", "$\\frac{1}{x^2}$", "$\\frac{2}{x^2}$", "$\\frac{1}{x}$"],
-        correct: 0,
-        explanation: "$\\frac{d}{dx}(2\\ln x) = \\frac{2}{x}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(e^{3x})$ equals:",
-        options: ["$3e^{3x}$", "$e^{3x}$", "$\\frac{1}{3}e^{3x}$", "$3e^{x}$"],
-        correct: 0,
-        explanation: "Chain rule: $\\frac{d}{dx}e^{3x} = e^{3x} \\cdot 3 = 3e^{3x}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(\\tan 2x)$ equals:",
-        options: ["$2\\sec^2 2x$", "$\\sec^2 2x$", "$2\\tan 2x \\sec 2x$", "$2\\sec^2 x$"],
-        correct: 0,
-        explanation: "$\\frac{d}{dx}(\\tan 2x) = \\sec^2(2x) \\cdot 2 = 2\\sec^2 2x$"
-    },
-    {
-        text: "$\\frac{d}{dx}\\left(\\frac{\\sin x}{\\cos x}\\right)$ equals:",
-        options: ["$\\sec^2 x$", "$\\csc^2 x$", "$-\\csc^2 x$", "$-\\sec^2 x$"],
-        correct: 0,
-        explanation: "$\\frac{\\sin x}{\\cos x} = \\tan x$, derivative is $\\sec^2 x$"
-    },
-    {
-        text: "$\\frac{d}{dx}(x^x)$ equals:",
-        options: ["$x^x(1 + \\ln x)$", "$x^{x-1}$", "$x^x \\ln x$", "$x^x$"],
-        correct: 0,
-        explanation: "Let $y = x^x$, $\\ln y = x \\ln x$, differentiate: $\\frac{1}{y}\\frac{dy}{dx} = \\ln x + 1$, so $\\frac{dy}{dx} = x^x(1+\\ln x)$"
-    },
-    {
-        text: "$\\frac{d}{dx}(\\sec^{-1} x)$ for $x > 1$ equals:",
-        options: ["$\\frac{1}{x\\sqrt{x^2-1}}$", "$\\frac{1}{x^2\\sqrt{x^2-1}}$", "$\\frac{1}{|x|\\sqrt{x^2-1}}$", "$\\frac{1}{x^2-1}$"],
-        correct: 2,
-        explanation: "Standard formula: $\\frac{d}{dx}(\\sec^{-1}x) = \\frac{1}{|x|\\sqrt{x^2-1}}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(\\sinh x)$ equals:",
-        options: ["$\\cosh x$", "$\\sinh x$", "$\\cos x$", "$\\text{sech}^2 x$"],
-        correct: 0,
-        explanation: "Derivative of hyperbolic sine is hyperbolic cosine"
-    },
-    
-    // Product, Quotient, Chain Rule (Q11-25)
-    {
-        text: "$\\frac{d}{dx}[(x^2+1)(x^3-1)]$ at $x=1$ equals:",
-        options: ["$9$", "$10$", "$11$", "$12$"],
-        correct: 2,
-        explanation: "$f'(x) = 2x(x^3-1) + (x^2+1)(3x^2)$. At $x=1$: $2(0) + (2)(3) = 6$? Let's recalc: $f'(1) = 2(1)(0) + (2)(3) = 6$. Not matching. Actually compute: $(x^2+1)(x^3-1) = x^5 + x^3 - x^2 - 1$, derivative $5x^4 + 3x^2 - 2x$, at $x=1$: $5+3-2=6$. Something off. Let's check options - maybe answer is 11? Actually $f'(1)=6$, not in options. Using product rule: $f'(1)=2(1)(0)+(2)(3)=6$."
-    },
-    {
-        text: "$\\frac{d}{dx}\\left(\\frac{x^2-1}{x^2+1}\\right)$ at $x=0$ equals:",
-        options: ["$0$", "$1$", "$-1$", "$2$"],
-        correct: 0,
-        explanation: "Using quotient rule: $\\frac{(2x)(x^2+1) - (x^2-1)(2x)}{(x^2+1)^2} = \\frac{4x}{(x^2+1)^2}$, at $x=0$ gives $0$"
-    },
-    {
-        text: "If $y = \\sin(\\cos x)$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\cos(\\cos x) \\sin x$", "$\\cos(\\cos x) \\sin x$", "$-\\sin(\\cos x) \\cos x$", "$\\sin(\\cos x) \\cos x$"],
-        correct: 0,
-        explanation: "Chain rule: $\\frac{dy}{dx} = \\cos(\\cos x) \\cdot (-\\sin x) = -\\cos(\\cos x) \\sin x$"
-    },
-    {
-        text: "$\\frac{d}{dx}\\left[\\ln\\left(\\frac{1+x}{1-x}\\right)\\right]$ equals:",
-        options: ["$\\frac{2}{1-x^2}$", "$\\frac{1}{1-x^2}$", "$\\frac{2x}{1-x^2}$", "$\\frac{1}{1+x^2}$"],
-        correct: 0,
-        explanation: "$\\frac{d}{dx}[\\ln(1+x) - \\ln(1-x)] = \\frac{1}{1+x} + \\frac{1}{1-x} = \\frac{2}{1-x^2}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(x^2 \\sin x)$ equals:",
-        options: ["$2x \\sin x + x^2 \\cos x$", "$2x \\sin x - x^2 \\cos x$", "$2x \\cos x + x^2 \\sin x$", "$2x \\cos x - x^2 \\sin x$"],
-        correct: 0,
-        explanation: "Product rule: $\\frac{d}{dx}(x^2)\\sin x + x^2\\frac{d}{dx}(\\sin x) = 2x\\sin x + x^2\\cos x$"
-    },
-    {
-        text: "If $y = \\sqrt{1 + \\sqrt{x}}$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\frac{1}{4\\sqrt{x}\\sqrt{1+\\sqrt{x}}}$", "$\\frac{1}{2\\sqrt{x}\\sqrt{1+\\sqrt{x}}}$", "$\\frac{1}{4\\sqrt{1+\\sqrt{x}}}$", "$\\frac{1}{2\\sqrt{1+\\sqrt{x}}}$"],
-        correct: 0,
-        explanation: "Chain rule: $\\frac{dy}{dx} = \\frac{1}{2\\sqrt{1+\\sqrt{x}}} \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{1}{4\\sqrt{x}\\sqrt{1+\\sqrt{x}}}$"
-    },
-    {
-        text: "$\\frac{d}{dx}\\left(\\frac{\\cos x}{1+\\sin x}\\right)$ equals:",
-        options: ["$-\\frac{1}{1+\\sin x}$", "$\\frac{1}{1+\\sin x}$", "$\\frac{\\cos x}{(1+\\sin x)^2}$", "$-\\frac{\\cos x}{(1+\\sin x)^2}$"],
-        correct: 0,
-        explanation: "Using quotient rule: $\\frac{(-\\sin x)(1+\\sin x) - \\cos x(\\cos x)}{(1+\\sin x)^2} = \\frac{-\\sin x - \\sin^2 x - \\cos^2 x}{(1+\\sin x)^2} = \\frac{-(1+\\sin x)}{(1+\\sin x)^2} = -\\frac{1}{1+\\sin x}$"
-    },
-    {
-        text: "If $y = e^{x^2}$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$2x e^{x^2}$", "$x^2 e^{x^2-1}$", "$e^{x^2}$", "$2x e^{x}$"],
-        correct: 0,
-        explanation: "Chain rule: $\\frac{d}{dx}e^{x^2} = e^{x^2} \\cdot 2x = 2x e^{x^2}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(\\tan^{-1} \\sqrt{x})$ equals:",
-        options: ["$\\frac{1}{2\\sqrt{x}(1+x)}$", "$\\frac{1}{2\\sqrt{x}(1+x^2)}$", "$\\frac{1}{2\\sqrt{x}(1-x)}$", "$\\frac{1}{2\\sqrt{x}(1-x^2)}$"],
-        correct: 0,
-        explanation: "$\\frac{d}{dx}\\tan^{-1}\\sqrt{x} = \\frac{1}{1+x} \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{1}{2\\sqrt{x}(1+x)}$"
-    },
-    {
-        text: "If $y = \\frac{\\ln x}{x}$, then $\\frac{dy}{dx}$ at $x=e$ equals:",
-        options: ["$0$", "$1$", "$\\frac{1}{e^2}$", "$\\frac{1}{e}$"],
-        correct: 0,
-        explanation: "$\\frac{dy}{dx} = \\frac{1 - \\ln x}{x^2}$, at $x=e$: $\\frac{1-1}{e^2} = 0$"
-    },
-    {
-        text: "$\\frac{d}{dx}\\left(\\frac{e^x}{e^x+1}\\right)$ equals:",
-        options: ["$\\frac{e^x}{(e^x+1)^2}$", "$\\frac{1}{(e^x+1)^2}$", "$\\frac{e^x}{e^x+1}$", "$\\frac{1}{e^x+1}$"],
-        correct: 0,
-        explanation: "Quotient rule: $\\frac{e^x(e^x+1) - e^x(e^x)}{(e^x+1)^2} = \\frac{e^x}{(e^x+1)^2}$"
-    },
-    {
-        text: "If $y = \\cos(\\ln x)$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\frac{\\sin(\\ln x)}{x}$", "$\\frac{\\sin(\\ln x)}{x}$", "$-\\frac{\\cos(\\ln x)}{x}$", "$\\frac{\\cos(\\ln x)}{x}$"],
-        correct: 0,
-        explanation: "Chain rule: $\\frac{dy}{dx} = -\\sin(\\ln x) \\cdot \\frac{1}{x} = -\\frac{\\sin(\\ln x)}{x}$"
-    },
-    {
-        text: "$\\frac{d}{dx}(x^3 \\ln x)$ equals:",
-        options: ["$x^2(3\\ln x + 1)$", "$x^2(3\\ln x - 1)$", "$3x^2 \\ln x$", "$x^2 \\ln x + 3x^2$"],
-        correct: 0,
-        explanation: "Product rule: $3x^2\\ln x + x^3 \\cdot \\frac{1}{x} = 3x^2\\ln x + x^2 = x^2(3\\ln x + 1)$"
-    },
-    {
-        text: "If $y = \\sec^{-1}(x^2)$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\frac{2}{x\\sqrt{x^4-1}}$", "$\\frac{1}{x\\sqrt{x^4-1}}$", "$\\frac{2}{x^2\\sqrt{x^4-1}}$", "$\\frac{1}{x^2\\sqrt{x^4-1}}$"],
-        correct: 0,
-        explanation: "$\\frac{dy}{dx} = \\frac{1}{|x^2|\\sqrt{x^4-1}} \\cdot 2x = \\frac{2}{x\\sqrt{x^4-1}}$ for $x>0$"
-    },
-    {
-        text: "$\\frac{d}{dx}[\\ln(\\ln x)]$ equals:",
-        options: ["$\\frac{1}{x \\ln x}$", "$\\frac{1}{\\ln x}$", "$\\frac{1}{x}$", "$\\frac{1}{x \\ln x^2}$"],
-        correct: 0,
-        explanation: "Chain rule: $\\frac{1}{\\ln x} \\cdot \\frac{1}{x} = \\frac{1}{x \\ln x}$"
-    },
-    
-    // Implicit and Parametric Differentiation (Q26-40)
-    {
-        text: "If $x^2 + y^2 = 25$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\frac{x}{y}$", "$\\frac{x}{y}$", "$-\\frac{y}{x}$", "$\\frac{y}{x}$"],
-        correct: 0,
-        explanation: "$2x + 2y\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x}{y}$"
-    },
-    {
-        text: "If $xy + \\sin y = 0$, then $\\frac{dy}{dx}$ at $(0,0)$ equals:",
-        options: ["$0$", "$1$", "$-1$", "Does not exist"],
-        correct: 0,
-        explanation: "$y + x\\frac{dy}{dx} + \\cos y \\frac{dy}{dx} = 0$. At $(0,0)$: $0 + 0 + 1 \\cdot \\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = 0$"
-    },
-    {
-        text: "If $x = a\\cos\\theta$, $y = a\\sin\\theta$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\cot\\theta$", "$\\tan\\theta$", "$-\\tan\\theta$", "$\\cot\\theta$"],
-        correct: 0,
-        explanation: "$\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{a\\cos\\theta}{-a\\sin\\theta} = -\\cot\\theta$"
-    },
-    {
-        text: "If $x^3 + y^3 = 3axy$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\frac{ay - x^2}{y^2 - ax}$", "$\\frac{x^2 - ay}{y^2 - ax}$", "$\\frac{ay - x^2}{ax - y^2}$", "$\\frac{x^2 - ay}{ax - y^2}$"],
-        correct: 0,
-        explanation: "$3x^2 + 3y^2\\frac{dy}{dx} = 3ay + 3ax\\frac{dy}{dx} \\Rightarrow (y^2 - ax)\\frac{dy}{dx} = ay - x^2 \\Rightarrow \\frac{dy}{dx} = \\frac{ay - x^2}{y^2 - ax}$"
-    },
-    {
-        text: "If $x = a(t - \\sin t)$, $y = a(1 - \\cos t)$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\tan\\frac{t}{2}$", "$\\cot\\frac{t}{2}$", "$\\tan t$", "$\\cot t$"],
-        correct: 0,
-        explanation: "$\\frac{dx}{dt} = a(1-\\cos t)$, $\\frac{dy}{dt} = a\\sin t$, $\\frac{dy}{dx} = \\frac{\\sin t}{1-\\cos t} = \\cot\\frac{t}{2}$? Actually $\\frac{\\sin t}{1-\\cos t} = \\cot\\frac{t}{2}$? Wait: $\\frac{\\sin t}{1-\\cos t} = \\frac{2\\sin(t/2)\\cos(t/2)}{2\\sin^2(t/2)} = \\cot(t/2)$. So answer is $\\cot\\frac{t}{2}$."
-    },
-    {
-        text: "If $y^2 = 4ax$, then $\\frac{d^2y}{dx^2}$ equals:",
-        options: ["$-\\frac{2a}{y^3}$", "$\\frac{2a}{y^3}$", "$-\\frac{a}{y^3}$", "$\\frac{a}{y^3}$"],
-        correct: 0,
-        explanation: "$2y\\frac{dy}{dx} = 4a \\Rightarrow \\frac{dy}{dx} = \\frac{2a}{y}$. Then $\\frac{d^2y}{dx^2} = -\\frac{2a}{y^2}\\frac{dy}{dx} = -\\frac{2a}{y^2} \\cdot \\frac{2a}{y} = -\\frac{4a^2}{y^3}$? Not matching. Let's recalc: $\\frac{dy}{dx} = \\frac{2a}{y}$, $\\frac{d^2y}{dx^2} = -\\frac{2a}{y^2} \\cdot \\frac{dy}{dx} = -\\frac{2a}{y^2} \\cdot \\frac{2a}{y} = -\\frac{4a^2}{y^3}$. But $4a^2 = y^2 \\cdot 4a /?$ Actually from $y^2=4ax$, $a = y^2/4x$, not simplifying. The given options have $2a/y^3$, which is incorrect. Actually $\\frac{d^2y}{dx^2} = -\\frac{2a}{y^3} \\cdot ?$ Let's check: $\\frac{d}{dx}(\\frac{2a}{y}) = -\\frac{2a}{y^2}\\frac{dy}{dx} = -\\frac{2a}{y^2} \\cdot \\frac{2a}{y} = -\\frac{4a^2}{y^3}$. But from $y^2=4ax$, $4a^2 = a \\cdot 4a = a \\cdot \\frac{y^2}{x}$? Actually $\\frac{4a^2}{y^3} = \\frac{4a^2}{y^3} = \\frac{4a^2}{y^3}$. None of options match. Option A: $-\\frac{2a}{y^3}$ would require $2a = 4a^2$ which is false. So perhaps the correct answer is $-\\frac{4a^2}{y^3}$ but since not given, maybe we need to express in terms of a: $\\frac{d^2y}{dx^2} = -\\frac{2a}{y^3} \\cdot 2a$? Actually $4a^2 = (2a)^2$, so $\\frac{d^2y}{dx^2} = -\\frac{(2a)^2}{y^3}$. Not matching options. This is a tricky one."
-    },
-    {
-        text: "If $x = a\\cos^3\\theta$, $y = a\\sin^3\\theta$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\tan\\theta$", "$-\\cot\\theta$", "$\\tan\\theta$", "$\\cot\\theta$"],
-        correct: 0,
-        explanation: "$\\frac{dx}{d\\theta} = -3a\\cos^2\\theta \\sin\\theta$, $\\frac{dy}{d\\theta} = 3a\\sin^2\\theta \\cos\\theta$, $\\frac{dy}{dx} = \\frac{3a\\sin^2\\theta \\cos\\theta}{-3a\\cos^2\\theta \\sin\\theta} = -\\tan\\theta$"
-    },
-    {
-        text: "If $y = x + \\frac{1}{x}$, then $\\frac{dy}{dx}$ at $x=1$ equals:",
-        options: ["$0$", "$1$", "$2$", "$-1$"],
-        correct: 0,
-        explanation: "$\\frac{dy}{dx} = 1 - \\frac{1}{x^2}$, at $x=1$: $1-1=0$"
-    },
-    {
-        text: "If $\\sqrt{x} + \\sqrt{y} = \\sqrt{a}$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\sqrt{\\frac{y}{x}}$", "$-\\sqrt{\\frac{x}{y}}$", "$\\sqrt{\\frac{y}{x}}$", "$\\sqrt{\\frac{x}{y}}$"],
-        correct: 0,
-        explanation: "$\\frac{1}{2\\sqrt{x}} + \\frac{1}{2\\sqrt{y}}\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{\\sqrt{y}}{\\sqrt{x}} = -\\sqrt{\\frac{y}{x}}$"
-    },
-    {
-        text: "If $x = \\frac{1-t^2}{1+t^2}$, $y = \\frac{2t}{1+t^2}$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$-\\frac{x}{y}$", "$-\\frac{y}{x}$", "$\\frac{x}{y}$", "$\\frac{y}{x}$"],
-        correct: 0,
-        explanation: "These are parametric equations of a circle. $x^2 + y^2 = 1$. Differentiating: $2x + 2y\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x}{y}$"
-    },
-    {
-        text: "If $x^y = y^x$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\frac{y(y - x\\ln y)}{x(x - y\\ln x)}$", "$\\frac{y(x\\ln y - y)}{x(y\\ln x - x)}$", "$\\frac{y(y - x\\ln x)}{x(x - y\\ln y)}$", "$\\frac{y(x\\ln x - y)}{x(y\\ln y - x)}$"],
-        correct: 2,
-        explanation: "Taking ln: $y\\ln x = x\\ln y$. Differentiate: $\\frac{dy}{dx}\\ln x + \\frac{y}{x} = \\ln y + \\frac{x}{y}\\frac{dy}{dx}$. Solve: $\\frac{dy}{dx}(\\ln x - \\frac{x}{y}) = \\ln y - \\frac{y}{x} \\Rightarrow \\frac{dy}{dx} = \\frac{y(y - x\\ln y)}{x(x - y\\ln x)}$? Actually need careful algebra."
-    },
-    {
-        text: "If $x = \\sec\\theta$, $y = \\tan\\theta$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\csc\\theta$", "$\\sin\\theta$", "$\\cos\\theta$", "$\\sec\\theta$"],
-        correct: 0,
-        explanation: "$\\frac{dx}{d\\theta} = \\sec\\theta\\tan\\theta$, $\\frac{dy}{d\\theta} = \\sec^2\\theta$, $\\frac{dy}{dx} = \\frac{\\sec^2\\theta}{\\sec\\theta\\tan\\theta} = \\csc\\theta$"
-    },
-    {
-        text: "If $x^2y + xy^2 = 6$, then $\\frac{dy}{dx}$ at $(1,2)$ equals:",
-        options: ["$-\\frac{8}{5}$", "$-\\frac{5}{8}$", "$\\frac{8}{5}$", "$\\frac{5}{8}$"],
-        correct: 0,
-        explanation: "$2xy + x^2\\frac{dy}{dx} + y^2 + 2xy\\frac{dy}{dx} = 0$. At $(1,2)$: $2(1)(2) + 1^2\\frac{dy}{dx} + 4 + 2(1)(2)\\frac{dy}{dx} = 0 \\Rightarrow 4 + \\frac{dy}{dx} + 4 + 4\\frac{dy}{dx} = 0 \\Rightarrow 8 + 5\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{8}{5}$"
-    },
-    {
-        text: "If $x = a(\\theta + \\sin\\theta)$, $y = a(1 - \\cos\\theta)$, then $\\frac{dy}{dx}$ equals:",
-        options: ["$\\tan\\frac{\\theta}{2}$", "$\\cot\\frac{\\theta}{2}$", "$\\sin\\frac{\\theta}{2}$", "$\\cos\\frac{\\theta}{2}$"],
-        correct: 0,
-        explanation: "$\\frac{dx}{d\\theta} = a(1+\\cos\\theta)$, $\\frac{dy}{d\\theta} = a\\sin\\theta$, $\\frac{dy}{dx} = \\frac{\\sin\\theta}{1+\\cos\\theta} = \\tan\\frac{\\theta}{2}$"
-    },
-    
-    // Higher Order Derivatives and Applications (Q41-50)
-    {
-        text: "If $y = e^{ax}$, then $\\frac{d^ny}{dx^n}$ equals:",
-        options: ["$a^n e^{ax}$", "$a^n e^{ax} \\ln a$", "$n! a^n e^{ax}$", "$a^n e^{ax} (n!)$"],
-        correct: 0,
-        explanation: "Each derivative multiplies by $a$, so $n$th derivative is $a^n e^{ax}$"
-    },
-    {
-        text: "If $y = \\sin x$, then $y^{(10)}(x)$ equals:",
-        options: ["$-\\sin x$", "$\\sin x$", "$-\\cos x$", "$\\cos x$"],
-        correct: 0,
-        explanation: "Derivatives cycle every 4: $\\sin x \\to \\cos x \\to -\\sin x \\to -\\cos x \\to \\sin x$. 10 mod 4 = 2, so $y^{(10)} = -\\sin x$"
-    },
-    {
-        text: "If $y = x^n$, then $\\frac{d^ny}{dx^n}$ equals:",
-        options: ["$n!$", "$1$", "$0$", "$x$"],
-        correct: 0,
-        explanation: "$n$th derivative of $x^n$ is $n!$"
-    },
-    {
-        text: "If $y = e^x \\sin x$, then $\\frac{d^2y}{dx^2}$ equals:",
-        options: ["$2e^x \\cos x$", "$2e^x \\sin x$", "$2e^x (\\sin x + \\cos x)$", "$2e^x (\\cos x - \\sin x)$"],
-        correct: 0,
-        explanation: "$y' = e^x\\sin x + e^x\\cos x = e^x(\\sin x + \\cos x)$, $y'' = e^x(\\sin x + \\cos x) + e^x(\\cos x - \\sin x) = 2e^x\\cos x$"
-    },
-    {
-        text: "The slope of the tangent to the curve $y = x^3 - 3x^2 + 4$ at $x=1$ is:",
-        options: ["$-3$", "$3$", "$0$", "$1$"],
-        correct: 0,
-        explanation: "$y' = 3x^2 - 6x$, at $x=1$: $3 - 6 = -3$"
-    },
-    {
-        text: "The equation of the tangent to the curve $y = x^2$ at $(1,1)$ is:",
-        options: ["$2x - y - 1 = 0$", "$2x - y + 1 = 0$", "$x - 2y - 1 = 0$", "$x - 2y + 1 = 0$"],
-        correct: 0,
-        explanation: "Slope $= 2x$ at $x=1$ is $2$. Equation: $y-1 = 2(x-1) \\Rightarrow y = 2x - 1 \\Rightarrow 2x - y - 1 = 0$"
-    },
-    {
-        text: "The function $f(x) = x^3 - 3x^2 + 3x$ is:",
-        options: ["Increasing for all $x$", "Decreasing for all $x$", "Increasing for $x > 1$ only", "Decreasing for $x < 1$ only"],
-        correct: 0,
-        explanation: "$f'(x) = 3x^2 - 6x + 3 = 3(x-1)^2 \\ge 0$ for all $x$, so increasing everywhere"
-    },
-    {
-        text: "The relative maximum of $f(x) = x^3 - 6x^2 + 9x$ occurs at:",
-        options: ["$x = 1$", "$x = 3$", "$x = 0$", "$x = 2$"],
-        correct: 0,
-        explanation: "$f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3)$. $f''(x) = 6x - 12$. At $x=1$, $f''(1) = -6 < 0$, so maximum."
-    },
-    {
-        text: "The minimum value of $f(x) = x^2 + \\frac{1}{x}$ for $x > 0$ is:",
-        options: ["$\\frac{3\\sqrt[3]{2}}{2}$", "$\\frac{3}{2}\\sqrt[3]{2}$", "$\\frac{3\\sqrt[3]{4}}{2}$", "$\\frac{3}{2}\\sqrt[3]{4}$"],
-        correct: 3,
-        explanation: "$f'(x) = 2x - \\frac{1}{x^2} = 0 \\Rightarrow 2x^3 = 1 \\Rightarrow x = \\frac{1}{\\sqrt[3]{2}}$. Then $f(x) = \\frac{1}{2^{2/3}} + 2^{1/3} = \\frac{1}{2^{2/3}} + \\frac{2}{2^{2/3}} = \\frac{3}{2^{2/3}} = \\frac{3}{2}\\sqrt[3]{4}$"
-    },
-    {
-        text: "If $f(x) = \\frac{x}{x^2+1}$, then the maximum value of $f(x)$ is:",
-        options: ["$\\frac{1}{2}$", "$1$", "$2$", "$0$"],
-        correct: 0,
-        explanation: "$f'(x) = \\frac{x^2+1 - x(2x)}{(x^2+1)^2} = \\frac{1-x^2}{(x^2+1)^2} = 0 \\Rightarrow x = \\pm 1$. $f(1) = \\frac{1}{2}$, $f(-1) = -\\frac{1}{2}$, so maximum is $\\frac{1}{2}$"
-    },
-    
-    // ==================== CHAPTER 3: INTEGRATION (Q51-100) ====================
-    
-    // Basic Integration (Q51-65)
-    {
-        text: "$\\int x^5 dx$ equals:",
-        options: ["$\\frac{x^6}{6} + C$", "$\\frac{x^5}{5} + C$", "$\\frac{x^4}{4} + C$", "$5x^4 + C$"],
-        correct: 0,
-        explanation: "$\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$"
-    },
-    {
-        text: "$\\int \\frac{1}{x} dx$ equals:",
-        options: ["$\\ln |x| + C$", "$\\frac{1}{x^2} + C$", "$\\ln x + C$", "$e^x + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{1}{x} dx = \\ln |x| + C$"
-    },
-    {
-        text: "$\\int \\sin x dx$ equals:",
-        options: ["$-\\cos x + C$", "$\\cos x + C$", "$\\sin x + C$", "$-\\sin x + C$"],
-        correct: 0,
-        explanation: "$\\int \\sin x dx = -\\cos x + C$"
-    },
-    {
-        text: "$\\int e^{3x} dx$ equals:",
-        options: ["$\\frac{e^{3x}}{3} + C$", "$3e^{3x} + C$", "$e^{3x} + C$", "$\\frac{e^{3x}}{3x} + C$"],
-        correct: 0,
-        explanation: "$\\int e^{ax} dx = \\frac{e^{ax}}{a} + C$"
-    },
-    {
-        text: "$\\int \\sec^2 x dx$ equals:",
-        options: ["$\\tan x + C$", "$\\sec x + C$", "$-\\cot x + C$", "$\\csc x + C$"],
-        correct: 0,
-        explanation: "$\\int \\sec^2 x dx = \\tan x + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{\\sqrt{1-x^2}}$ equals:",
-        options: ["$\\sin^{-1}x + C$", "$\\cos^{-1}x + C$", "$\\tan^{-1}x + C$", "$\\sec^{-1}x + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{dx}{\\sqrt{1-x^2}} = \\sin^{-1}x + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{1+x^2}$ equals:",
-        options: ["$\\tan^{-1}x + C$", "$\\sin^{-1}x + C$", "$\\ln(1+x^2) + C$", "$\\frac{1}{1+x^2} + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{dx}{1+x^2} = \\tan^{-1}x + C$"
-    },
-    {
-        text: "$\\int \\cos 2x dx$ equals:",
-        options: ["$\\frac{\\sin 2x}{2} + C$", "$\\sin 2x + C$", "$-\\frac{\\sin 2x}{2} + C$", "$-\\sin 2x + C$"],
-        correct: 0,
-        explanation: "$\\int \\cos ax dx = \\frac{\\sin ax}{a} + C$"
-    },
-    {
-        text: "$\\int (x^2 + 2x + 1) dx$ equals:",
-        options: ["$\\frac{x^3}{3} + x^2 + x + C$", "$\\frac{x^3}{3} + 2x^2 + x + C$", "$x^3 + x^2 + x + C$", "$\\frac{x^3}{3} + x^2 + 2x + C$"],
-        correct: 0,
-        explanation: "Integrate term by term: $\\frac{x^3}{3} + x^2 + x + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{x^2 + a^2}$ equals:",
-        options: ["$\\frac{1}{a}\\tan^{-1}\\frac{x}{a} + C$", "$\\tan^{-1}\\frac{x}{a} + C$", "$\\frac{1}{a}\\sin^{-1}\\frac{x}{a} + C$", "$\\ln(x^2 + a^2) + C$"],
-        correct: 0,
-        explanation: "Standard formula: $\\int \\frac{dx}{x^2 + a^2} = \\frac{1}{a}\\tan^{-1}\\frac{x}{a} + C$"
-    },
-    {
-        text: "$\\int \\csc^2 x dx$ equals:",
-        options: ["$-\\cot x + C$", "$\\cot x + C$", "$-\\tan x + C$", "$\\tan x + C$"],
-        correct: 0,
-        explanation: "$\\int \\csc^2 x dx = -\\cot x + C$"
-    },
-    {
-        text: "$\\int \\sec x \\tan x dx$ equals:",
-        options: ["$\\sec x + C$", "$\\tan x + C$", "$-\\sec x + C$", "$-\\tan x + C$"],
-        correct: 0,
-        explanation: "$\\int \\sec x \\tan x dx = \\sec x + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{x^2 - a^2}$ for $x > a$ equals:",
-        options: ["$\\frac{1}{2a}\\ln\\left|\\frac{x-a}{x+a}\\right| + C$", "$\\frac{1}{2a}\\ln\\left|\\frac{x+a}{x-a}\\right| + C$", "$\\frac{1}{a}\\ln\\left|\\frac{x-a}{x+a}\\right| + C$", "$\\frac{1}{a}\\ln\\left|\\frac{x+a}{x-a}\\right| + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{dx}{x^2 - a^2} = \\frac{1}{2a}\\ln\\left|\\frac{x-a}{x+a}\\right| + C$"
-    },
-    {
-        text: "$\\int \\sinh x dx$ equals:",
-        options: ["$\\cosh x + C$", "$\\sinh x + C$", "$-\\cosh x + C$", "$-\\sinh x + C$"],
-        correct: 0,
-        explanation: "$\\int \\sinh x dx = \\cosh x + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{\\sqrt{x^2 + a^2}}$ equals:",
-        options: ["$\\ln|x + \\sqrt{x^2 + a^2}| + C$", "$\\sinh^{-1}\\frac{x}{a} + C$", "$\\frac{1}{a}\\tan^{-1}\\frac{x}{a} + C$", "Both A and B"],
-        correct: 3,
-        explanation: "$\\int \\frac{dx}{\\sqrt{x^2 + a^2}} = \\sinh^{-1}\\frac{x}{a} + C = \\ln|x + \\sqrt{x^2 + a^2}| + C$"
-    },
-    
-    // Substitution Method (Q66-80)
-    {
-        text: "$\\int \\frac{2x}{\\sqrt{x^2+1}} dx$ equals:",
-        options: ["$2\\sqrt{x^2+1} + C$", "$\\sqrt{x^2+1} + C$", "$\\frac{1}{\\sqrt{x^2+1}} + C$", "$\\ln(x^2+1) + C$"],
-        correct: 0,
-        explanation: "Let $u = x^2+1$, $du = 2x dx$, $\\int u^{-1/2} du = 2u^{1/2} + C = 2\\sqrt{x^2+1} + C$"
-    },
-    {
-        text: "$\\int \\frac{e^x}{e^x+1} dx$ equals:",
-        options: ["$\\ln(e^x+1) + C$", "$e^x+1 + C$", "$\\ln(e^x) + C$", "$\\frac{e^x}{e^x+1} + C$"],
-        correct: 0,
-        explanation: "Let $u = e^x+1$, $du = e^x dx$, $\\int \\frac{du}{u} = \\ln|u| + C = \\ln(e^x+1) + C$"
-    },
-    {
-        text: "$\\int \\frac{\\sin x}{\\cos x} dx$ equals:",
-        options: ["$-\\ln|\\cos x| + C$", "$\\ln|\\cos x| + C$", "$\\ln|\\sin x| + C$", "$-\\ln|\\sin x| + C$"],
-        correct: 0,
-        explanation: "$\\int \\tan x dx = -\\ln|\\cos x| + C$"
-    },
-    {
-        text: "$\\int \\frac{x}{x^2+1} dx$ equals:",
-        options: ["$\\frac{1}{2}\\ln(x^2+1) + C$", "$\\ln(x^2+1) + C$", "$\\tan^{-1}x + C$", "$\\frac{1}{2}\\tan^{-1}x + C$"],
-        correct: 0,
-        explanation: "Let $u = x^2+1$, $du = 2x dx$, $\\int \\frac{x}{x^2+1} dx = \\frac{1}{2}\\int \\frac{du}{u} = \\frac{1}{2}\\ln|u| + C$"
-    },
-    {
-        text: "$\\int \\cos^3 x \\sin x dx$ equals:",
-        options: ["$-\\frac{\\cos^4 x}{4} + C$", "$\\frac{\\cos^4 x}{4} + C$", "$-\\frac{\\sin^4 x}{4} + C$", "$\\frac{\\sin^4 x}{4} + C$"],
-        correct: 0,
-        explanation: "Let $u = \\cos x$, $du = -\\sin x dx$, $\\int u^3 (-du) = -\\frac{u^4}{4} + C = -\\frac{\\cos^4 x}{4} + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{x \\ln x}$ equals:",
-        options: ["$\\ln|\\ln x| + C$", "$\\frac{1}{\\ln x} + C$", "$\\ln x + C$", "$\\frac{1}{x \\ln x} + C$"],
-        correct: 0,
-        explanation: "Let $u = \\ln x$, $du = \\frac{dx}{x}$, $\\int \\frac{du}{u} = \\ln|u| + C = \\ln|\\ln x| + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{\\sqrt{x}(1+\\sqrt{x})}$ equals:",
-        options: ["$2\\ln(1+\\sqrt{x}) + C$", "$\\ln(1+\\sqrt{x}) + C$", "$\\frac{1}{2}\\ln(1+\\sqrt{x}) + C$", "$\\frac{1}{\\sqrt{x}} + C$"],
-        correct: 0,
-        explanation: "Let $u = 1+\\sqrt{x}$, $du = \\frac{dx}{2\\sqrt{x}}$, $\\int \\frac{dx}{\\sqrt{x}(1+\\sqrt{x})} = 2\\int \\frac{du}{u} = 2\\ln|u| + C$"
-    },
-    {
-        text: "$\\int \\frac{\\sin x}{\\cos^2 x} dx$ equals:",
-        options: ["$\\sec x + C$", "$-\\sec x + C$", "$\\tan x + C$", "$-\\tan x + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{\\sin x}{\\cos^2 x} dx = \\int \\sec x \\tan x dx = \\sec x + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{\\sqrt{4-x^2}}$ equals:",
-        options: ["$\\sin^{-1}\\frac{x}{2} + C$", "$\\frac{1}{2}\\sin^{-1}\\frac{x}{2} + C$", "$\\cos^{-1}\\frac{x}{2} + C$", "$\\frac{1}{2}\\cos^{-1}\\frac{x}{2} + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{dx}{\\sqrt{a^2-x^2}} = \\sin^{-1}\\frac{x}{a} + C$, with $a=2$"
-    },
-    {
-        text: "$\\int \\frac{dx}{\\sqrt{x^2+9}}$ equals:",
-        options: ["$\\ln|x + \\sqrt{x^2+9}| + C$", "$\\frac{1}{3}\\ln|x + \\sqrt{x^2+9}| + C$", "$\\sinh^{-1}\\frac{x}{3} + C$", "Both A and C"],
-        correct: 3,
-        explanation: "$\\int \\frac{dx}{\\sqrt{x^2+a^2}} = \\ln|x + \\sqrt{x^2+a^2}| + C = \\sinh^{-1}\\frac{x}{a} + C$"
-    },
-    {
-        text: "$\\int \\frac{dx}{x^2+4x+13}$ equals:",
-        options: ["$\\frac{1}{3}\\tan^{-1}\\frac{x+2}{3} + C$", "$\\frac{1}{3}\\tan^{-1}\\frac{x+2}{3} + C$", "$\\tan^{-1}\\frac{x+2}{3} + C$", "$\\frac{1}{3}\\tan^{-1}\\frac{x-2}{3} + C$"],
-        correct: 0,
-        explanation: "Complete square: $x^2+4x+13 = (x+2)^2 + 9$, $\\int \\frac{dx}{(x+2)^2+3^2} = \\frac{1}{3}\\tan^{-1}\\frac{x+2}{3} + C$"
-    },
-    {
-        text: "$\\int \\sqrt{1 - \\sin 2x} dx$ for $0 < x < \\frac{\\pi}{4}$ equals:",
-        options: ["$\\sin x - \\cos x + C$", "$\\cos x - \\sin x + C$", "$\\sin x + \\cos x + C$", "$-\\sin x - \\cos x + C$"],
-        correct: 0,
-        explanation: "$1 - \\sin 2x = (\\sin x - \\cos x)^2$, so $\\sqrt{1-\\sin 2x} = \\sin x - \\cos x$ for $x < \\frac{\\pi}{4}$"
-    },
-    {
-        text: "$\\int \\frac{dx}{e^x + e^{-x}}$ equals:",
-        options: ["$\\tan^{-1}(e^x) + C$", "$\\ln(e^x + e^{-x}) + C$", "$\\frac{1}{2}\\ln(e^{2x}+1) + C$", "$\\tanh^{-1}(e^x) + C$"],
-        correct: 0,
-        explanation: "$\\int \\frac{dx}{e^x+e^{-x}} = \\int \\frac{e^x dx}{e^{2x}+1} = \\tan^{-1}(e^x) + C$"
-    },
-    {
-        text: "$\\int \\frac{\\sin x}{\\sin x + \\cos x} dx$ equals:",
-        options: ["$\\frac{1}{2}(x - \\ln|\\sin x + \\cos x|) + C$", "$\\frac{1}{2}(x + \\ln|\\sin x + \\cos x|) + C$", "$\\frac{1}{2}(\\ln|\\sin x + \\cos x| - x) + C$", "$\\frac{1}{2}(\\sin x - \\cos x) + C$"],
-        correct: 0,
-        explanation: "Use $\\sin x = \\frac{1}{2}[(\\sin x + \\cos x) + (\\sin x - \\cos x)]$, then integrate"
-    },
-    
-    // Integration by Parts (Q81-90)
-    {
-        text: "$\\int x e^x dx$ equals:",
-        options: ["$x e^x - e^x + C$", "$x e^x + e^x + C$", "$e^x - x e^x + C$", "$\\frac{x^2}{2}e^x + C$"],
-        correct: 0,
-        explanation: "Integration by parts: $u=x$, $dv=e^x dx$, $du=dx$, $v=e^x$, $\\int x e^x dx = x e^x - \\int e^x dx = x e^x - e^x + C$"
-    },
-    {
-        text: "$\\int \\ln x dx$ equals:",
-        options: ["$x\\ln x - x + C$", "$x\\ln x + x + C$", "$\\frac{1}{x} + C$", "$\\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$"],
-        correct: 0,
-        explanation: "Integration by parts: $u=\\ln x$, $dv=dx$, $du=\\frac{dx}{x}$, $v=x$, $\\int \\ln x dx = x\\ln x - \\int dx = x\\ln x - x + C$"
-    },
-    {
-        text: "$\\int x \\sin x dx$ equals:",
-        options: ["$-x\\cos x + \\sin x + C$", "$x\\cos x - \\sin x + C$", "$-x\\cos x - \\sin x + C$", "$x\\cos x + \\sin x + C$"],
-        correct: 0,
-        explanation: "$u=x$, $dv=\\sin x dx$, $du=dx$, $v=-\\cos x$, $\\int x\\sin x dx = -x\\cos x + \\int \\cos x dx = -x\\cos x + \\sin x + C$"
-    },
-    {
-        text: "$\\int x^2 e^x dx$ equals:",
-        options: ["$e^x(x^2 - 2x + 2) + C$", "$e^x(x^2 + 2x + 2) + C$", "$e^x(x^2 - 2x - 2) + C$", "$e^x(x^2 + 2x - 2) + C$"],
-        correct: 0,
-        explanation: "Apply integration by parts twice: $\\int x^2 e^x dx = x^2 e^x - 2\\int x e^x dx = x^2 e^x - 2(x e^x - e^x) + C = e^x(x^2 - 2x + 2) + C$"
-    },
-    {
-        text: "$\\int e^x \\sin x dx$ equals:",
-        options: ["$\\frac{e^x}{2}(\\sin x - \\cos x) + C$", "$\\frac{e^x}{2}(\\sin x + \\cos x) + C$", "$\\frac{e^x}{2}(\\cos x - \\sin x) + C$", "$e^x(\\sin x - \\cos x) + C$"],
-        correct: 0,
-        explanation: "Let $I = \\int e^x \\sin x dx$. Integration by parts twice gives $I = e^x\\sin x - e^x\\cos x - I \\Rightarrow 2I = e^x(\\sin x - \\cos x) \\Rightarrow I = \\frac{e^x}{2}(\\sin x - \\cos x) + C$"
-    },
-    {
-        text: "$\\int \\sin^{-1} x dx$ equals:",
-        options: ["$x\\sin^{-1}x + \\sqrt{1-x^2} + C$", "$x\\sin^{-1}x - \\sqrt{1-x^2} + C$", "$x\\sin^{-1}x + \\frac{1}{\\sqrt{1-x^2}} + C$", "$x\\sin^{-1}x - \\frac{1}{\\sqrt{1-x^2}} + C$"],
-        correct: 0,
-        explanation: "Integration by parts: $u=\\sin^{-1}x$, $dv=dx$, $du=\\frac{dx}{\\sqrt{1-x^2}}$, $v=x$, $\\int \\sin^{-1}x dx = x\\sin^{-1}x - \\int \\frac{x}{\\sqrt{1-x^2}} dx = x\\sin^{-1}x + \\sqrt{1-x^2} + C$"
-    },
-    {
-        text: "$\\int \\tan^{-1} x dx$ equals:",
-        options: ["$x\\tan^{-1}x - \\frac{1}{2}\\ln(1+x^2) + C$", "$x\\tan^{-1}x + \\frac{1}{2}\\ln(1+x^2) + C$", "$x\\tan^{-1}x - \\ln(1+x^2) + C$", "$x\\tan^{-1}x + \\ln(1+x^2) + C$"],
-        correct: 0,
-        explanation: "Integration by parts: $u=\\tan^{-1}x$, $dv=dx$, $du=\\frac{dx}{1+x^2}$, $v=x$, $\\int \\tan^{-1}x dx = x\\tan^{-1}x - \\int \\frac{x}{1+x^2} dx = x\\tan^{-1}x - \\frac{1}{2}\\ln(1+x^2) + C$"
-    },
-    {
-        text: "$\\int x \\ln x dx$ equals:",
-        options: ["$\\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$", "$\\frac{x^2}{2}\\ln x + \\frac{x^2}{4} + C$", "$x^2\\ln x - \\frac{x^2}{2} + C$", "$x^2\\ln x + \\frac{x^2}{2} + C$"],
-        correct: 0,
-        explanation: "$u=\\ln x$, $dv=x dx$, $du=\\frac{dx}{x}$, $v=\\frac{x^2}{2}$, $\\int x\\ln x dx = \\frac{x^2}{2}\\ln x - \\int \\frac{x}{2} dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$"
-    },
-    {
-        text: "$\\int e^{ax} \\cos bx dx$ equals:",
-        options: ["$\\frac{e^{ax}}{a^2+b^2}(a\\cos bx + b\\sin bx) + C$", "$\\frac{e^{ax}}{a^2+b^2}(a\\cos bx - b\\sin bx) + C$", "$\\frac{e^{ax}}{a^2+b^2}(b\\cos bx + a\\sin bx) + C$", "$\\frac{e^{ax}}{a^2+b^2}(b\\cos bx - a\\sin bx) + C$"],
-        correct: 0,
-        explanation: "Standard formula: $\\int e^{ax}\\cos bx dx = \\frac{e^{ax}}{a^2+b^2}(a\\cos bx + b\\sin bx) + C$"
-    },
-    {
-        text: "$\\int \\sqrt{x^2 + a^2} dx$ equals:",
-        options: ["$\\frac{x}{2}\\sqrt{x^2+a^2} + \\frac{a^2}{2}\\ln|x + \\sqrt{x^2+a^2}| + C$", "$\\frac{x}{2}\\sqrt{x^2+a^2} - \\frac{a^2}{2}\\ln|x + \\sqrt{x^2+a^2}| + C$", "$x\\sqrt{x^2+a^2} + a^2\\ln|x + \\sqrt{x^2+a^2}| + C$", "$x\\sqrt{x^2+a^2} - a^2\\ln|x + \\sqrt{x^2+a^2}| + C$"],
-        correct: 0,
-        explanation: "Standard integral formula"
-    },
-    
-    // Definite Integrals and Applications (Q91-100)
-    {
-        text: "$\\int_0^1 x^2 dx$ equals:",
-        options: ["$\\frac{1}{3}$", "$\\frac{1}{2}$", "$1$", "$\\frac{1}{4}$"],
-        correct: 0,
-        explanation: "$\\int_0^1 x^2 dx = [\\frac{x^3}{3}]_0^1 = \\frac{1}{3}$"
-    },
-    {
-        text: "$\\int_0^{\\pi/2} \\sin x dx$ equals:",
-        options: ["$1$", "$0$", "$2$", "$\\frac{1}{2}$"],
-        correct: 0,
-        explanation: "$\\int_0^{\\pi/2} \\sin x dx = [-\\cos x]_0^{\\pi/2} = 0 - (-1) = 1$"
-    },
-    {
-        text: "$\\int_0^1 \\frac{dx}{1+x^2}$ equals:",
-        options: ["$\\frac{\\pi}{4}$", "$\\frac{\\pi}{2}$", "$\\frac{\\pi}{3}$", "$\\frac{\\pi}{6}$"],
-        correct: 0,
-        explanation: "$\\int_0^1 \\frac{dx}{1+x^2} = [\\tan^{-1}x]_0^1 = \\frac{\\pi}{4} - 0 = \\frac{\\pi}{4}$"
-    },
-    {
-        text: "$\\int_{-1}^1 |x| dx$ equals:",
-        options: ["$1$", "$0$", "$2$", "$\\frac{1}{2}$"],
-        correct: 0,
-        explanation: "$\\int_{-1}^1 |x| dx = 2\\int_0^1 x dx = 2[\\frac{x^2}{2}]_0^1 = 1$"
-    },
-    {
-        text: "The area under the curve $y = x^2$ from $x=0$ to $x=2$ is:",
-        options: ["$\\frac{8}{3}$", "$\\frac{4}{3}$", "$\\frac{16}{3}$", "$\\frac{2}{3}$"],
-        correct: 0,
-        explanation: "Area = $\\int_0^2 x^2 dx = [\\frac{x^3}{3}]_0^2 = \\frac{8}{3}$"
-    },
-    {
-        text: "$\\int_0^{\\pi} \\sin^2 x dx$ equals:",
-        options: ["$\\frac{\\pi}{2}$", "$\\frac{\\pi}{4}$", "$\\pi$", "$0$"],
-        correct: 0,
-        explanation: "$\\int_0^{\\pi} \\sin^2 x dx = \\int_0^{\\pi} \\frac{1-\\cos 2x}{2} dx = [\\frac{x}{2} - \\frac{\\sin 2x}{4}]_0^{\\pi} = \\frac{\\pi}{2}$"
-    },
-    {
-        text: "$\\int_0^1 \\frac{dx}{\\sqrt{1-x^2}}$ equals:",
-        options: ["$\\frac{\\pi}{2}$", "$\\frac{\\pi}{4}$", "$\\frac{\\pi}{6}$", "$\\frac{\\pi}{3}$"],
-        correct: 0,
-        explanation: "$\\int_0^1 \\frac{dx}{\\sqrt{1-x^2}} = [\\sin^{-1}x]_0^1 = \\frac{\\pi}{2} - 0 = \\frac{\\pi}{2}$"
-    },
-    {
-        text: "$\\int_0^{\\pi/2} \\cos^2 x dx$ equals:",
-        options: ["$\\frac{\\pi}{4}$", "$\\frac{\\pi}{2}$", "$\\frac{\\pi}{8}$", "$\\frac{\\pi}{3}$"],
-        correct: 0,
-        explanation: "$\\int_0^{\\pi/2} \\cos^2 x dx = \\int_0^{\\pi/2} \\frac{1+\\cos 2x}{2} dx = [\\frac{x}{2} + \\frac{\\sin 2x}{4}]_0^{\\pi/2} = \\frac{\\pi}{4}$"
-    },
-    {
-        text: "$\\int_0^1 x e^x dx$ equals:",
-        options: ["$1$", "$e-1$", "$e-2$", "$2$"],
-        correct: 0,
-        explanation: "$\\int_0^1 x e^x dx = [x e^x - e^x]_0^1 = (e - e) - (0 - 1) = 1$"
-    },
-    {
-        text: "The area bounded by $y = \\sin x$, $x=0$, $x=\\pi$, and the x-axis is:",
-        options: ["$2$", "$1$", "$0$", "$\\pi$"],
-        correct: 0,
-        explanation: "Area = $\\int_0^{\\pi} \\sin x dx = [-\\cos x]_0^{\\pi} = -(-1) - (-1) = 1+1=2$"
-    }
-];
-        // Fill remaining questions to reach 100 by duplicating some patterns
-        // (Total currently: 35 + 30 + 35 = 100)
+        const rawQuestions = [
+            // ==================== CHAPTER 2: DIFFERENTIATION (Q1-50) ====================
+            // Basic Derivatives (1-10)
+            { text: "$\\frac{d}{dx}\\left(\\frac{1}{\\sqrt{x}}\\right)$ equals:", options: ["$\\frac{1}{2x^{3/2}}$", "$-\\frac{1}{2x^{3/2}}$", "$\\frac{1}{2\\sqrt{x}}$", "$-\\frac{1}{2\\sqrt{x}}$"], correct: 1, explanation: "$\\frac{d}{dx}(x^{-1/2}) = -\\frac{1}{2}x^{-3/2} = -\\frac{1}{2x^{3/2}}$" },
+            { text: "$\\frac{d}{dx}(\\sin^2 x)$ equals:", options: ["$\\sin 2x$", "$2\\sin x$", "$\\cos^2 x$", "$2\\sin x \\cos x$"], correct: 0, explanation: "$\\frac{d}{dx}(\\sin^2 x) = 2\\sin x \\cos x = \\sin 2x$" },
+            { text: "$\\frac{d}{dx}\\left(\\frac{x}{x+1}\\right)$ equals:", options: ["$\\frac{1}{(x+1)^2}$", "$-\\frac{1}{(x+1)^2}$", "$\\frac{x}{(x+1)^2}$", "$\\frac{1}{x+1}$"], correct: 0, explanation: "Using quotient rule: $\\frac{(x+1)(1) - x(1)}{(x+1)^2} = \\frac{1}{(x+1)^2}$" },
+            { text: "$\\frac{d}{dx}(\\ln x^2)$ equals:", options: ["$\\frac{2}{x}$", "$\\frac{1}{x^2}$", "$\\frac{2}{x^2}$", "$\\frac{1}{x}$"], correct: 0, explanation: "$\\frac{d}{dx}(2\\ln x) = \\frac{2}{x}$" },
+            { text: "$\\frac{d}{dx}(e^{3x})$ equals:", options: ["$3e^{3x}$", "$e^{3x}$", "$\\frac{1}{3}e^{3x}$", "$3e^{x}$"], correct: 0, explanation: "Chain rule: $\\frac{d}{dx}e^{3x} = e^{3x} \\cdot 3 = 3e^{3x}$" },
+            { text: "$\\frac{d}{dx}(\\tan 2x)$ equals:", options: ["$2\\sec^2 2x$", "$\\sec^2 2x$", "$2\\tan 2x \\sec 2x$", "$2\\sec^2 x$"], correct: 0, explanation: "$\\frac{d}{dx}(\\tan 2x) = \\sec^2(2x) \\cdot 2 = 2\\sec^2 2x$" },
+            { text: "$\\frac{d}{dx}\\left(\\frac{\\sin x}{\\cos x}\\right)$ equals:", options: ["$\\sec^2 x$", "$\\csc^2 x$", "$-\\csc^2 x$", "$-\\sec^2 x$"], correct: 0, explanation: "$\\frac{\\sin x}{\\cos x} = \\tan x$, derivative is $\\sec^2 x$" },
+            { text: "$\\frac{d}{dx}(x^x)$ equals:", options: ["$x^x(1 + \\ln x)$", "$x^{x-1}$", "$x^x \\ln x$", "$x^x$"], correct: 0, explanation: "Let $y = x^x$, $\\ln y = x \\ln x$, differentiate: $\\frac{1}{y}\\frac{dy}{dx} = \\ln x + 1$, so $\\frac{dy}{dx} = x^x(1+\\ln x)$" },
+            { text: "$\\frac{d}{dx}(\\sec^{-1} x)$ for $x > 1$ equals:", options: ["$\\frac{1}{x\\sqrt{x^2-1}}$", "$\\frac{1}{x^2\\sqrt{x^2-1}}$", "$\\frac{1}{|x|\\sqrt{x^2-1}}$", "$\\frac{1}{x^2-1}$"], correct: 2, explanation: "Standard formula: $\\frac{d}{dx}(\\sec^{-1}x) = \\frac{1}{|x|\\sqrt{x^2-1}}$" },
+            { text: "$\\frac{d}{dx}(\\sinh x)$ equals:", options: ["$\\cosh x$", "$\\sinh x$", "$\\cos x$", "$\\text{sech}^2 x$"], correct: 0, explanation: "Derivative of hyperbolic sine is hyperbolic cosine" },
+            
+            // Product, Quotient, Chain Rule (11-25)
+            { text: "$\\frac{d}{dx}[(x^2+1)(x^3-1)]$ at $x=1$ equals:", options: ["$6$", "$8$", "$10$", "$12$"], correct: 0, explanation: "$f'(x) = 2x(x^3-1) + (x^2+1)(3x^2)$. At $x=1$: $2(0) + (2)(3) = 6$" },
+            { text: "$\\frac{d}{dx}\\left(\\frac{x^2-1}{x^2+1}\\right)$ at $x=0$ equals:", options: ["$0$", "$1$", "$-1$", "$2$"], correct: 0, explanation: "Using quotient rule: $\\frac{(2x)(x^2+1) - (x^2-1)(2x)}{(x^2+1)^2} = \\frac{4x}{(x^2+1)^2}$, at $x=0$ gives $0$" },
+            { text: "If $y = \\sin(\\cos x)$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\cos(\\cos x) \\sin x$", "$\\cos(\\cos x) \\sin x$", "$-\\sin(\\cos x) \\cos x$", "$\\sin(\\cos x) \\cos x$"], correct: 0, explanation: "Chain rule: $\\frac{dy}{dx} = \\cos(\\cos x) \\cdot (-\\sin x) = -\\cos(\\cos x) \\sin x$" },
+            { text: "$\\frac{d}{dx}\\left[\\ln\\left(\\frac{1+x}{1-x}\\right)\\right]$ equals:", options: ["$\\frac{2}{1-x^2}$", "$\\frac{1}{1-x^2}$", "$\\frac{2x}{1-x^2}$", "$\\frac{1}{1+x^2}$"], correct: 0, explanation: "$\\frac{d}{dx}[\\ln(1+x) - \\ln(1-x)] = \\frac{1}{1+x} + \\frac{1}{1-x} = \\frac{2}{1-x^2}$" },
+            { text: "$\\frac{d}{dx}(x^2 \\sin x)$ equals:", options: ["$2x \\sin x + x^2 \\cos x$", "$2x \\sin x - x^2 \\cos x$", "$2x \\cos x + x^2 \\sin x$", "$2x \\cos x - x^2 \\sin x$"], correct: 0, explanation: "Product rule: $\\frac{d}{dx}(x^2)\\sin x + x^2\\frac{d}{dx}(\\sin x) = 2x\\sin x + x^2\\cos x$" },
+            { text: "If $y = \\sqrt{1 + \\sqrt{x}}$, then $\\frac{dy}{dx}$ equals:", options: ["$\\frac{1}{4\\sqrt{x}\\sqrt{1+\\sqrt{x}}}$", "$\\frac{1}{2\\sqrt{x}\\sqrt{1+\\sqrt{x}}}$", "$\\frac{1}{4\\sqrt{1+\\sqrt{x}}}$", "$\\frac{1}{2\\sqrt{1+\\sqrt{x}}}$"], correct: 0, explanation: "Chain rule: $\\frac{dy}{dx} = \\frac{1}{2\\sqrt{1+\\sqrt{x}}} \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{1}{4\\sqrt{x}\\sqrt{1+\\sqrt{x}}}$" },
+            { text: "$\\frac{d}{dx}\\left(\\frac{\\cos x}{1+\\sin x}\\right)$ equals:", options: ["$-\\frac{1}{1+\\sin x}$", "$\\frac{1}{1+\\sin x}$", "$\\frac{\\cos x}{(1+\\sin x)^2}$", "$-\\frac{\\cos x}{(1+\\sin x)^2}$"], correct: 0, explanation: "Using quotient rule: $\\frac{(-\\sin x)(1+\\sin x) - \\cos x(\\cos x)}{(1+\\sin x)^2} = \\frac{-\\sin x - \\sin^2 x - \\cos^2 x}{(1+\\sin x)^2} = \\frac{-(1+\\sin x)}{(1+\\sin x)^2} = -\\frac{1}{1+\\sin x}$" },
+            { text: "If $y = e^{x^2}$, then $\\frac{dy}{dx}$ equals:", options: ["$2x e^{x^2}$", "$x^2 e^{x^2-1}$", "$e^{x^2}$", "$2x e^{x}$"], correct: 0, explanation: "Chain rule: $\\frac{d}{dx}e^{x^2} = e^{x^2} \\cdot 2x = 2x e^{x^2}$" },
+            { text: "$\\frac{d}{dx}(\\tan^{-1} \\sqrt{x})$ equals:", options: ["$\\frac{1}{2\\sqrt{x}(1+x)}$", "$\\frac{1}{2\\sqrt{x}(1+x^2)}$", "$\\frac{1}{2\\sqrt{x}(1-x)}$", "$\\frac{1}{2\\sqrt{x}(1-x^2)}$"], correct: 0, explanation: "$\\frac{d}{dx}\\tan^{-1}\\sqrt{x} = \\frac{1}{1+x} \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{1}{2\\sqrt{x}(1+x)}$" },
+            { text: "If $y = \\frac{\\ln x}{x}$, then $\\frac{dy}{dx}$ at $x=e$ equals:", options: ["$0$", "$1$", "$\\frac{1}{e^2}$", "$\\frac{1}{e}$"], correct: 0, explanation: "$\\frac{dy}{dx} = \\frac{1 - \\ln x}{x^2}$, at $x=e$: $\\frac{1-1}{e^2} = 0$" },
+            { text: "$\\frac{d}{dx}\\left(\\frac{e^x}{e^x+1}\\right)$ equals:", options: ["$\\frac{e^x}{(e^x+1)^2}$", "$\\frac{1}{(e^x+1)^2}$", "$\\frac{e^x}{e^x+1}$", "$\\frac{1}{e^x+1}$"], correct: 0, explanation: "Quotient rule: $\\frac{e^x(e^x+1) - e^x(e^x)}{(e^x+1)^2} = \\frac{e^x}{(e^x+1)^2}$" },
+            { text: "If $y = \\cos(\\ln x)$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\frac{\\sin(\\ln x)}{x}$", "$\\frac{\\sin(\\ln x)}{x}$", "$-\\frac{\\cos(\\ln x)}{x}$", "$\\frac{\\cos(\\ln x)}{x}$"], correct: 0, explanation: "Chain rule: $\\frac{dy}{dx} = -\\sin(\\ln x) \\cdot \\frac{1}{x} = -\\frac{\\sin(\\ln x)}{x}$" },
+            { text: "$\\frac{d}{dx}(x^3 \\ln x)$ equals:", options: ["$x^2(3\\ln x + 1)$", "$x^2(3\\ln x - 1)$", "$3x^2 \\ln x$", "$x^2 \\ln x + 3x^2$"], correct: 0, explanation: "Product rule: $3x^2\\ln x + x^3 \\cdot \\frac{1}{x} = 3x^2\\ln x + x^2 = x^2(3\\ln x + 1)$" },
+            { text: "If $y = \\sec^{-1}(x^2)$, then $\\frac{dy}{dx}$ equals:", options: ["$\\frac{2}{x\\sqrt{x^4-1}}$", "$\\frac{1}{x\\sqrt{x^4-1}}$", "$\\frac{2}{x^2\\sqrt{x^4-1}}$", "$\\frac{1}{x^2\\sqrt{x^4-1}}$"], correct: 0, explanation: "$\\frac{dy}{dx} = \\frac{1}{|x^2|\\sqrt{x^4-1}} \\cdot 2x = \\frac{2}{x\\sqrt{x^4-1}}$ for $x>0$" },
+            { text: "$\\frac{d}{dx}[\\ln(\\ln x)]$ equals:", options: ["$\\frac{1}{x \\ln x}$", "$\\frac{1}{\\ln x}$", "$\\frac{1}{x}$", "$\\frac{1}{x \\ln x^2}$"], correct: 0, explanation: "Chain rule: $\\frac{1}{\\ln x} \\cdot \\frac{1}{x} = \\frac{1}{x \\ln x}$" },
+            
+            // Implicit and Parametric Differentiation (26-40)
+            { text: "If $x^2 + y^2 = 25$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\frac{x}{y}$", "$\\frac{x}{y}$", "$-\\frac{y}{x}$", "$\\frac{y}{x}$"], correct: 0, explanation: "$2x + 2y\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x}{y}$" },
+            { text: "If $xy + \\sin y = 0$, then $\\frac{dy}{dx}$ at $(0,0)$ equals:", options: ["$0$", "$1$", "$-1$", "Does not exist"], correct: 0, explanation: "$y + x\\frac{dy}{dx} + \\cos y \\frac{dy}{dx} = 0$. At $(0,0)$: $0 + 0 + 1 \\cdot \\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = 0$" },
+            { text: "If $x = a\\cos\\theta$, $y = a\\sin\\theta$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\cot\\theta$", "$\\tan\\theta$", "$-\\tan\\theta$", "$\\cot\\theta$"], correct: 0, explanation: "$\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{a\\cos\\theta}{-a\\sin\\theta} = -\\cot\\theta$" },
+            { text: "If $x^3 + y^3 = 3axy$, then $\\frac{dy}{dx}$ equals:", options: ["$\\frac{ay - x^2}{y^2 - ax}$", "$\\frac{x^2 - ay}{y^2 - ax}$", "$\\frac{ay - x^2}{ax - y^2}$", "$\\frac{x^2 - ay}{ax - y^2}$"], correct: 0, explanation: "$3x^2 + 3y^2\\frac{dy}{dx} = 3ay + 3ax\\frac{dy}{dx} \\Rightarrow (y^2 - ax)\\frac{dy}{dx} = ay - x^2 \\Rightarrow \\frac{dy}{dx} = \\frac{ay - x^2}{y^2 - ax}$" },
+            { text: "If $x = a(t - \\sin t)$, $y = a(1 - \\cos t)$, then $\\frac{dy}{dx}$ equals:", options: ["$\\cot\\frac{t}{2}$", "$\\tan\\frac{t}{2}$", "$\\tan t$", "$\\cot t$"], correct: 0, explanation: "$\\frac{dx}{dt} = a(1-\\cos t)$, $\\frac{dy}{dt} = a\\sin t$, $\\frac{dy}{dx} = \\frac{\\sin t}{1-\\cos t} = \\cot\\frac{t}{2}$" },
+            { text: "If $y^2 = 4ax$, then $\\frac{d^2y}{dx^2}$ equals:", options: ["$-\\frac{2a}{y^3}$", "$\\frac{2a}{y^3}$", "$-\\frac{4a^2}{y^3}$", "$\\frac{4a^2}{y^3}$"], correct: 2, explanation: "$\\frac{dy}{dx} = \\frac{2a}{y}$, $\\frac{d^2y}{dx^2} = -\\frac{2a}{y^2} \\cdot \\frac{dy}{dx} = -\\frac{2a}{y^2} \\cdot \\frac{2a}{y} = -\\frac{4a^2}{y^3}$" },
+            { text: "If $x = a\\cos^3\\theta$, $y = a\\sin^3\\theta$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\tan\\theta$", "$-\\cot\\theta$", "$\\tan\\theta$", "$\\cot\\theta$"], correct: 0, explanation: "$\\frac{dx}{d\\theta} = -3a\\cos^2\\theta \\sin\\theta$, $\\frac{dy}{d\\theta} = 3a\\sin^2\\theta \\cos\\theta$, $\\frac{dy}{dx} = \\frac{3a\\sin^2\\theta \\cos\\theta}{-3a\\cos^2\\theta \\sin\\theta} = -\\tan\\theta$" },
+            { text: "If $y = x + \\frac{1}{x}$, then $\\frac{dy}{dx}$ at $x=1$ equals:", options: ["$0$", "$1$", "$2$", "$-1$"], correct: 0, explanation: "$\\frac{dy}{dx} = 1 - \\frac{1}{x^2}$, at $x=1$: $1-1=0$" },
+            { text: "If $\\sqrt{x} + \\sqrt{y} = \\sqrt{a}$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\sqrt{\\frac{y}{x}}$", "$-\\sqrt{\\frac{x}{y}}$", "$\\sqrt{\\frac{y}{x}}$", "$\\sqrt{\\frac{x}{y}}$"], correct: 0, explanation: "$\\frac{1}{2\\sqrt{x}} + \\frac{1}{2\\sqrt{y}}\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{\\sqrt{y}}{\\sqrt{x}} = -\\sqrt{\\frac{y}{x}}$" },
+            { text: "If $x = \\frac{1-t^2}{1+t^2}$, $y = \\frac{2t}{1+t^2}$, then $\\frac{dy}{dx}$ equals:", options: ["$-\\frac{x}{y}$", "$-\\frac{y}{x}$", "$\\frac{x}{y}$", "$\\frac{y}{x}$"], correct: 0, explanation: "These are parametric equations of a circle. $x^2 + y^2 = 1$. Differentiating: $2x + 2y\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{x}{y}$" },
+            { text: "If $x^y = y^x$, then $\\frac{dy}{dx}$ equals:", options: ["$\\frac{y(y - x\\ln y)}{x(x - y\\ln x)}$", "$\\frac{y(x\\ln y - y)}{x(y\\ln x - x)}$", "$\\frac{y(y - x\\ln x)}{x(x - y\\ln y)}$", "$\\frac{y(x\\ln x - y)}{x(y\\ln y - x)}$"], correct: 0, explanation: "Taking ln: $y\\ln x = x\\ln y$. Differentiate: $\\frac{dy}{dx}\\ln x + \\frac{y}{x} = \\ln y + \\frac{x}{y}\\frac{dy}{dx}$" },
+            { text: "If $x = \\sec\\theta$, $y = \\tan\\theta$, then $\\frac{dy}{dx}$ equals:", options: ["$\\csc\\theta$", "$\\sin\\theta$", "$\\cos\\theta$", "$\\sec\\theta$"], correct: 0, explanation: "$\\frac{dx}{d\\theta} = \\sec\\theta\\tan\\theta$, $\\frac{dy}{d\\theta} = \\sec^2\\theta$, $\\frac{dy}{dx} = \\frac{\\sec^2\\theta}{\\sec\\theta\\tan\\theta} = \\csc\\theta$" },
+            { text: "If $x^2y + xy^2 = 6$, then $\\frac{dy}{dx}$ at $(1,2)$ equals:", options: ["$-\\frac{8}{5}$", "$-\\frac{5}{8}$", "$\\frac{8}{5}$", "$\\frac{5}{8}$"], correct: 0, explanation: "$2xy + x^2\\frac{dy}{dx} + y^2 + 2xy\\frac{dy}{dx} = 0$. At $(1,2)$: $4 + \\frac{dy}{dx} + 4 + 4\\frac{dy}{dx} = 0 \\Rightarrow 8 + 5\\frac{dy}{dx} = 0 \\Rightarrow \\frac{dy}{dx} = -\\frac{8}{5}$" },
+            { text: "If $x = a(\\theta + \\sin\\theta)$, $y = a(1 - \\cos\\theta)$, then $\\frac{dy}{dx}$ equals:", options: ["$\\tan\\frac{\\theta}{2}$", "$\\cot\\frac{\\theta}{2}$", "$\\sin\\frac{\\theta}{2}$", "$\\cos\\frac{\\theta}{2}$"], correct: 0, explanation: "$\\frac{dx}{d\\theta} = a(1+\\cos\\theta)$, $\\frac{dy}{d\\theta} = a\\sin\\theta$, $\\frac{dy}{dx} = \\frac{\\sin\\theta}{1+\\cos\\theta} = \\tan\\frac{\\theta}{2}$" },
+            
+            // Higher Order Derivatives and Applications (41-50)
+            { text: "If $y = e^{ax}$, then $\\frac{d^ny}{dx^n}$ equals:", options: ["$a^n e^{ax}$", "$a^n e^{ax} \\ln a$", "$n! a^n e^{ax}$", "$a^n e^{ax} (n!)$"], correct: 0, explanation: "Each derivative multiplies by $a$, so $n$th derivative is $a^n e^{ax}$" },
+            { text: "If $y = \\sin x$, then $y^{(10)}(x)$ equals:", options: ["$-\\sin x$", "$\\sin x$", "$-\\cos x$", "$\\cos x$"], correct: 0, explanation: "Derivatives cycle every 4: $\\sin x \\to \\cos x \\to -\\sin x \\to -\\cos x \\to \\sin x$. 10 mod 4 = 2, so $y^{(10)} = -\\sin x$" },
+            { text: "If $y = x^n$, then $\\frac{d^ny}{dx^n}$ equals:", options: ["$n!$", "$1$", "$0$", "$x$"], correct: 0, explanation: "$n$th derivative of $x^n$ is $n!$" },
+            { text: "If $y = e^x \\sin x$, then $\\frac{d^2y}{dx^2}$ equals:", options: ["$2e^x \\cos x$", "$2e^x \\sin x$", "$2e^x (\\sin x + \\cos x)$", "$2e^x (\\cos x - \\sin x)$"], correct: 0, explanation: "$y' = e^x(\\sin x + \\cos x)$, $y'' = e^x(\\sin x + \\cos x) + e^x(\\cos x - \\sin x) = 2e^x\\cos x$" },
+            { text: "The slope of the tangent to the curve $y = x^3 - 3x^2 + 4$ at $x=1$ is:", options: ["$-3$", "$3$", "$0$", "$1$"], correct: 0, explanation: "$y' = 3x^2 - 6x$, at $x=1$: $3 - 6 = -3$" },
+            { text: "The equation of the tangent to the curve $y = x^2$ at $(1,1)$ is:", options: ["$2x - y - 1 = 0$", "$2x - y + 1 = 0$", "$x - 2y - 1 = 0$", "$x - 2y + 1 = 0$"], correct: 0, explanation: "Slope $= 2$, equation: $y-1 = 2(x-1) \\Rightarrow 2x - y - 1 = 0$" },
+            { text: "The function $f(x) = x^3 - 3x^2 + 3x$ is:", options: ["Increasing for all $x$", "Decreasing for all $x$", "Increasing for $x > 1$ only", "Decreasing for $x < 1$ only"], correct: 0, explanation: "$f'(x) = 3(x-1)^2 \\ge 0$ for all $x$" },
+            { text: "The relative maximum of $f(x) = x^3 - 6x^2 + 9x$ occurs at:", options: ["$x = 1$", "$x = 3$", "$x = 0$", "$x = 2$"], correct: 0, explanation: "$f'(x) = 3(x-1)(x-3)$. $f''(1) = -6 < 0$, so maximum at $x=1$" },
+            { text: "The minimum value of $f(x) = x^2 + \\frac{1}{x}$ for $x > 0$ is:", options: ["$\\frac{3}{2}\\sqrt[3]{4}$", "$\\frac{3\\sqrt[3]{2}}{2}$", "$\\frac{3}{2}\\sqrt[3]{2}$", "$\\frac{3\\sqrt[3]{4}}{2}$"], correct: 0, explanation: "$f'(x) = 2x - 1/x^2 = 0 \\Rightarrow x = 1/\\sqrt[3]{2}$, then $f(x) = 3/2^{2/3} = \\frac{3}{2}\\sqrt[3]{4}$" },
+            { text: "If $f(x) = \\frac{x}{x^2+1}$, then the maximum value of $f(x)$ is:", options: ["$\\frac{1}{2}$", "$1$", "$2$", "$0$"], correct: 0, explanation: "$f'(x) = \\frac{1-x^2}{(x^2+1)^2} = 0 \\Rightarrow x = \\pm 1$, $f(1) = 1/2$" },
+            
+            // ==================== CHAPTER 3: INTEGRATION (Q51-100) ====================
+            // Basic Integration (51-65)
+            { text: "$\\int x^5 dx$ equals:", options: ["$\\frac{x^6}{6} + C$", "$\\frac{x^5}{5} + C$", "$\\frac{x^4}{4} + C$", "$5x^4 + C$"], correct: 0, explanation: "$\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$" },
+            { text: "$\\int \\frac{1}{x} dx$ equals:", options: ["$\\ln |x| + C$", "$\\frac{1}{x^2} + C$", "$\\ln x + C$", "$e^x + C$"], correct: 0, explanation: "$\\int \\frac{1}{x} dx = \\ln |x| + C$" },
+            { text: "$\\int \\sin x dx$ equals:", options: ["$-\\cos x + C$", "$\\cos x + C$", "$\\sin x + C$", "$-\\sin x + C$"], correct: 0, explanation: "$\\int \\sin x dx = -\\cos x + C$" },
+            { text: "$\\int e^{3x} dx$ equals:", options: ["$\\frac{e^{3x}}{3} + C$", "$3e^{3x} + C$", "$e^{3x} + C$", "$\\frac{e^{3x}}{3x} + C$"], correct: 0, explanation: "$\\int e^{ax} dx = \\frac{e^{ax}}{a} + C$" },
+            { text: "$\\int \\sec^2 x dx$ equals:", options: ["$\\tan x + C$", "$\\sec x + C$", "$-\\cot x + C$", "$\\csc x + C$"], correct: 0, explanation: "$\\int \\sec^2 x dx = \\tan x + C$" },
+            { text: "$\\int \\frac{dx}{\\sqrt{1-x^2}}$ equals:", options: ["$\\sin^{-1}x + C$", "$\\cos^{-1}x + C$", "$\\tan^{-1}x + C$", "$\\sec^{-1}x + C$"], correct: 0, explanation: "$\\int \\frac{dx}{\\sqrt{1-x^2}} = \\sin^{-1}x + C$" },
+            { text: "$\\int \\frac{dx}{1+x^2}$ equals:", options: ["$\\tan^{-1}x + C$", "$\\sin^{-1}x + C$", "$\\ln(1+x^2) + C$", "$\\frac{1}{1+x^2} + C$"], correct: 0, explanation: "$\\int \\frac{dx}{1+x^2} = \\tan^{-1}x + C$" },
+            { text: "$\\int \\cos 2x dx$ equals:", options: ["$\\frac{\\sin 2x}{2} + C$", "$\\sin 2x + C$", "$-\\frac{\\sin 2x}{2} + C$", "$-\\sin 2x + C$"], correct: 0, explanation: "$\\int \\cos ax dx = \\frac{\\sin ax}{a} + C$" },
+            { text: "$\\int (x^2 + 2x + 1) dx$ equals:", options: ["$\\frac{x^3}{3} + x^2 + x + C$", "$\\frac{x^3}{3} + 2x^2 + x + C$", "$x^3 + x^2 + x + C$", "$\\frac{x^3}{3} + x^2 + 2x + C$"], correct: 0, explanation: "Integrate term by term" },
+            { text: "$\\int \\frac{dx}{x^2 + a^2}$ equals:", options: ["$\\frac{1}{a}\\tan^{-1}\\frac{x}{a} + C$", "$\\tan^{-1}\\frac{x}{a} + C$", "$\\frac{1}{a}\\sin^{-1}\\frac{x}{a} + C$", "$\\ln(x^2 + a^2) + C$"], correct: 0, explanation: "Standard formula" },
+            { text: "$\\int \\csc^2 x dx$ equals:", options: ["$-\\cot x + C$", "$\\cot x + C$", "$-\\tan x + C$", "$\\tan x + C$"], correct: 0, explanation: "$\\int \\csc^2 x dx = -\\cot x + C$" },
+            { text: "$\\int \\sec x \\tan x dx$ equals:", options: ["$\\sec x + C$", "$\\tan x + C$", "$-\\sec x + C$", "$-\\tan x + C$"], correct: 0, explanation: "$\\int \\sec x \\tan x dx = \\sec x + C$" },
+            { text: "$\\int \\frac{dx}{x^2 - a^2}$ for $x > a$ equals:", options: ["$\\frac{1}{2a}\\ln\\left|\\frac{x-a}{x+a}\\right| + C$", "$\\frac{1}{2a}\\ln\\left|\\frac{x+a}{x-a}\\right| + C$", "$\\frac{1}{a}\\ln\\left|\\frac{x-a}{x+a}\\right| + C$", "$\\frac{1}{a}\\ln\\left|\\frac{x+a}{x-a}\\right| + C$"], correct: 0, explanation: "Standard formula" },
+            { text: "$\\int \\sinh x dx$ equals:", options: ["$\\cosh x + C$", "$\\sinh x + C$", "$-\\cosh x + C$", "$-\\sinh x + C$"], correct: 0, explanation: "$\\int \\sinh x dx = \\cosh x + C$" },
+            { text: "$\\int \\frac{dx}{\\sqrt{x^2 + a^2}}$ equals:", options: ["$\\ln|x + \\sqrt{x^2 + a^2}| + C$", "$\\sinh^{-1}\\frac{x}{a} + C$", "$\\frac{1}{a}\\tan^{-1}\\frac{x}{a} + C$", "Both A and B"], correct: 3, explanation: "Both forms are equivalent" },
+            
+            // Substitution Method (66-80)
+            { text: "$\\int \\frac{2x}{\\sqrt{x^2+1}} dx$ equals:", options: ["$2\\sqrt{x^2+1} + C$", "$\\sqrt{x^2+1} + C$", "$\\frac{1}{\\sqrt{x^2+1}} + C$", "$\\ln(x^2+1) + C$"], correct: 0, explanation: "Let $u = x^2+1$, $du = 2x dx$, $\\int u^{-1/2} du = 2u^{1/2} + C$" },
+            { text: "$\\int \\frac{e^x}{e^x+1} dx$ equals:", options: ["$\\ln(e^x+1) + C$", "$e^x+1 + C$", "$\\ln(e^x) + C$", "$\\frac{e^x}{e^x+1} + C$"], correct: 0, explanation: "Let $u = e^x+1$, $du = e^x dx$" },
+            { text: "$\\int \\frac{\\sin x}{\\cos x} dx$ equals:", options: ["$-\\ln|\\cos x| + C$", "$\\ln|\\cos x| + C$", "$\\ln|\\sin x| + C$", "$-\\ln|\\sin x| + C$"], correct: 0, explanation: "$\\int \\tan x dx = -\\ln|\\cos x| + C$" },
+            { text: "$\\int \\frac{x}{x^2+1} dx$ equals:", options: ["$\\frac{1}{2}\\ln(x^2+1) + C$", "$\\ln(x^2+1) + C$", "$\\tan^{-1}x + C$", "$\\frac{1}{2}\\tan^{-1}x + C$"], correct: 0, explanation: "Let $u = x^2+1$, $du = 2x dx$" },
+            { text: "$\\int \\cos^3 x \\sin x dx$ equals:", options: ["$-\\frac{\\cos^4 x}{4} + C$", "$\\frac{\\cos^4 x}{4} + C$", "$-\\frac{\\sin^4 x}{4} + C$", "$\\frac{\\sin^4 x}{4} + C$"], correct: 0, explanation: "Let $u = \\cos x$, $du = -\\sin x dx$" },
+            { text: "$\\int \\frac{dx}{x \\ln x}$ equals:", options: ["$\\ln|\\ln x| + C$", "$\\frac{1}{\\ln x} + C$", "$\\ln x + C$", "$\\frac{1}{x \\ln x} + C$"], correct: 0, explanation: "Let $u = \\ln x$, $du = dx/x$" },
+            { text: "$\\int \\frac{dx}{\\sqrt{x}(1+\\sqrt{x})}$ equals:", options: ["$2\\ln(1+\\sqrt{x}) + C$", "$\\ln(1+\\sqrt{x}) + C$", "$\\frac{1}{2}\\ln(1+\\sqrt{x}) + C$", "$\\frac{1}{\\sqrt{x}} + C$"], correct: 0, explanation: "Let $u = 1+\\sqrt{x}$, $du = dx/(2\\sqrt{x})$" },
+            { text: "$\\int \\frac{\\sin x}{\\cos^2 x} dx$ equals:", options: ["$\\sec x + C$", "$-\\sec x + C$", "$\\tan x + C$", "$-\\tan x + C$"], correct: 0, explanation: "$\\int \\sec x \\tan x dx = \\sec x + C$" },
+            { text: "$\\int \\frac{dx}{\\sqrt{4-x^2}}$ equals:", options: ["$\\sin^{-1}\\frac{x}{2} + C$", "$\\frac{1}{2}\\sin^{-1}\\frac{x}{2} + C$", "$\\cos^{-1}\\frac{x}{2} + C$", "$\\frac{1}{2}\\cos^{-1}\\frac{x}{2} + C$"], correct: 0, explanation: "$\\int \\frac{dx}{\\sqrt{a^2-x^2}} = \\sin^{-1}\\frac{x}{a} + C$" },
+            { text: "$\\int \\frac{dx}{\\sqrt{x^2+9}}$ equals:", options: ["$\\ln|x + \\sqrt{x^2+9}| + C$", "$\\frac{1}{3}\\ln|x + \\sqrt{x^2+9}| + C$", "$\\sinh^{-1}\\frac{x}{3} + C$", "Both A and C"], correct: 3, explanation: "Both forms are correct" },
+            { text: "$\\int \\frac{dx}{x^2+4x+13}$ equals:", options: ["$\\frac{1}{3}\\tan^{-1}\\frac{x+2}{3} + C$", "$\\tan^{-1}\\frac{x+2}{3} + C$", "$\\frac{1}{3}\\tan^{-1}\\frac{x-2}{3} + C$", "$\\tan^{-1}\\frac{x-2}{3} + C$"], correct: 0, explanation: "Complete square: $(x+2)^2 + 9$" },
+            { text: "$\\int \\sqrt{1 - \\sin 2x} dx$ for $0 < x < \\frac{\\pi}{4}$ equals:", options: ["$\\sin x - \\cos x + C$", "$\\cos x - \\sin x + C$", "$\\sin x + \\cos x + C$", "$-\\sin x - \\cos x + C$"], correct: 0, explanation: "$1 - \\sin 2x = (\\sin x - \\cos x)^2$" },
+            { text: "$\\int \\frac{dx}{e^x + e^{-x}}$ equals:", options: ["$\\tan^{-1}(e^x) + C$", "$\\ln(e^x + e^{-x}) + C$", "$\\frac{1}{2}\\ln(e^{2x}+1) + C$", "$\\tanh^{-1}(e^x) + C$"], correct: 0, explanation: "Multiply numerator and denominator by $e^x$" },
+            { text: "$\\int \\frac{\\sin x}{\\sin x + \\cos x} dx$ equals:", options: ["$\\frac{1}{2}(x - \\ln|\\sin x + \\cos x|) + C$", "$\\frac{1}{2}(x + \\ln|\\sin x + \\cos x|) + C$", "$\\frac{1}{2}(\\ln|\\sin x + \\cos x| - x) + C$", "$\\frac{1}{2}(\\sin x - \\cos x) + C$"], correct: 0, explanation: "Use $\\sin x = \\frac{1}{2}[(\\sin x+\\cos x) + (\\sin x-\\cos x)]$" },
+            
+            // Integration by Parts (81-90)
+            { text: "$\\int x e^x dx$ equals:", options: ["$x e^x - e^x + C$", "$x e^x + e^x + C$", "$e^x - x e^x + C$", "$\\frac{x^2}{2}e^x + C$"], correct: 0, explanation: "Integration by parts: $u=x$, $dv=e^x dx$" },
+            { text: "$\\int \\ln x dx$ equals:", options: ["$x\\ln x - x + C$", "$x\\ln x + x + C$", "$\\frac{1}{x} + C$", "$\\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$"], correct: 0, explanation: "Integration by parts: $u=\\ln x$, $dv=dx$" },
+            { text: "$\\int x \\sin x dx$ equals:", options: ["$-x\\cos x + \\sin x + C$", "$x\\cos x - \\sin x + C$", "$-x\\cos x - \\sin x + C$", "$x\\cos x + \\sin x + C$"], correct: 0, explanation: "$u=x$, $dv=\\sin x dx$" },
+            { text: "$\\int x^2 e^x dx$ equals:", options: ["$e^x(x^2 - 2x + 2) + C$", "$e^x(x^2 + 2x + 2) + C$", "$e^x(x^2 - 2x - 2) + C$", "$e^x(x^2 + 2x - 2) + C$"], correct: 0, explanation: "Apply integration by parts twice" },
+            { text: "$\\int e^x \\sin x dx$ equals:", options: ["$\\frac{e^x}{2}(\\sin x - \\cos x) + C$", "$\\frac{e^x}{2}(\\sin x + \\cos x) + C$", "$\\frac{e^x}{2}(\\cos x - \\sin x) + C$", "$e^x(\\sin x - \\cos x) + C$"], correct: 0, explanation: "Integrate by parts twice and solve for I" },
+            { text: "$\\int \\sin^{-1} x dx$ equals:", options: ["$x\\sin^{-1}x + \\sqrt{1-x^2} + C$", "$x\\sin^{-1}x - \\sqrt{1-x^2} + C$", "$x\\sin^{-1}x + \\frac{1}{\\sqrt{1-x^2}} + C$", "$x\\sin^{-1}x - \\frac{1}{\\sqrt{1-x^2}} + C$"], correct: 0, explanation: "$u=\\sin^{-1}x$, $dv=dx$" },
+            { text: "$\\int \\tan^{-1} x dx$ equals:", options: ["$x\\tan^{-1}x - \\frac{1}{2}\\ln(1+x^2) + C$", "$x\\tan^{-1}x + \\frac{1}{2}\\ln(1+x^2) + C$", "$x\\tan^{-1}x - \\ln(1+x^2) + C$", "$x\\tan^{-1}x + \\ln(1+x^2) + C$"], correct: 0, explanation: "$u=\\tan^{-1}x$, $dv=dx$" },
+            { text: "$\\int x \\ln x dx$ equals:", options: ["$\\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$", "$\\frac{x^2}{2}\\ln x + \\frac{x^2}{4} + C$", "$x^2\\ln x - \\frac{x^2}{2} + C$", "$x^2\\ln x + \\frac{x^2}{2} + C$"], correct: 0, explanation: "$u=\\ln x$, $dv=x dx$" },
+            { text: "$\\int e^{ax} \\cos bx dx$ equals:", options: ["$\\frac{e^{ax}}{a^2+b^2}(a\\cos bx + b\\sin bx) + C$", "$\\frac{e^{ax}}{a^2+b^2}(a\\cos bx - b\\sin bx) + C$", "$\\frac{e^{ax}}{a^2+b^2}(b\\cos bx + a\\sin bx) + C$", "$\\frac{e^{ax}}{a^2+b^2}(b\\cos bx - a\\sin bx) + C$"], correct: 0, explanation: "Standard formula" },
+            { text: "$\\int \\sqrt{x^2 + a^2} dx$ equals:", options: ["$\\frac{x}{2}\\sqrt{x^2+a^2} + \\frac{a^2}{2}\\ln|x + \\sqrt{x^2+a^2}| + C$", "$\\frac{x}{2}\\sqrt{x^2+a^2} - \\frac{a^2}{2}\\ln|x + \\sqrt{x^2+a^2}| + C$", "$x\\sqrt{x^2+a^2} + a^2\\ln|x + \\sqrt{x^2+a^2}| + C$", "$x\\sqrt{x^2+a^2} - a^2\\ln|x + \\sqrt{x^2+a^2}| + C$"], correct: 0, explanation: "Standard integral formula" },
+            
+            // Definite Integrals and Applications (91-100)
+            { text: "$\\int_0^1 x^2 dx$ equals:", options: ["$\\frac{1}{3}$", "$\\frac{1}{2}$", "$1$", "$\\frac{1}{4}$"], correct: 0, explanation: "$[x^3/3]_0^1 = 1/3$" },
+            { text: "$\\int_0^{\\pi/2} \\sin x dx$ equals:", options: ["$1$", "$0$", "$2$", "$\\frac{1}{2}$"], correct: 0, explanation: "$[-\\cos x]_0^{\\pi/2} = 0 - (-1) = 1$" },
+            { text: "$\\int_0^1 \\frac{dx}{1+x^2}$ equals:", options: ["$\\frac{\\pi}{4}$", "$\\frac{\\pi}{2}$", "$\\frac{\\pi}{3}$", "$\\frac{\\pi}{6}$"], correct: 0, explanation: "$[\\tan^{-1}x]_0^1 = \\pi/4$" },
+            { text: "$\\int_{-1}^1 |x| dx$ equals:", options: ["$1$", "$0$", "$2$", "$\\frac{1}{2}$"], correct: 0, explanation: "$2\\int_0^1 x dx = 2[1/2] = 1$" },
+            { text: "The area under the curve $y = x^2$ from $x=0$ to $x=2$ is:", options: ["$\\frac{8}{3}$", "$\\frac{4}{3}$", "$\\frac{16}{3}$", "$\\frac{2}{3}$"], correct: 0, explanation: "$\\int_0^2 x^2 dx = [x^3/3]_0^2 = 8/3$" },
+            { text: "$\\int_0^{\\pi} \\sin^2 x dx$ equals:", options: ["$\\frac{\\pi}{2}$", "$\\frac{\\pi}{4}$", "$\\pi$", "$0$"], correct: 0, explanation: "$\\int_0^{\\pi} \\frac{1-\\cos2x}{2} dx = [x/2 - \\sin2x/4]_0^{\\pi} = \\pi/2$" },
+            { text: "$\\int_0^1 \\frac{dx}{\\sqrt{1-x^2}}$ equals:", options: ["$\\frac{\\pi}{2}$", "$\\frac{\\pi}{4}$", "$\\frac{\\pi}{6}$", "$\\frac{\\pi}{3}$"], correct: 0, explanation: "$[\\sin^{-1}x]_0^1 = \\pi/2$" },
+            { text: "$\\int_0^{\\pi/2} \\cos^2 x dx$ equals:", options: ["$\\frac{\\pi}{4}$", "$\\frac{\\pi}{2}$", "$\\frac{\\pi}{8}$", "$\\frac{\\pi}{3}$"], correct: 0, explanation: "$\\int_0^{\\pi/2} \\frac{1+\\cos2x}{2} dx = [x/2 + \\sin2x/4]_0^{\\pi/2} = \\pi/4$" },
+            { text: "$\\int_0^1 x e^x dx$ equals:", options: ["$1$", "$e-1$", "$e-2$", "$2$"], correct: 0, explanation: "$[xe^x - e^x]_0^1 = (e-e) - (0-1) = 1$" },
+            { text: "The area bounded by $y = \\sin x$, $x=0$, $x=\\pi$, and the x-axis is:", options: ["$2$", "$1$", "$0$", "$\\pi$"], correct: 0, explanation: "$\\int_0^{\\pi} \\sin x dx = [-\\cos x]_0^{\\pi} = 1+1=2$" }
+        ];
+        
+        // Shuffle options for each question to randomize correct answer position
+        const questions = rawQuestions.map(q => shuffleOptions(q));
         
         let currentIndex = 0;
         let answers = new Array(questions.length).fill(null);
@@ -1055,9 +582,8 @@
         
         function updateStats() {
             const answered = submitted.filter(s => s === true).length;
-            const locked = submitted.filter(s => s === true).length;
             document.getElementById('answeredCount').textContent = answered;
-            document.getElementById('lockedCount').textContent = locked;
+            document.getElementById('lockedCount').textContent = answered;
             document.getElementById('currentQNumber').textContent = currentIndex + 1;
             document.getElementById('totalQ').textContent = questions.length;
         }
@@ -1088,7 +614,7 @@
                 </div>` : '';
             
             const lockedIndicator = isLocked ? '<span class="locked-badge">🔒 Locked</span>' : '';
-            const sectionNumber = currentIndex < 35 ? 'Chapter 1: Functions & Limits' : (currentIndex < 65 ? 'Chapter 4: Analytic Geometry' : 'Chapter 7: Vectors');
+            const sectionNumber = currentIndex < 50 ? 'Chapter 2: Differentiation' : 'Chapter 3: Integration';
             
             area.innerHTML = `
                 <div class="question-number">
@@ -1112,7 +638,6 @@
             document.getElementById('progressFill').style.width = `${progress}%`;
             updateStats();
             
-            // Re-render MathJax
             if (window.MathJax) {
                 MathJax.typesetPromise();
             }
@@ -1154,7 +679,7 @@
                     correctAnswer: String.fromCharCode(65 + questions[i].correct),
                     isCorrect: isCorrect,
                     explanation: questions[i].explanation,
-                    section: i < 35 ? 'Ch 1' : (i < 65 ? 'Ch 4' : 'Ch 7')
+                    section: i < 50 ? 'Ch 2' : 'Ch 3'
                 });
             }
             
@@ -1171,10 +696,8 @@
             else if (percentage >= 50) grade = 'D (Need Improvement)';
             else grade = 'F (Needs Hard Work)';
             
-            // Chapter-wise analysis
-            const ch1Correct = results.filter(r => r.section === 'Ch 1' && r.isCorrect).length;
-            const ch4Correct = results.filter(r => r.section === 'Ch 4' && r.isCorrect).length;
-            const ch7Correct = results.filter(r => r.section === 'Ch 7' && r.isCorrect).length;
+            const ch2Correct = results.filter(r => r.section === 'Ch 2' && r.isCorrect).length;
+            const ch3Correct = results.filter(r => r.section === 'Ch 3' && r.isCorrect).length;
             
             let reviewHtml = '';
             results.forEach(r => {
@@ -1204,9 +727,8 @@
                         <p>📝 Unanswered: ${answers.filter(a => a === null).length}</p>
                         <hr>
                         <h4>📊 Chapter-wise Analysis:</h4>
-                        <p>📐 Chapter 1 (Functions & Limits): ${ch1Correct}/35 correct (${Math.round(ch1Correct/35*100)}%)</p>
-                        <p>📏 Chapter 4 (Analytic Geometry): ${ch4Correct}/30 correct (${Math.round(ch4Correct/30*100)}%)</p>
-                        <p>➡️ Chapter 7 (Vectors): ${ch7Correct}/35 correct (${Math.round(ch7Correct/35*100)}%)</p>
+                        <p>📈 Chapter 2 (Differentiation): ${ch2Correct}/50 correct (${Math.round(ch2Correct/50*100)}%)</p>
+                        <p>📉 Chapter 3 (Integration): ${ch3Correct}/50 correct (${Math.round(ch3Correct/50*100)}%)</p>
                         <button class="btn-primary" onclick="restartTest()" style="margin-top:15px">🔄 Take Test Again</button>
                         <button class="btn-secondary" onclick="toggleReview()" style="margin-top:15px; margin-left:10px">📋 Show/Hide Review</button>
                     </div>
